@@ -11,6 +11,12 @@
 		C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E12E3D61A200505277 /* LuminaDexApp.swift */; };
 		C37525E82E3D61A200505277 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E42E3D61A200505277 /* ContentView.swift */; };
 		C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525EE2E3D62A100505277 /* ThemeManager.swift */; };
+		C37525F92E3D73A000505277 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525F82E3D739D00505277 /* Pokemon.swift */; };
+		C37525FB2E3D74B100505277 /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525FA2E3D74AF00505277 /* PokemonType.swift */; };
+		C37525FD2E3D757100505277 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525FC2E3D756E00505277 /* Region.swift */; };
+		C37525FF2E3D75A200505277 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525FE2E3D759F00505277 /* Stats.swift */; };
+		C37526012E3D764100505277 /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37526002E3D763C00505277 /* PokemonAPI.swift */; };
+		C37526032E3D771200505277 /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37526022E3D771000505277 /* PokemonRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		C37525E32E3D61A200505277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C37525E42E3D61A200505277 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C37525EE2E3D62A100505277 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		C37525F82E3D739D00505277 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		C37525FA2E3D74AF00505277 /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
+		C37525FC2E3D756E00505277 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		C37525FE2E3D759F00505277 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		C37526002E3D763C00505277 /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
+		C37526022E3D771000505277 /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -146,6 +158,12 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C37526022E3D771000505277 /* PokemonRepository.swift */,
+				C37526002E3D763C00505277 /* PokemonAPI.swift */,
+				C37525FE2E3D759F00505277 /* Stats.swift */,
+				C37525FC2E3D756E00505277 /* Region.swift */,
+				C37525FA2E3D74AF00505277 /* PokemonType.swift */,
+				C37525F82E3D739D00505277 /* Pokemon.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -331,7 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */,
+				C37525F92E3D73A000505277 /* Pokemon.swift in Sources */,
+				C37525FB2E3D74B100505277 /* PokemonType.swift in Sources */,
+				C37525FF2E3D75A200505277 /* Stats.swift in Sources */,
+				C37525FD2E3D757100505277 /* Region.swift in Sources */,
+				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
 				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
+				C37526012E3D764100505277 /* PokemonAPI.swift in Sources */,
 				C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
