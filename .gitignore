@@ -1,0 +1,79 @@
+# === LuminaDx Security & Privacy Protection ===
+
+# Xcode User Settings (Personal)
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# Build Artifacts
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode Compatibility Files
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+
+# Swift Package Manager
+Packages/
+Package.pins
+Package.resolved
+.swiftpm/
+
+# Security - API Keys & Secrets
+Config.plist
+Secrets.plist
+GoogleService-Info.plist
+*.env
+.env*
+api-keys.plist
+credentials.json
+
+# Personal/Development Files
+UserData/
+PersonalNotes.md
+TODO.md
+*.personal
+*.private
+
+# Certificates & Provisioning
+*.mobileprovision
+*.p12
+*.cer
+*.certSigningRequest
+
+# SwiftLint & Tools
+.swiftlint.cache
+
+# macOS System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.localized
+
+# Temporary Files
+*.tmp
+*.temp
+*~.nib
+*.log
+
+# IDE Files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Backup Files
+*.backup
+*.bak
+*.old
