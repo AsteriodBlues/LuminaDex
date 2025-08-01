@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C37525E62E3D61A200505277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37525E32E3D61A200505277 /* Assets.xcassets */; };
+		C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E12E3D61A200505277 /* LuminaDexApp.swift */; };
+		C37525E82E3D61A200505277 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E42E3D61A200505277 /* ContentView.swift */; };
+		C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525EE2E3D62A100505277 /* ThemeManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C37525C02E3D5E9600505277 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C37525AA2E3D5E9500505277 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C37525B12E3D5E9500505277;
+			remoteInfo = LuminaDex;
+		};
+		C37525CA2E3D5E9600505277 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C37525AA2E3D5E9500505277 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C37525B12E3D5E9500505277;
+			remoteInfo = LuminaDex;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C37525B22E3D5E9500505277 /* LuminaDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37525BF2E3D5E9600505277 /* LuminaDexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuminaDexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37525C92E3D5E9600505277 /* LuminaDexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuminaDexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37525E12E3D61A200505277 /* LuminaDexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminaDexApp.swift; sourceTree = "<group>"; };
+		C37525E32E3D61A200505277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C37525E42E3D61A200505277 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C37525EE2E3D62A100505277 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C37525C22E3D5E9600505277 /* LuminaDexTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LuminaDexTests;
+			sourceTree = "<group>";
+		};
+		C37525CC2E3D5E9600505277 /* LuminaDexUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LuminaDexUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C37525AF2E3D5E9500505277 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525BC2E3D5E9600505277 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525C62E3D5E9600505277 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C37525A92E3D5E9500505277 = {
+			isa = PBXGroup;
+			children = (
+				C37525E52E3D61A200505277 /* LuminaDex */,
+				C37525C22E3D5E9600505277 /* LuminaDexTests */,
+				C37525CC2E3D5E9600505277 /* LuminaDexUITests */,
+				C37525B32E3D5E9500505277 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C37525B32E3D5E9500505277 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C37525B22E3D5E9500505277 /* LuminaDex.app */,
+				C37525BF2E3D5E9600505277 /* LuminaDexTests.xctest */,
+				C37525C92E3D5E9600505277 /* LuminaDexUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C37525E22E3D61A200505277 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C37525E12E3D61A200505277 /* LuminaDexApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C37525E52E3D61A200505277 /* LuminaDex */ = {
+			isa = PBXGroup;
+			children = (
+				C37525ED2E3D61D100505277 /* Resources */,
+				C37525EC2E3D61CD00505277 /* Data */,
+				C37525EB2E3D61C300505277 /* Design */,
+				C37525EA2E3D61BC00505277 /* Features */,
+				C37525E92E3D61AB00505277 /* Core */,
+				C37525E22E3D61A200505277 /* App */,
+				C37525E32E3D61A200505277 /* Assets.xcassets */,
+			);
+			path = LuminaDex;
+			sourceTree = "<group>";
+		};
+		C37525E92E3D61AB00505277 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C37525EA2E3D61BC00505277 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C37525E42E3D61A200505277 /* ContentView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C37525EB2E3D61C300505277 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				C37525EE2E3D62A100505277 /* ThemeManager.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		C37525EC2E3D61CD00505277 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C37525ED2E3D61D100505277 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C37525B12E3D5E9500505277 /* LuminaDex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37525D32E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDex" */;
+			buildPhases = (
+				C37525AE2E3D5E9500505277 /* Sources */,
+				C37525AF2E3D5E9500505277 /* Frameworks */,
+				C37525B02E3D5E9500505277 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LuminaDex;
+			packageProductDependencies = (
+			);
+			productName = LuminaDex;
+			productReference = C37525B22E3D5E9500505277 /* LuminaDex.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C37525BE2E3D5E9600505277 /* LuminaDexTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37525D62E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDexTests" */;
+			buildPhases = (
+				C37525BB2E3D5E9600505277 /* Sources */,
+				C37525BC2E3D5E9600505277 /* Frameworks */,
+				C37525BD2E3D5E9600505277 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C37525C12E3D5E9600505277 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C37525C22E3D5E9600505277 /* LuminaDexTests */,
+			);
+			name = LuminaDexTests;
+			packageProductDependencies = (
+			);
+			productName = LuminaDexTests;
+			productReference = C37525BF2E3D5E9600505277 /* LuminaDexTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C37525C82E3D5E9600505277 /* LuminaDexUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37525D92E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDexUITests" */;
+			buildPhases = (
+				C37525C52E3D5E9600505277 /* Sources */,
+				C37525C62E3D5E9600505277 /* Frameworks */,
+				C37525C72E3D5E9600505277 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C37525CB2E3D5E9600505277 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C37525CC2E3D5E9600505277 /* LuminaDexUITests */,
+			);
+			name = LuminaDexUITests;
+			packageProductDependencies = (
+			);
+			productName = LuminaDexUITests;
+			productReference = C37525C92E3D5E9600505277 /* LuminaDexUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C37525AA2E3D5E9500505277 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					C37525B12E3D5E9500505277 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					C37525BE2E3D5E9600505277 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C37525B12E3D5E9500505277;
+					};
+					C37525C82E3D5E9600505277 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = C37525B12E3D5E9500505277;
+					};
+				};
+			};
+			buildConfigurationList = C37525AD2E3D5E9500505277 /* Build configuration list for PBXProject "LuminaDex" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C37525A92E3D5E9500505277;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C37525B32E3D5E9500505277 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C37525B12E3D5E9500505277 /* LuminaDex */,
+				C37525BE2E3D5E9600505277 /* LuminaDexTests */,
+				C37525C82E3D5E9600505277 /* LuminaDexUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C37525B02E3D5E9500505277 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37525E62E3D61A200505277 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525BD2E3D5E9600505277 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525C72E3D5E9600505277 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C37525AE2E3D5E9500505277 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */,
+				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
+				C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525BB2E3D5E9600505277 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37525C52E3D5E9600505277 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C37525C12E3D5E9600505277 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C37525B12E3D5E9500505277 /* LuminaDex */;
+			targetProxy = C37525C02E3D5E9600505277 /* PBXContainerItemProxy */;
+		};
+		C37525CB2E3D5E9600505277 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C37525B12E3D5E9500505277 /* LuminaDex */;
+			targetProxy = C37525CA2E3D5E9600505277 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C37525D12E3D5E9600505277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C37525D22E3D5E9600505277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C37525D42E3D5E9600505277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C37525D52E3D5E9600505277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C37525D72E3D5E9600505277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuminaDex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LuminaDex";
+			};
+			name = Debug;
+		};
+		C37525D82E3D5E9600505277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuminaDex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LuminaDex";
+			};
+			name = Release;
+		};
+		C37525DA2E3D5E9600505277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LuminaDex;
+			};
+			name = Debug;
+		};
+		C37525DB2E3D5E9600505277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9X494Z3R38;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ritwikd.luminadex.LuminaDexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LuminaDex;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C37525AD2E3D5E9500505277 /* Build configuration list for PBXProject "LuminaDex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37525D12E3D5E9600505277 /* Debug */,
+				C37525D22E3D5E9600505277 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37525D32E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37525D42E3D5E9600505277 /* Debug */,
+				C37525D52E3D5E9600505277 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37525D62E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDexTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37525D72E3D5E9600505277 /* Debug */,
+				C37525D82E3D5E9600505277 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37525D92E3D5E9600505277 /* Build configuration list for PBXNativeTarget "LuminaDexUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37525DA2E3D5E9600505277 /* Debug */,
+				C37525DB2E3D5E9600505277 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C37525AA2E3D5E9500505277 /* Project object */;
+}
