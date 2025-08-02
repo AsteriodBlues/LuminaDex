@@ -71,6 +71,19 @@ struct ThemeManager {
         // Data display
         static let monoMedium = Font.custom("SF Mono", size: 14)
             .weight(.medium)
+        
+        // Additional typography styles
+        static let headlineBold = Font.custom("SF Pro Display", size: 18)
+            .weight(.bold)
+        
+        static let bodySmall = Font.custom("SF Pro Text", size: 13)
+            .weight(.regular)
+        
+        static let captionMedium = Font.custom("SF Pro Text", size: 12)
+            .weight(.medium)
+        
+        static let captionBold = Font.custom("SF Pro Text", size: 12)
+            .weight(.bold)
     }
     
     // MARK: - Spacing

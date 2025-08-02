@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showWorldMap = false
     @State private var isAnimating = false
     
     var body: some View {
+        ZStack {
+            if showWorldMap {
+                NeuralFlowMapView()
+                    .transition(.asymmetric(
+                        insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
+                        removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
+                    ))
+            } else {
+                welcomeScreen
+            }
+        }
+        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showWorldMap)
+    }
+    
+    private var welcomeScreen: some View {
         ZStack {
             // Background gradient
             ThemeManager.Colors.spaceGradient
@@ -35,18 +51,40 @@ struct ContentView: View {
                 
                 // Glassmorphic card
                 VStack(spacing: ThemeManager.Spacing.lg) {
-                    Image(systemName: "sparkles")
+                    Image(systemName: "drop.triangle.fill")
                         .font(.system(size: 40))
                         .foregroundStyle(ThemeManager.Colors.auroraGradient)
                         .rotationEffect(.degrees(isAnimating ? 360 : 0))
                         .animation(ThemeManager.Animation.springSmooth.delay(1.0), value: isAnimating)
                     
-                    Text("Welcome to the most beautiful\nPokémon experience ever created")
+                    Text("Experience liquid animations,\nmorphing shapes, and flowing particles")
                         .font(ThemeManager.Typography.bodyMedium)
                         .foregroundColor(ThemeManager.Colors.lumina)
                         .multilineTextAlignment(.center)
                         .opacity(isAnimating ? 1.0 : 0.0)
                         .animation(ThemeManager.Animation.easeInOut.delay(1.2), value: isAnimating)
+                    
+                    // Launch button
+                    Button(action: {
+                        showWorldMap = true
+                    }) {
+                        HStack {
+                            Text("Enter the Flow")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.white)
+                            
+                            Image(systemName: "arrow.right.circle.fill")
+                                .foregroundColor(.white)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(ThemeManager.Colors.neuralGradient)
+                        )
+                    }
+                    .opacity(isAnimating ? 1.0 : 0.0)
+                    .animation(ThemeManager.Animation.easeInOut.delay(1.6), value: isAnimating)
                 }
                 .padding(ThemeManager.Spacing.xl)
                 .background(
@@ -71,4 +109,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-}   
+        .preferredColorScheme(.dark)
+}
