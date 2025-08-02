@@ -8,22 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var companionManager = CompanionManager()
     @State private var showWorldMap = false
+    @State private var showCompanionSelection = false
     @State private var isAnimating = false
     
     var body: some View {
         ZStack {
             if showWorldMap {
-                NeuralFlowMapView()
-                    .transition(.asymmetric(
-                        insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
-                        removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
-                    ))
+                ZStack {
+                    NeuralFlowMapView()
+                        .transition(.asymmetric(
+                            insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
+                            removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
+                        ))
+                    
+                    // Companion overlay on map
+                    CompanionOverlay(companionManager: companionManager)
+                    
+                    // Companion control panel
+                    CompanionControlPanel(companionManager: companionManager)
+                }
+            } else if showCompanionSelection {
+                CompanionSelectionView { selectedCompanion in
+                    companionManager.selectCompanion(selectedCompanion)
+                    withAnimation(.spring(response: 0.8, dampingFraction: 0.9)) {
+                        showCompanionSelection = false
+                        showWorldMap = true
+                    }
+                    
+                    // Position companion in center of screen initially
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        companionManager.updateCompanionPosition(to: CGPoint(x: 200, y: 400))
+                    }
+                }
+                .transition(.asymmetric(
+                    insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
+                    removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
+                ))
             } else {
                 welcomeScreen
             }
         }
         .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showWorldMap)
+        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showCompanionSelection)
     }
     
     private var welcomeScreen: some View {
@@ -66,14 +94,18 @@ struct ContentView: View {
                     
                     // Launch button
                     Button(action: {
-                        showWorldMap = true
+                        if companionManager.currentCompanion != nil {
+                            showWorldMap = true
+                        } else {
+                            showCompanionSelection = true
+                        }
                     }) {
                         HStack {
-                            Text("Enter the Flow")
+                            Text(companionManager.currentCompanion != nil ? "Enter the Flow" : "Choose Companion")
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.white)
                             
-                            Image(systemName: "arrow.right.circle.fill")
+                            Image(systemName: companionManager.currentCompanion != nil ? "arrow.right.circle.fill" : "heart.circle.fill")
                                 .foregroundColor(.white)
                         }
                         .frame(maxWidth: .infinity)
