@@ -24,6 +24,12 @@
 		C37525FF2E3D75A200505277 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525FE2E3D759F00505277 /* Stats.swift */; };
 		C37526012E3D764100505277 /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37526002E3D763C00505277 /* PokemonAPI.swift */; };
 		C37526032E3D771200505277 /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37526022E3D771000505277 /* PokemonRepository.swift */; };
+		C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F12E3EB198002F20DB /* CompanionSprite.swift */; };
+		C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F22E3EB198002F20DB /* CompanionSystem.swift */; };
+		C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F02E3EB198002F20DB /* CompanionSelectionView.swift */; };
+		C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F62E3EB21F002F20DB /* CompanionData.swift */; };
+		C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */; };
+		C37CA8FB2E3EB6A2002F20DB /* MigrationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +70,12 @@
 		C37525FE2E3D759F00505277 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		C37526002E3D763C00505277 /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
 		C37526022E3D771000505277 /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
+		C37CA8F02E3EB198002F20DB /* CompanionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionSelectionView.swift; sourceTree = "<group>"; };
+		C37CA8F12E3EB198002F20DB /* CompanionSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionSprite.swift; sourceTree = "<group>"; };
+		C37CA8F22E3EB198002F20DB /* CompanionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionSystem.swift; sourceTree = "<group>"; };
+		C37CA8F62E3EB21F002F20DB /* CompanionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionData.swift; sourceTree = "<group>"; };
+		C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendaryGuardians.swift; sourceTree = "<group>"; };
+		C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -156,6 +168,11 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */,
+				C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */,
+				C37CA8F02E3EB198002F20DB /* CompanionSelectionView.swift */,
+				C37CA8F12E3EB198002F20DB /* CompanionSprite.swift */,
+				C37CA8F22E3EB198002F20DB /* CompanionSystem.swift */,
 				C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */,
 				C36019A22E3E9488000BE42C /* RegionBubbleCard.swift */,
 				C36019A32E3E9488000BE42C /* RegionNode.swift */,
@@ -179,6 +196,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C37CA8F62E3EB21F002F20DB /* CompanionData.swift */,
 				C37526022E3D771000505277 /* PokemonRepository.swift */,
 				C37526002E3D763C00505277 /* PokemonAPI.swift */,
 				C37525FE2E3D759F00505277 /* Stats.swift */,
@@ -380,7 +398,13 @@
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
 				C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */,
 				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
+				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
+				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
+				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
+				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
+				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
+				C37CA8FB2E3EB6A2002F20DB /* MigrationSystem.swift in Sources */,
 				C36019AC2E3E9489000BE42C /* SpriteRenderer.swift in Sources */,
 				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
 				C37526012E3D764100505277 /* PokemonAPI.swift in Sources */,

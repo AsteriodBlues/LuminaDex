@@ -23,6 +23,10 @@ struct NeuralFlowMapView: View {
     @StateObject private var spriteManager = SpritePopulationManager()
     @State private var lastUpdateTime: TimeInterval = Date().timeIntervalSince1970
     
+    // MARK: - Day 14 Features
+    @StateObject private var migrationManager = MigrationManager()
+    @StateObject private var guardianManager = LegendaryGuardianManager()
+    
     var body: some View {
         ZStack {
             // Infinite void background
