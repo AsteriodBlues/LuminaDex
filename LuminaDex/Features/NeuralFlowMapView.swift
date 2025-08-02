@@ -88,7 +88,9 @@ struct NeuralFlowMapView: View {
             ForEach(regionNodes.filter { isNodeVisible($0) }) { node in
                 RegionBubbleCard(
                     region: node,
-                    isSelected: selectedRegion?.id == node.id
+                    isSelected: selectedRegion?.id == node.id,
+                    activeSpriteCount: getSpriteCountForRegion(node.name),
+                    spriteTypeDistribution: getSpriteTypeDistribution(node.name)
                 )
                 .position(
                     x: node.position.x * zoomScale + cameraOffset.width + (selectedRegion?.id == node.id ? adjustedXOffset(for: node) : 0),
@@ -99,6 +101,11 @@ struct NeuralFlowMapView: View {
                 .onTapGesture {
                     withAnimation(ThemeManager.Animation.springBouncy) {
                         selectedRegion = selectedRegion?.id == node.id ? nil : node
+                        
+                        // Trigger sprite celebration when region is selected
+                        if selectedRegion?.id == node.id {
+                            spriteManager.celebrateRegion(node.name)
+                        }
                     }
                 }
             }
@@ -167,6 +174,27 @@ struct NeuralFlowMapView: View {
     
     private func isNodeVisible(_ node: RegionNode) -> Bool {
         true // Simplified for now - could add culling logic
+    }
+    
+    /// Get active sprite count for a specific region
+    private func getSpriteCountForRegion(_ regionName: String) -> Int {
+        return spriteManager.sprites.filter { sprite in
+            sprite.regionAffinity == regionName && sprite.isActive
+        }.count
+    }
+    
+    /// Get sprite type distribution for a specific region
+    private func getSpriteTypeDistribution(_ regionName: String) -> [PokemonType: Int] {
+        let regionSprites = spriteManager.sprites.filter { sprite in
+            sprite.regionAffinity == regionName && sprite.isActive
+        }
+        
+        var distribution: [PokemonType: Int] = [:]
+        for sprite in regionSprites {
+            distribution[sprite.type, default: 0] += 1
+        }
+        
+        return distribution
     }
     
     private func adjustedXOffset(for node: RegionNode) -> CGFloat {

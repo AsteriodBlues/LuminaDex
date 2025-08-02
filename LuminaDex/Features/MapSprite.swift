@@ -29,6 +29,11 @@ struct MapSprite: Identifiable, Equatable {
     var isActive: Bool = true
     var lastUpdateTime: TimeInterval = 0
     
+    // Interaction states
+    var isCelebrating: Bool = false
+    var isHighlighted: Bool = false
+    var celebrationStartTime: TimeInterval = 0
+    
     // Physics constants
     static let maxSpeed: CGFloat = 30.0
     static let dampening: CGFloat = 0.98
@@ -78,6 +83,11 @@ struct MapSprite: Identifiable, Equatable {
         
         // Update visual properties based on movement
         updateVisualProperties()
+        
+        // Handle celebration animation
+        if isCelebrating {
+            updateCelebrationAnimation(deltaTime: deltaTime)
+        }
     }
     
     private mutating func updateOrbitalMovement(deltaTime: TimeInterval, nodes: [RegionNode]) {
@@ -201,16 +211,31 @@ struct MapSprite: Identifiable, Equatable {
     private mutating func updateVisualProperties() {
         let speed = sqrt(velocity.x * velocity.x + velocity.y * velocity.y)
         
-        // Scale based on movement speed
-        scale = 0.8 + (speed / Self.maxSpeed) * 0.4
+        // Scale based on movement speed and interaction states
+        var baseScale: CGFloat = 0.8 + (speed / Self.maxSpeed) * 0.4
+        
+        // Enhance scale for highlighted or celebrating sprites
+        if isHighlighted {
+            baseScale *= 1.2
+        }
+        if isCelebrating {
+            let celebrationTime = lastUpdateTime - celebrationStartTime
+            baseScale *= 1.0 + sin(celebrationTime * 8) * 0.3
+        }
+        
+        scale = baseScale
         
         // Rotation based on velocity direction
         if speed > 1.0 {
             rotation = Angle(radians: atan2(velocity.y, velocity.x))
         }
         
-        // Opacity based on activity
-        opacity = isActive ? 1.0 : 0.6
+        // Opacity based on activity and interaction states
+        var baseOpacity: CGFloat = isActive ? 1.0 : 0.6
+        if isHighlighted {
+            baseOpacity = min(baseOpacity * 1.3, 1.0)
+        }
+        opacity = baseOpacity
     }
     
     // Helper functions
@@ -227,6 +252,34 @@ struct MapSprite: Identifiable, Equatable {
     
     static func == (lhs: MapSprite, rhs: MapSprite) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    // MARK: - Interaction Methods
+    
+    /// Trigger celebration animation
+    mutating func triggerCelebration() {
+        isCelebrating = true
+        celebrationStartTime = lastUpdateTime
+        
+        // Add upward velocity for celebration jump
+        velocity.y -= 20.0
+        
+        // Celebration will auto-stop in updateCelebrationAnimation
+    }
+    
+    /// Set highlight state for region interactions
+    mutating func setHighlighted(_ highlighted: Bool) {
+        isHighlighted = highlighted
+    }
+    
+    /// Update celebration animation over time
+    private mutating func updateCelebrationAnimation(deltaTime: TimeInterval) {
+        let celebrationDuration: TimeInterval = 2.0
+        let elapsed = lastUpdateTime - celebrationStartTime
+        
+        if elapsed > celebrationDuration {
+            isCelebrating = false
+        }
     }
 }
 
@@ -399,5 +452,23 @@ class SpritePopulationManager: ObservableObject {
     func getPerformanceMetrics() -> (totalSprites: Int, activeSprites: Int, pooledSprites: Int) {
         let activeCount = sprites.filter { $0.isActive }.count
         return (sprites.count, activeCount, spritePool.count)
+    }
+    
+    /// Trigger celebration animation for sprites in a specific region
+    func celebrateRegion(_ regionName: String) {
+        for i in sprites.indices {
+            if sprites[i].regionAffinity == regionName && sprites[i].isActive {
+                sprites[i].triggerCelebration()
+            }
+        }
+    }
+    
+    /// Make sprites react to region card hover
+    func highlightRegion(_ regionName: String, isHighlighted: Bool) {
+        for i in sprites.indices {
+            if sprites[i].regionAffinity == regionName && sprites[i].isActive {
+                sprites[i].setHighlighted(isHighlighted)
+            }
+        }
     }
 }

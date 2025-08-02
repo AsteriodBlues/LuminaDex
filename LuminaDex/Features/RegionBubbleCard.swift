@@ -10,9 +10,12 @@ import SwiftUI
 struct RegionBubbleCard: View {
     let region: RegionNode
     let isSelected: Bool
+    let activeSpriteCount: Int
+    let spriteTypeDistribution: [PokemonType: Int]
     
     @State private var isHovered = false
     @State private var shimmerPhase: CGFloat = 0
+    @State private var spriteAnimationPhase: CGFloat = 0
     
     var body: some View {
         VStack(spacing: 8) {
@@ -27,7 +30,9 @@ struct RegionBubbleCard: View {
                     )
                 )
                 .shadow(color: region.primaryColor.opacity(0.5), radius: 8)
-                .scaleEffect(isSelected ? 1.1 : 1.0)
+                .scaleEffect(isSelected ? 1.05 : 1.0)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
                 .animation(ThemeManager.Animation.springBouncy, value: isSelected)
             
             // Generation badge
@@ -47,9 +52,21 @@ struct RegionBubbleCard: View {
             )
             
             if isSelected {
+                // Mini sprite preview animation
+                HStack(spacing: 4) {
+                    ForEach(Array(region.dominantTypes.prefix(3)), id: \.self) { type in
+                        MiniSpritePreview(
+                            type: type,
+                            animationOffset: spriteAnimationPhase + CGFloat.random(in: 0...1),
+                            isActive: isSelected
+                        )
+                    }
+                }
+                .padding(.vertical, 4)
+                
                 // Expanded details
                 VStack(spacing: 6) {
-                    // Pokemon count
+                    // Pokemon count with live sprite counter
                     HStack {
                         Image(systemName: "circle.grid.cross")
                             .foregroundColor(region.secondaryColor)
@@ -57,6 +74,120 @@ struct RegionBubbleCard: View {
                             .font(ThemeManager.Typography.bodySmall)
                             .foregroundColor(ThemeManager.Colors.lumina.opacity(0.9))
                         Spacer()
+                    }
+                    
+                    // Live sprite population display
+                    HStack {
+                        Image(systemName: "person.3.fill")
+                            .foregroundColor(region.primaryColor)
+                            .font(.caption)
+                        
+                        Text("\(activeSpriteCount) Active Sprites")
+                            .font(ThemeManager.Typography.captionMedium)
+                            .foregroundColor(ThemeManager.Colors.lumina.opacity(0.9))
+                        
+                        Spacer()
+                        
+                        // Live indicator with pulse
+                        HStack(spacing: 2) {
+                            Circle()
+                                .fill(region.primaryColor)
+                                .frame(width: 4, height: 4)
+                                .scaleEffect(1.0 + sin(spriteAnimationPhase * 2) * 0.3)
+                            Text("Live")
+                                .font(.caption2)
+                                .foregroundColor(region.primaryColor)
+                        }
+                    }
+                    
+                    // Sprite activity meter
+                    HStack {
+                        Text("Activity")
+                            .font(.caption2)
+                            .foregroundColor(ThemeManager.Colors.lumina.opacity(0.7))
+                        
+                        Spacer()
+                        
+                        // Activity bar
+                        GeometryReader { geometry in
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(ThemeManager.Colors.lumina.opacity(0.2))
+                                .frame(height: 4)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 2)
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [region.primaryColor, region.secondaryColor],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .frame(width: geometry.size.width * activityLevel)
+                                        .animation(.easeInOut(duration: 0.5), value: activityLevel)
+                                , alignment: .leading
+                                )
+                        }
+                        .frame(height: 4)
+                    }
+                    
+                    // Live sprite type distribution
+                    if !spriteTypeDistribution.isEmpty {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Image(systemName: "chart.pie.fill")
+                                    .foregroundColor(region.primaryColor)
+                                    .font(.caption)
+                                Text("Live Distribution")
+                                    .font(ThemeManager.Typography.captionBold)
+                                    .foregroundColor(ThemeManager.Colors.lumina)
+                                Spacer()
+                            }
+                            
+                            // Type distribution bars
+                            VStack(spacing: 2) {
+                                ForEach(sortedTypeDistribution, id: \.type) { distribution in
+                                    HStack(spacing: 6) {
+                                        // Type indicator
+                                        Circle()
+                                            .fill(distribution.type.color)
+                                            .frame(width: 8, height: 8)
+                                            .overlay(
+                                                Circle()
+                                                    .fill(Color.white.opacity(0.3))
+                                                    .frame(width: 4, height: 4)
+                                            )
+                                        
+                                        // Type name
+                                        Text(distribution.type.displayName)
+                                            .font(.caption2)
+                                            .foregroundColor(ThemeManager.Colors.lumina.opacity(0.8))
+                                            .frame(width: 50, alignment: .leading)
+                                        
+                                        // Distribution bar
+                                        GeometryReader { geometry in
+                                            RoundedRectangle(cornerRadius: 1)
+                                                .fill(distribution.type.color.opacity(0.3))
+                                                .frame(height: 3)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 1)
+                                                        .fill(distribution.type.color)
+                                                        .frame(width: geometry.size.width * distribution.percentage)
+                                                        .animation(.easeInOut(duration: 0.5), value: distribution.percentage)
+                                                    , alignment: .leading
+                                                )
+                                        }
+                                        .frame(height: 3)
+                                        
+                                        // Count
+                                        Text("\(distribution.count)")
+                                            .font(.caption2)
+                                            .foregroundColor(distribution.type.color)
+                                            .frame(width: 15, alignment: .trailing)
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.top, 4)
                     }
                     
                     // Dominant types
@@ -109,7 +240,7 @@ struct RegionBubbleCard: View {
             }
         }
         .padding(16)
-        .frame(width: isSelected ? 220 : 140)
+        .frame(width: isSelected ? 260 : 140)
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(glassMaterial)
@@ -150,6 +281,7 @@ struct RegionBubbleCard: View {
             if isSelected {
                 startShimmer()
             }
+            startSpriteAnimations()
         }
     }
     
@@ -216,6 +348,30 @@ struct RegionBubbleCard: View {
             shimmerPhase = 1.0
         }
     }
+    
+    private func startSpriteAnimations() {
+        withAnimation(.linear(duration: 3.0).repeatForever(autoreverses: false)) {
+            spriteAnimationPhase = 2 * .pi
+        }
+    }
+    
+    /// Calculate activity level based on sprite population
+    private var activityLevel: CGFloat {
+        let maxSprites = 8 // Based on max sprites per region
+        return min(CGFloat(activeSpriteCount) / CGFloat(maxSprites), 1.0)
+    }
+    
+    /// Sorted type distribution for display
+    private var sortedTypeDistribution: [TypeDistribution] {
+        let distributions = spriteTypeDistribution.map { (type, count) in
+            TypeDistribution(
+                type: type,
+                count: count,
+                percentage: activeSpriteCount > 0 ? CGFloat(count) / CGFloat(activeSpriteCount) : 0
+            )
+        }
+        return distributions.sorted { $0.count > $1.count }
+    }
 }
 
 struct TypeChip: View {
@@ -255,6 +411,62 @@ struct TypeChip: View {
     }
 }
 
+/// Type distribution data structure
+struct TypeDistribution {
+    let type: PokemonType
+    let count: Int
+    let percentage: CGFloat
+}
+
+/// Mini sprite preview for region cards
+struct MiniSpritePreview: View {
+    let type: PokemonType
+    let animationOffset: CGFloat
+    let isActive: Bool
+    
+    var body: some View {
+        ZStack {
+            // Sprite glow
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            type.color.opacity(0.6),
+                            type.color.opacity(0.2),
+                            Color.clear
+                        ],
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: 8
+                    )
+                )
+                .frame(width: 16, height: 16)
+                .scaleEffect(isActive ? 1.0 + sin(animationOffset * 2) * 0.2 : 0.8)
+            
+            // Main sprite dot
+            Circle()
+                .fill(type.color)
+                .frame(width: 6, height: 6)
+                .overlay(
+                    Circle()
+                        .fill(Color.white.opacity(0.7))
+                        .frame(width: 3, height: 3)
+                )
+                .scaleEffect(isActive ? 1.0 + sin(animationOffset * 3) * 0.15 : 0.9)
+            
+            // Floating animation
+            Circle()
+                .fill(type.color.opacity(0.4))
+                .frame(width: 2, height: 2)
+                .offset(
+                    x: sin(animationOffset) * 6,
+                    y: cos(animationOffset * 1.3) * 4
+                )
+                .opacity(isActive ? 1.0 : 0.0)
+        }
+        .animation(.easeInOut(duration: 0.3), value: isActive)
+    }
+}
 
 #Preview {
     ZStack {
@@ -262,12 +474,16 @@ struct TypeChip: View {
         VStack(spacing: 20) {
             RegionBubbleCard(
                 region: RegionNode.createNetworkLayout()[0],
-                isSelected: false
+                isSelected: false,
+                activeSpriteCount: 3,
+                spriteTypeDistribution: [.fire: 2, .water: 1]
             )
             
             RegionBubbleCard(
                 region: RegionNode.createNetworkLayout()[1],
-                isSelected: true
+                isSelected: true,
+                activeSpriteCount: 6,
+                spriteTypeDistribution: [.grass: 3, .electric: 2, .normal: 1]
             )
         }
     }
