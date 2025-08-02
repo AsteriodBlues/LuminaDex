@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A52E3E9488000BE42C /* TypeFlow.swift */; };
+		C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */; };
+		C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A42E3E9488000BE42C /* StarFieldView.swift */; };
+		C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A32E3E9488000BE42C /* RegionNode.swift */; };
+		C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A22E3E9488000BE42C /* RegionBubbleCard.swift */; };
+		C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A62E3E9489000BE42C /* MapSprite.swift */; };
+		C36019AC2E3E9489000BE42C /* SpriteRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A72E3E9489000BE42C /* SpriteRenderer.swift */; };
 		C37525E62E3D61A200505277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37525E32E3D61A200505277 /* Assets.xcassets */; };
 		C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E12E3D61A200505277 /* LuminaDexApp.swift */; };
 		C37525E82E3D61A200505277 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37525E42E3D61A200505277 /* ContentView.swift */; };
@@ -37,6 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralFlowMapView.swift; sourceTree = "<group>"; };
+		C36019A22E3E9488000BE42C /* RegionBubbleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBubbleCard.swift; sourceTree = "<group>"; };
+		C36019A32E3E9488000BE42C /* RegionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionNode.swift; sourceTree = "<group>"; };
+		C36019A42E3E9488000BE42C /* StarFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarFieldView.swift; sourceTree = "<group>"; };
+		C36019A52E3E9488000BE42C /* TypeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFlow.swift; sourceTree = "<group>"; };
+		C36019A62E3E9489000BE42C /* MapSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSprite.swift; sourceTree = "<group>"; };
+		C36019A72E3E9489000BE42C /* SpriteRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRenderer.swift; sourceTree = "<group>"; };
 		C37525B22E3D5E9500505277 /* LuminaDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37525BF2E3D5E9600505277 /* LuminaDexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuminaDexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37525C92E3D5E9600505277 /* LuminaDexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuminaDexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +156,13 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */,
+				C36019A22E3E9488000BE42C /* RegionBubbleCard.swift */,
+				C36019A32E3E9488000BE42C /* RegionNode.swift */,
+				C36019A42E3E9488000BE42C /* StarFieldView.swift */,
+				C36019A52E3E9488000BE42C /* TypeFlow.swift */,
+				C36019A62E3E9489000BE42C /* MapSprite.swift */,
+				C36019A72E3E9489000BE42C /* SpriteRenderer.swift */,
 				C37525E42E3D61A200505277 /* ContentView.swift */,
 			);
 			path = Features;
@@ -354,6 +375,13 @@
 				C37525FF2E3D75A200505277 /* Stats.swift in Sources */,
 				C37525FD2E3D757100505277 /* Region.swift in Sources */,
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
+				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
+				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
+				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
+				C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */,
+				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
+				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
+				C36019AC2E3E9489000BE42C /* SpriteRenderer.swift in Sources */,
 				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
 				C37526012E3D764100505277 /* PokemonAPI.swift in Sources */,
 				C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */,

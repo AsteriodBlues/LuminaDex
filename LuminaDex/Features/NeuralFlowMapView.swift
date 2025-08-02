@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Main map view displaying Pokemon regions as interconnected neural network nodes
-/// Features infinite space navigation, particle systems, and interactive region exploration
+/// Features infinite space navigation, particle systems, living sprites, and interactive region exploration
 struct NeuralFlowMapView: View {
     // MARK: - State Management
     @State private var regionNodes: [RegionNode] = []
@@ -18,6 +18,10 @@ struct NeuralFlowMapView: View {
     @State private var selectedRegion: RegionNode?
     @State private var animationPhase: CGFloat = 0
     @State private var isLoaded = false
+    
+    // MARK: - Sprite System
+    @StateObject private var spriteManager = SpritePopulationManager()
+    @State private var lastUpdateTime: TimeInterval = Date().timeIntervalSince1970
     
     var body: some View {
         ZStack {
@@ -47,6 +51,22 @@ struct NeuralFlowMapView: View {
                 
                 // Draw pulsing region nodes
                 drawRegionNodes(context: context, size: size)
+            }
+            
+            // Living sprite layer with 120fps updates
+            TimelineView(.animation(minimumInterval: 1.0/120.0, paused: false)) { timeline in
+                SpriteLayer(
+                    sprites: spriteManager.getVisibleSprites(
+                        cameraOffset: cameraOffset,
+                        zoomScale: zoomScale,
+                        screenSize: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    ),
+                    cameraOffset: cameraOffset,
+                    zoomScale: zoomScale
+                )
+                .onChange(of: timeline.date) { _ in
+                    updateSpriteSystem()
+                }
             }
             .gesture(
                 SimultaneousGesture(
@@ -106,6 +126,7 @@ struct NeuralFlowMapView: View {
         .onAppear {
             setupNeuralNetwork()
             startAnimations()
+            setupSpriteSystem()
         }
     }
     
@@ -122,6 +143,26 @@ struct NeuralFlowMapView: View {
         withAnimation(.linear(duration: 20).repeatForever(autoreverses: false)) {
             animationPhase = 2 * .pi
         }
+    }
+    
+    private func setupSpriteSystem() {
+        // Populate regions with sprites after neural network is established
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            spriteManager.populateRegions(regionNodes)
+        }
+    }
+    
+    private func updateSpriteSystem() {
+        let currentTime = Date().timeIntervalSince1970
+        let deltaTime = min(currentTime - lastUpdateTime, 0.016) // Cap at 16ms for stability
+        lastUpdateTime = currentTime
+        
+        // Update sprite physics and behaviors
+        spriteManager.updateSprites(
+            deltaTime: deltaTime,
+            regions: regionNodes,
+            flows: energyFlows
+        )
     }
     
     private func isNodeVisible(_ node: RegionNode) -> Bool {
