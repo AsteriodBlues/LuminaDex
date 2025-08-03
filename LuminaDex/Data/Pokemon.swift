@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Pokemon Model
-struct Pokemon: Identifiable, Codable, Hashable {
+struct Pokemon: Identifiable, Codable {
     let id: Int
     let name: String
     let height: Int
@@ -16,6 +16,11 @@ struct Pokemon: Identifiable, Codable, Hashable {
     let baseExperience: Int?
     let order: Int
     let isDefault: Bool
+    
+    var isFavorite: Bool = false
+    var isCaught: Bool = false
+    var catchDate: Date?
+    var progress: Double = 0.0
     
     // Visual data
     let sprites: PokemonSprites

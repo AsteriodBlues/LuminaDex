@@ -9,49 +9,78 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var companionManager = CompanionManager()
+    @State private var selectedTab = 0
     @State private var showWorldMap = false
     @State private var showCompanionSelection = false
     @State private var isAnimating = false
     
     var body: some View {
-        ZStack {
-            if showWorldMap {
-                ZStack {
-                    NeuralFlowMapView(companionManager: companionManager)
-                        .transition(.asymmetric(
-                            insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
-                            removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
-                        ))
-                    
-                    // Companion overlay on map
-                    CompanionOverlay(companionManager: companionManager)
-                    
-                    // Companion control panel
-                    CompanionControlPanel(companionManager: companionManager)
+        if showCompanionSelection {
+            companionSelectionView
+        } else if companionManager.currentCompanion != nil {
+            mainTabView
+        } else {
+            welcomeScreen
+        }
+    }
+    
+    private var mainTabView: some View {
+        TabView(selection: $selectedTab) {
+            // Neural Flow Map
+            ZStack {
+                NeuralFlowMapView(companionManager: companionManager)
+                CompanionOverlay(companionManager: companionManager)
+                CompanionControlPanel(companionManager: companionManager)
+            }
+            .tabItem {
+                Image(systemName: "brain.head.profile")
+                Text("Neural Flow")
+            }
+            .tag(0)
+            
+            // Collection View
+            CollectionView()
+                .tabItem {
+                    Image(systemName: "square.grid.3x3.fill")
+                    Text("Collection")
                 }
-            } else if showCompanionSelection {
-                CompanionSelectionView { selectedCompanion in
-                    companionManager.selectCompanion(selectedCompanion)
-                    withAnimation(.spring(response: 0.8, dampingFraction: 0.9)) {
-                        showCompanionSelection = false
-                        showWorldMap = true
-                    }
-                    
-                    // Position companion in center of screen initially
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        companionManager.updateCompanionPosition(to: CGPoint(x: 200, y: 400))
-                    }
+                .tag(1)
+            
+            // Search & Discovery
+            PokemonSearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
-                .transition(.asymmetric(
-                    insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
-                    removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
-                ))
-            } else {
-                welcomeScreen
+                .tag(2)
+            
+            // Profile & Stats
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
+                }
+                .tag(3)
+        }
+        .accentColor(ThemeManager.Colors.neural)
+    }
+    
+    private var companionSelectionView: some View {
+        CompanionSelectionView { selectedCompanion in
+            companionManager.selectCompanion(selectedCompanion)
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.9)) {
+                showCompanionSelection = false
+            }
+            
+            // Position companion in center of screen initially
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                companionManager.updateCompanionPosition(to: CGPoint(x: 200, y: 400))
             }
         }
-        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showWorldMap)
-        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showCompanionSelection)
+        .transition(.asymmetric(
+            insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity),
+            removal: AnyTransition.move(edge: .leading).combined(with: .opacity)
+        ))
     }
     
     private var welcomeScreen: some View {
@@ -202,7 +231,8 @@ struct ContentView: View {
     private var launchButton: some View {
         Button(action: {
             if companionManager.currentCompanion != nil {
-                showWorldMap = true
+                // Already has companion, go to main app
+                return
             } else {
                 showCompanionSelection = true
             }

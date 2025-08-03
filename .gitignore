@@ -76,4 +76,6 @@ TODO.md
 # Backup Files
 *.backup
 *.bak
-*.old
+*.old# Documentation files (local development only)
+*.md
+Day*-*.md

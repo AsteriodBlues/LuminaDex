@@ -52,7 +52,7 @@ enum RequirementType: CaseIterable {
 
 // MARK: - Supporting Systems
 
-class ParticleSystem: ObservableObject {
+class EvolutionParticleSystem: ObservableObject {
     @Published var particles: [QuantumParticle] = []
     @Published var isActive: Bool = false
     
@@ -252,7 +252,8 @@ struct EvolutionChainView: View {
     @State private var magneticForce: CGFloat = 0
     
     @StateObject private var evolutionEngine = EvolutionEngine()
-    @StateObject private var particleSystem = ParticleSystem()
+    @StateObject private var particleSystem = EvolutionParticleSystem() // Fixed: Added this line
+    @State private var showParticles = true
     @StateObject private var soundEngine = SoundEngine()
     @Environment(\.dismiss) private var dismiss
     
@@ -1091,39 +1092,7 @@ struct EvolutionChainView: View {
         )
     }
     
-    // MARK: - Base Stage Info
-    
-    private func baseStageInfo(stage: EvolutionStage) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: "star.circle.fill")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(stage.primaryColor)
-                
-                Text("BASE FORM")
-                    .font(.system(size: 14, weight: .bold, design: .monospaced))
-                    .foregroundColor(ThemeManager.Colors.lumina)
-                    .tracking(1)
-                
-                Spacer()
-            }
-            
-            Text("This is the base evolutionary form. No special requirements needed to obtain this Pokémon.")
-                .font(.system(size: 12, weight: .regular, design: .monospaced))
-                .foregroundColor(ThemeManager.Colors.lumina.opacity(0.7))
-                .lineLimit(3)
-        }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(stage.primaryColor.opacity(0.4), lineWidth: 1)
-                )
-                .shadow(color: stage.primaryColor.opacity(0.2), radius: 8)
-        )
-    }
+    // MARK: - Helper Functions
     
     private func initializeView() {
         evolutionEngine.generateEvolutionChain(for: pokemon)
