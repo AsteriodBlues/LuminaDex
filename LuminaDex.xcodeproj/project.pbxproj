@@ -37,6 +37,8 @@
 		C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */; };
 		C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */; };
 		C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */; };
+		C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */; };
+		C3B9FF7D2E3FEA730041E5E4 /* AlakazamAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainView.swift; sourceTree = "<group>"; };
 		C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEffectivenessView.swift; sourceTree = "<group>"; };
+		C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSearchView.swift; sourceTree = "<group>"; };
+		C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlakazamAssistant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -182,6 +186,8 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */,
+				C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */,
 				C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */,
 				C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */,
 				C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */,
@@ -420,6 +426,7 @@
 				C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */,
 				C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */,
 				C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */,
+				C3B9FF7D2E3FEA730041E5E4 /* AlakazamAssistant.swift in Sources */,
 				C37CA8FD2E3EBECB002F20DB /* DynamicIslandManager.swift in Sources */,
 				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
@@ -428,6 +435,7 @@
 				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,
 				C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */,
 				C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */,
+				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
 				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
