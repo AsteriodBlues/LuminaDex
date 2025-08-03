@@ -817,6 +817,11 @@ struct PokemonDetailView: View {
         .scaleEffect(selectedTab == tab ? 1.05 : 1.0)
     }
     
+    private var typeChartContent: some View {
+        TypeEffectivenessView(pokemon: pokemon)
+            .padding(.vertical, 20)
+    }
+    
     // MARK: - Content Section
     
     private var contentSection: some View {
@@ -830,6 +835,8 @@ struct PokemonDetailView: View {
                 movesContent
             case .evolution:
                 evolutionContent
+            case .typeChart:
+                typeChartContent
             case .dna:
                 dnaContent
             }
@@ -1186,6 +1193,7 @@ enum DetailTab: String, CaseIterable {
     case stats = "Stats"
     case moves = "Moves"
     case evolution = "Evolution"
+    case typeChart = "Type Chart"
     case dna = "DNA"
     
     var title: String { rawValue }
@@ -1196,6 +1204,7 @@ enum DetailTab: String, CaseIterable {
         case .stats: return "chart.bar"
         case .moves: return "bolt"
         case .evolution: return "arrow.triangle.branch"
+        case .typeChart: return "bolt.batteryblock.fill"
         case .dna: return "atom"
         }
     }

@@ -36,6 +36,7 @@
 		C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */; };
 		C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */; };
 		C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */; };
+		C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DNAShaders.metal; path = LuminaDex/DNAShaders.metal; sourceTree = SOURCE_ROOT; };
 		C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainView.swift; sourceTree = "<group>"; };
+		C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEffectivenessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -180,6 +182,7 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */,
 				C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */,
 				C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */,
 				C37CA9002E3EE5B1002F20DB /* MetalDNAHelixView.swift */,
@@ -424,6 +427,7 @@
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
 				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,
 				C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */,
+				C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
 				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
