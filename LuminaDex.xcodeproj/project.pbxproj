@@ -30,6 +30,12 @@
 		C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F62E3EB21F002F20DB /* CompanionData.swift */; };
 		C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */; };
 		C37CA8FB2E3EB6A2002F20DB /* MigrationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */; };
+		C37CA8FD2E3EBECB002F20DB /* DynamicIslandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8FC2E3EBEC9002F20DB /* DynamicIslandManager.swift */; };
+		C37CA8FF2E3EE597002F20DB /* DNAHelixViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA8FE2E3EE58B002F20DB /* DNAHelixViewer.swift */; };
+		C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9002E3EE5B1002F20DB /* MetalDNAHelixView.swift */; };
+		C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */; };
+		C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */; };
+		C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +82,12 @@
 		C37CA8F62E3EB21F002F20DB /* CompanionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionData.swift; sourceTree = "<group>"; };
 		C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendaryGuardians.swift; sourceTree = "<group>"; };
 		C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationSystem.swift; sourceTree = "<group>"; };
+		C37CA8FC2E3EBEC9002F20DB /* DynamicIslandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandManager.swift; sourceTree = "<group>"; };
+		C37CA8FE2E3EE58B002F20DB /* DNAHelixViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAHelixViewer.swift; sourceTree = "<group>"; };
+		C37CA9002E3EE5B1002F20DB /* MetalDNAHelixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalDNAHelixView.swift; sourceTree = "<group>"; };
+		C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DNAShaders.metal; path = LuminaDex/DNAShaders.metal; sourceTree = SOURCE_ROOT; };
+		C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
+		C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -168,6 +180,11 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */,
+				C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */,
+				C37CA9002E3EE5B1002F20DB /* MetalDNAHelixView.swift */,
+				C37CA8FE2E3EE58B002F20DB /* DNAHelixViewer.swift */,
+				C37CA8FC2E3EBEC9002F20DB /* DynamicIslandManager.swift */,
 				C37CA8F82E3EB6A2002F20DB /* LegendaryGuardians.swift */,
 				C37CA8F92E3EB6A2002F20DB /* MigrationSystem.swift */,
 				C37CA8F02E3EB198002F20DB /* CompanionSelectionView.swift */,
@@ -210,6 +227,7 @@
 		C37525ED2E3D61D100505277 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -396,18 +414,24 @@
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
+				C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */,
 				C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */,
+				C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */,
+				C37CA8FD2E3EBECB002F20DB /* DynamicIslandManager.swift in Sources */,
 				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
 				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
 				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,
+				C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
+				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
 				C37CA8FB2E3EB6A2002F20DB /* MigrationSystem.swift in Sources */,
 				C36019AC2E3E9489000BE42C /* SpriteRenderer.swift in Sources */,
 				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
 				C37526012E3D764100505277 /* PokemonAPI.swift in Sources */,
+				C37CA8FF2E3EE597002F20DB /* DNAHelixViewer.swift in Sources */,
 				C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

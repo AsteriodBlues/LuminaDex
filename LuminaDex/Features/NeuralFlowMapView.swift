@@ -8,7 +8,6 @@
 import SwiftUI
 
 /// Main map view displaying Pokemon regions as interconnected neural network nodes
-/// Features infinite space navigation, particle systems, living sprites, and interactive region exploration
 struct NeuralFlowMapView: View {
     // MARK: - State Management
     @State private var regionNodes: [RegionNode] = []
@@ -23,9 +22,18 @@ struct NeuralFlowMapView: View {
     @StateObject private var spriteManager = SpritePopulationManager()
     @State private var lastUpdateTime: TimeInterval = Date().timeIntervalSince1970
     
-    // MARK: - Day 14 Features
+    // MARK: - Enhanced Features
     @StateObject private var migrationManager = MigrationManager()
     @StateObject private var guardianManager = LegendaryGuardianManager()
+    @StateObject private var dynamicIslandManager: DynamicIslandManager
+    
+    // MARK: - Companion Integration
+    @ObservedObject var companionManager: CompanionManager
+    
+    init(companionManager: CompanionManager) {
+        self.companionManager = companionManager
+        self._dynamicIslandManager = StateObject(wrappedValue: DynamicIslandManager(companionManager: companionManager))
+    }
     
     var body: some View {
         ZStack {
@@ -33,7 +41,6 @@ struct NeuralFlowMapView: View {
             ThemeManager.Colors.spaceGradient
                 .ignoresSafeArea()
                 .onTapGesture {
-                    // Tap background to deselect
                     withAnimation(ThemeManager.Animation.springBouncy) {
                         selectedRegion = nil
                     }
@@ -50,14 +57,11 @@ struct NeuralFlowMapView: View {
                 context.translateBy(x: cameraOffset.width, y: cameraOffset.height)
                 context.scaleBy(x: zoomScale, y: zoomScale)
                 
-                // Draw energy streams between regions
                 drawEnergyStreams(context: context, size: size)
-                
-                // Draw pulsing region nodes
                 drawRegionNodes(context: context, size: size)
             }
             
-            // Living sprite layer with 120fps updates
+            // Living sprite layer
             TimelineView(.animation(minimumInterval: 1.0/120.0, paused: false)) { timeline in
                 SpriteLayer(
                     sprites: spriteManager.getVisibleSprites(
@@ -72,75 +76,165 @@ struct NeuralFlowMapView: View {
                     updateSpriteSystem()
                 }
             }
-            .gesture(
-                SimultaneousGesture(
-                    MagnificationGesture()
-                        .onChanged { value in
-                            zoomScale = max(0.5, min(3.0, value))
-                        },
-                    DragGesture()
-                        .onChanged { value in
-                            cameraOffset = CGSize(
-                                width: cameraOffset.width + value.translation.width * 0.5,
-                                height: cameraOffset.height + value.translation.height * 0.5
-                            )
-                        }
-                )
-            )
+            .allowsHitTesting(false)
             
-            // Floating region cards
-            ForEach(regionNodes.filter { isNodeVisible($0) }) { node in
-                RegionBubbleCard(
-                    region: node,
-                    isSelected: selectedRegion?.id == node.id,
-                    activeSpriteCount: getSpriteCountForRegion(node.name),
-                    spriteTypeDistribution: getSpriteTypeDistribution(node.name)
-                )
-                .position(
-                    x: node.position.x * zoomScale + cameraOffset.width + (selectedRegion?.id == node.id ? adjustedXOffset(for: node) : 0),
-                    y: node.position.y * zoomScale + cameraOffset.height + (selectedRegion?.id == node.id ? adjustedYOffset(for: node) : 0)
-                )
-                .scaleEffect(zoomScale * 0.8)
-                .zIndex(selectedRegion?.id == node.id ? 1000 : Double(regionNodes.count - (regionNodes.firstIndex(of: node) ?? 0)))
-                .onTapGesture {
-                    withAnimation(ThemeManager.Animation.springBouncy) {
-                        selectedRegion = selectedRegion?.id == node.id ? nil : node
-                        
-                        // Trigger sprite celebration when region is selected
-                        if selectedRegion?.id == node.id {
-                            spriteManager.celebrateRegion(node.name)
-                        }
-                    }
+            // Migration streams overlay
+            ForEach(migrationManager.migrationStreams) { stream in
+                if let fromNode = regionNodes.first(where: { $0.name == stream.fromRegion }),
+                   let toNode = regionNodes.first(where: { $0.name == stream.toRegion }) {
+                    MigrationStreamView(
+                        stream: stream,
+                        fromPosition: fromNode.position,
+                        toPosition: toNode.position,
+                        cameraOffset: cameraOffset,
+                        zoomScale: zoomScale
+                    )
                 }
             }
+            .allowsHitTesting(false)
             
-            // Control overlay
+            // Legendary guardians overlay
+            ForEach(guardianManager.guardians) { guardian in
+                LegendaryGuardianView(
+                    guardian: guardian,
+                    cameraOffset: cameraOffset,
+                    zoomScale: zoomScale
+                )
+            }
+            .allowsHitTesting(false)
+            
+            // Mystery markers
+            ForEach(guardianManager.mysteryMarkers) { marker in
+                MysteryMarkerView(
+                    marker: marker,
+                    animationPhase: animationPhase,
+                    cameraOffset: cameraOffset,
+                    zoomScale: zoomScale
+                )
+            }
+            .allowsHitTesting(false)
+            
+            // Region cards - TOP LAYER
+            ForEach(regionNodes.filter { isNodeVisible($0) }) { node in
+                Button(action: {
+                    handleRegionSelection(node)
+                }) {
+                    RegionBubbleCard(
+                        region: node,
+                        isSelected: selectedRegion?.id == node.id,
+                        activeSpriteCount: getSpriteCountForRegion(node.name),
+                        spriteTypeDistribution: getSpriteTypeDistribution(node.name)
+                    )
+                }
+                .buttonStyle(PlainButtonStyle())
+                .position(
+                    x: node.position.x * zoomScale + cameraOffset.width,
+                    y: node.position.y * zoomScale + cameraOffset.height
+                )
+                .scaleEffect(zoomScale * 0.8)
+                .zIndex(selectedRegion?.id == node.id ? 1000 : 1)
+            }
+            
+            // Dynamic Island simulation
+            DynamicIslandSimulation()
+            
+            // Control panel
             VStack {
                 HStack {
-                    Button("Reset View") {
-                        withAnimation(ThemeManager.Animation.springSmooth) {
-                            cameraOffset = .zero
-                            zoomScale = 1.0
-                            selectedRegion = nil
+                    VStack(spacing: 8) {
+                        Button("Reset View") {
+                            withAnimation(ThemeManager.Animation.springSmooth) {
+                                cameraOffset = .zero
+                                zoomScale = 1.0
+                                selectedRegion = nil
+                            }
                         }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(ThemeManager.Colors.glassMaterial)
+                        .cornerRadius(8)
+                        
+                        Button("Random Migration") {
+                            triggerRandomMigration()
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(ThemeManager.Colors.glassMaterial)
+                        .cornerRadius(8)
+                        .foregroundColor(.cyan)
                     }
-                    .padding()
-                    .background(ThemeManager.Colors.glassMaterial)
-                    .cornerRadius(12)
                     
                     Spacer()
+                    
+                    VStack(spacing: 8) {
+                        if !dynamicIslandManager.isLiveActivityActive {
+                            Button("Start Island") {
+                                let region = selectedRegion?.name ?? "Kanto"
+                                let spriteCount = getSpriteCountForRegion(region)
+                                dynamicIslandManager.startLiveActivity(region: region, spriteCount: spriteCount)
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(Color.green.opacity(0.8))
+                            .cornerRadius(8)
+                            .foregroundColor(.white)
+                        } else {
+                            Button("Stop Island") {
+                                dynamicIslandManager.endActivity()
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(Color.red.opacity(0.8))
+                            .cornerRadius(8)
+                            .foregroundColor(.white)
+                        }
+                        
+                        HStack(spacing: 4) {
+                            Circle()
+                                .fill(dynamicIslandManager.isLiveActivityActive ? .green : .gray)
+                                .frame(width: 8, height: 8)
+                            
+                            Text(dynamicIslandManager.isLiveActivityActive ? "Live" : "Inactive")
+                                .font(.caption2)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(ThemeManager.Colors.glassMaterial)
+                        .cornerRadius(6)
+                    }
                 }
                 Spacer()
             }
             .padding()
         }
+        .gesture(
+            SimultaneousGesture(
+                MagnificationGesture()
+                    .onChanged { value in
+                        zoomScale = max(0.5, min(3.0, value))
+                    },
+                DragGesture()
+                    .onChanged { value in
+                        cameraOffset = CGSize(
+                            width: cameraOffset.width + value.translation.width * 0.5,
+                            height: cameraOffset.height + value.translation.height * 0.5
+                        )
+                    }
+            )
+        )
         .onAppear {
             setupNeuralNetwork()
             startAnimations()
             setupSpriteSystem()
+            setupDynamicIsland()
+        }
+        .onChange(of: selectedRegion) { _ in
+            updateDynamicIslandForSelectedRegion()
         }
     }
     
+    // MARK: - Setup Methods
     private func setupNeuralNetwork() {
         regionNodes = RegionNode.createNetworkLayout()
         energyFlows = TypeFlow.generateFlows(between: regionNodes)
@@ -157,37 +251,77 @@ struct NeuralFlowMapView: View {
     }
     
     private func setupSpriteSystem() {
-        // Populate regions with sprites after neural network is established
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             spriteManager.populateRegions(regionNodes)
         }
     }
     
+    private func setupDynamicIsland() {
+        if companionManager.currentCompanion != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                let region = selectedRegion?.name ?? "Kanto"
+                let spriteCount = getSpriteCountForRegion(region)
+                dynamicIslandManager.startLiveActivity(region: region, spriteCount: spriteCount)
+            }
+        }
+    }
+    
+    // MARK: - Interaction Handlers
+    private func handleRegionSelection(_ node: RegionNode) {
+        withAnimation(ThemeManager.Animation.springBouncy) {
+            selectedRegion = selectedRegion?.id == node.id ? nil : node
+            
+            if selectedRegion?.id == node.id {
+                spriteManager.celebrateRegion(node.name)
+                guardianManager.triggerLegendaryEvent(at: node.name)
+                companionManager.celebrateDiscovery()
+                updateDynamicIslandForSelectedRegion()
+            }
+        }
+    }
+    
+    private func triggerRandomMigration() {
+        if let randomRegion = regionNodes.randomElement() {
+            migrationManager.celebrateMigration(at: randomRegion.name)
+        }
+    }
+    
+    private func updateDynamicIslandForSelectedRegion() {
+        guard dynamicIslandManager.isLiveActivityActive else { return }
+        
+        let region = selectedRegion?.name ?? dynamicIslandManager.currentRegion
+        let spriteCount = getSpriteCountForRegion(region)
+        
+        dynamicIslandManager.updateActivity(region: region, spriteCount: spriteCount)
+    }
+    
     private func updateSpriteSystem() {
         let currentTime = Date().timeIntervalSince1970
-        let deltaTime = min(currentTime - lastUpdateTime, 0.016) // Cap at 16ms for stability
+        let deltaTime = min(currentTime - lastUpdateTime, 0.016)
         lastUpdateTime = currentTime
         
-        // Update sprite physics and behaviors
         spriteManager.updateSprites(
             deltaTime: deltaTime,
             regions: regionNodes,
             flows: energyFlows
         )
+        
+        if Int(currentTime) % 10 == 0 {
+            updateDynamicIslandForSelectedRegion()
+        }
     }
     
+    // MARK: - Helper Methods
     private func isNodeVisible(_ node: RegionNode) -> Bool {
-        true // Simplified for now - could add culling logic
+        return true
     }
     
-    /// Get active sprite count for a specific region
     private func getSpriteCountForRegion(_ regionName: String) -> Int {
         return spriteManager.sprites.filter { sprite in
             sprite.regionAffinity == regionName && sprite.isActive
         }.count
     }
     
-    /// Get sprite type distribution for a specific region
     private func getSpriteTypeDistribution(_ regionName: String) -> [PokemonType: Int] {
         let regionSprites = spriteManager.sprites.filter { sprite in
             sprite.regionAffinity == regionName && sprite.isActive
@@ -201,37 +335,11 @@ struct NeuralFlowMapView: View {
         return distribution
     }
     
-    private func adjustedXOffset(for node: RegionNode) -> CGFloat {
-        let screenWidth = UIScreen.main.bounds.width
-        let currentX = node.position.x * zoomScale + cameraOffset.width
-        
-        // Push card away from screen edges when expanded
-        if currentX < screenWidth * 0.3 {
-            return 60 // Push right
-        } else if currentX > screenWidth * 0.7 {
-            return -60 // Push left
-        }
-        return 0
-    }
-    
-    private func adjustedYOffset(for node: RegionNode) -> CGFloat {
-        let screenHeight = UIScreen.main.bounds.height
-        let currentY = node.position.y * zoomScale + cameraOffset.height
-        
-        // Push card away from screen edges when expanded
-        if currentY < screenHeight * 0.25 {
-            return 80 // Push down
-        } else if currentY > screenHeight * 0.75 {
-            return -80 // Push up
-        }
-        return 0
-    }
-    
+    // MARK: - Drawing Methods
     private func drawEnergyStreams(context: GraphicsContext, size: CGSize) {
         for flow in energyFlows {
             let path = createFlowPath(from: flow.startNode.position, to: flow.endNode.position)
             
-            // Animated gradient along the path
             let gradient = Gradient(colors: [
                 flow.typeColor.opacity(0.0),
                 flow.typeColor.opacity(0.8),
@@ -252,7 +360,6 @@ struct NeuralFlowMapView: View {
                 )
             )
             
-            // Add flowing particles
             drawFlowParticles(context: context, flow: flow)
         }
     }
@@ -261,9 +368,6 @@ struct NeuralFlowMapView: View {
         Path { path in
             path.move(to: start)
             
-            // Create curved connection with control points
-            let midX = (start.x + end.x) / 2
-            let midY = (start.y + end.y) / 2
             let distance = sqrt(pow(end.x - start.x, 2) + pow(end.y - start.y, 2))
             let curveOffset = min(distance * 0.3, 100)
             
@@ -283,7 +387,6 @@ struct NeuralFlowMapView: View {
     
     private func drawFlowParticles(context: GraphicsContext, flow: TypeFlow) {
         let particleCount = 3
-        let pathLength = 1.0
         
         for i in 0..<particleCount {
             let progress = (animationPhase + flow.phaseOffset + CGFloat(i) * 0.3).truncatingRemainder(dividingBy: 2 * .pi) / (2 * .pi)
@@ -379,7 +482,16 @@ struct NeuralFlowMapView: View {
     }
 }
 
+// MARK: - Preview Wrapper
+struct NeuralFlowMapPreview: View {
+    @StateObject private var companionManager = CompanionManager()
+    
+    var body: some View {
+        NeuralFlowMapView(companionManager: companionManager)
+    }
+}
+
 #Preview {
-    NeuralFlowMapView()
+    NeuralFlowMapPreview()
         .preferredColorScheme(.dark)
 }
