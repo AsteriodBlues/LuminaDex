@@ -159,7 +159,7 @@ struct DNAHelixViewer: View {
                         .foregroundColor(.white.opacity(0.8))
                     
                     if pokemon.types.count > 1 {
-                        Text("• \(pokemon.types[1].type.displayName)")
+                        Text("• \(pokemon.types[1].pokemonType.displayName)")
                             .font(ThemeManager.Typography.bodyMedium)
                             .foregroundColor(.white.opacity(0.8))
                     }

@@ -15,8 +15,9 @@ struct Pokemon: Identifiable, Codable {
     let weight: Int
     let baseExperience: Int?
     let order: Int
-    let isDefault: Bool
+    let isDefault: Bool?
     
+    // These are local database fields, not from API
     var isFavorite: Bool = false
     var isCaught: Bool = false
     var catchDate: Date?
@@ -30,8 +31,8 @@ struct Pokemon: Identifiable, Codable {
     
     // Game data
     let species: PokemonSpecies
-    let moves: [PokemonMove]
-    let gameIndices: [PokemonGameIndex]
+    let moves: [PokemonMove]?
+    let gameIndices: [PokemonGameIndex]?
     
     // Computed properties for UI
     var displayName: String {
@@ -39,7 +40,7 @@ struct Pokemon: Identifiable, Codable {
     }
     
     var primaryType: PokemonType {
-        types.first?.type ?? .unknown
+        types.first?.pokemonType ?? .unknown
     }
     
     var formattedHeight: String {
@@ -58,9 +59,28 @@ struct Pokemon: Identifiable, Codable {
     
     var gradientColors: [Color] {
         if types.count >= 2 {
-            return [types[0].type.color, types[1].type.color]
+            return [types[0].pokemonType.color, types[1].pokemonType.color]
         }
         return [primaryType.color, primaryType.color.opacity(0.7)]
+    }
+    
+    // Custom CodingKeys to exclude local database fields from API decoding
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case height
+        case weight
+        case baseExperience = "base_experience"
+        case order
+        case isDefault = "is_default"
+        case sprites
+        case types
+        case abilities
+        case stats
+        case species
+        case moves
+        case gameIndices = "game_indices"
+        // Exclude: isFavorite, isCaught, catchDate, progress
     }
 }
 
@@ -127,7 +147,17 @@ struct PokemonOfficialArtwork: Codable, Hashable {
 // MARK: - Pokemon Type Slot
 struct PokemonTypeSlot: Codable, Hashable {
     let slot: Int
-    let type: PokemonType
+    let type: PokemonTypeInfo
+    
+    var pokemonType: PokemonType {
+        PokemonType(rawValue: type.name) ?? .unknown
+    }
+}
+
+// MARK: - Pokemon Type Info
+struct PokemonTypeInfo: Codable, Hashable {
+    let name: String
+    let url: String
 }
 
 // MARK: - Pokemon Ability Slot

@@ -634,7 +634,7 @@ struct MLEnhancedBarCharts: View {
 
 // MARK: - Helper function for Pokemon Colors
 private func getTypeColor(for pokemon: Pokemon) -> Color {
-    guard let firstType = pokemon.types.first?.type else { return .blue }
+    guard let firstType = pokemon.types.first?.pokemonType else { return .blue }
     
     switch firstType {
     case .fire: return .red
@@ -680,7 +680,7 @@ private func createSamplePokemon() -> Pokemon {
         order: 35,
         isDefault: true,
         sprites: createSampleSprites(),
-        types: [PokemonTypeSlot(slot: 1, type: .electric)],
+        types: [PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "electric", url: ""))],
         abilities: [],
         stats: createSampleStats(),
         species: PokemonSpecies(name: "pikachu", url: ""),

@@ -36,6 +36,11 @@
 		C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */; };
 		C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */; };
 		C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */; };
+		C392A1552E4076D700A1C052 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = C392A1542E4076D700A1C052 /* GRDB */; };
+		C3B900042E40736D0041E5E4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900032E40736D0041E5E4 /* SwiftUICharts */; };
+		C3B900062E40736D0041E5E4 /* Liquid in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900052E40736D0041E5E4 /* Liquid */; };
+		C3B900082E40736D0041E5E4 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900072E40736D0041E5E4 /* ActivityIndicatorView */; };
+		C3B9000A2E40736D0041E5E4 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900092E40736D0041E5E4 /* Inject */; };
 		C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */; };
 		C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */; };
 		C3B9FF7D2E3FEA730041E5E4 /* AlakazamAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */; };
@@ -54,6 +59,35 @@
 		C3B9FF9C2E4038280041E5E4 /* TypeRelationshipNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9B2E4038270041E5E4 /* TypeRelationshipNetwork.swift */; };
 		C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9D2E4039240041E5E4 /* EvolutionTrees.swift */; };
 		C3B9FFA02E4040930041E5E4 /* EvolutionPerformanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9F2E4040920041E5E4 /* EvolutionPerformanceManager.swift */; };
+		C3B9FFB52E4071FF0041E5E4 /* DataLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFB42E4071FF0041E5E4 /* DataLoadingView.swift */; };
+		C3B9FFBB2E4072150041E5E4 /* PokemonDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFBA2E4072150041E5E4 /* PokemonDataFetcher.swift */; };
+		C3B9FFBC2E4072150041E5E4 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFB92E4072150041E5E4 /* ImageManager.swift */; };
+		C3B9FFBD2E4072150041E5E4 /* DatabaseRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFB82E4072150041E5E4 /* DatabaseRecords.swift */; };
+		C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFB62E4072150041E5E4 /* DatabaseManager.swift */; };
+		C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFB72E4072150041E5E4 /* DatabaseMigrations.swift */; };
+		C3B9FFC22E40736D0041E5E4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFC12E40736D0041E5E4 /* Lottie */; };
+		C3B9FFC72E40736D0041E5E4 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFC62E40736D0041E5E4 /* Hero */; };
+		C3B9FFC92E40736D0041E5E4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFC82E40736D0041E5E4 /* SwiftUIIntrospect */; };
+		C3B9FFCE2E40736D0041E5E4 /* SwiftUIIntrospect-Static in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFCD2E40736D0041E5E4 /* SwiftUIIntrospect-Static */; };
+		C3B9FFD02E40736D0041E5E4 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFCF2E40736D0041E5E4 /* PopupView */; };
+		C3B9FFD22E40736D0041E5E4 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFD12E40736D0041E5E4 /* Nuke */; };
+		C3B9FFD42E40736D0041E5E4 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFD32E40736D0041E5E4 /* NukeExtensions */; };
+		C3B9FFD62E40736D0041E5E4 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFD52E40736D0041E5E4 /* NukeUI */; };
+		C3B9FFD82E40736D0041E5E4 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFD72E40736D0041E5E4 /* NukeVideo */; };
+		C3B9FFE12E40736D0041E5E4 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFE02E40736D0041E5E4 /* AsyncAlgorithms */; };
+		C3B9FFE32E40736D0041E5E4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFE22E40736D0041E5E4 /* Shimmer */; };
+		C3B9FFE52E40736D0041E5E4 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFE42E40736D0041E5E4 /* WhatsNewKit */; };
+		C3B9FFE72E40736D0041E5E4 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFE62E40736D0041E5E4 /* ConfettiSwiftUI */; };
+		C3B9FFE92E40736D0041E5E4 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFE82E40736D0041E5E4 /* Pow */; };
+		C3B9FFEB2E40736D0041E5E4 /* Wave in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFEA2E40736D0041E5E4 /* Wave */; };
+		C3B9FFED2E40736D0041E5E4 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFEC2E40736D0041E5E4 /* WrappingHStack */; };
+		C3B9FFEF2E40736D0041E5E4 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFEE2E40736D0041E5E4 /* SwiftUIX */; };
+		C3B9FFF12E40736D0041E5E4 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFF02E40736D0041E5E4 /* KeychainAccess */; };
+		C3B9FFF32E40736D0041E5E4 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFF22E40736D0041E5E4 /* Pulse */; };
+		C3B9FFF52E40736D0041E5E4 /* PulseProxy in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFF42E40736D0041E5E4 /* PulseProxy */; };
+		C3B9FFF72E40736D0041E5E4 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFF62E40736D0041E5E4 /* PulseUI */; };
+		C3B9FFFD2E40736D0041E5E4 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFFC2E40736D0041E5E4 /* CachedAsyncImage */; };
+		C3B9FFFF2E40736D0041E5E4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFFE2E40736D0041E5E4 /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +106,19 @@
 			remoteInfo = LuminaDex;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C3B9000B2E40736D0041E5E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralFlowMapView.swift; sourceTree = "<group>"; };
@@ -124,6 +171,12 @@
 		C3B9FF9B2E4038270041E5E4 /* TypeRelationshipNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRelationshipNetwork.swift; sourceTree = "<group>"; };
 		C3B9FF9D2E4039240041E5E4 /* EvolutionTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionTrees.swift; sourceTree = "<group>"; };
 		C3B9FF9F2E4040920041E5E4 /* EvolutionPerformanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionPerformanceManager.swift; sourceTree = "<group>"; };
+		C3B9FFB42E4071FF0041E5E4 /* DataLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingView.swift; sourceTree = "<group>"; };
+		C3B9FFB62E4072150041E5E4 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		C3B9FFB72E4072150041E5E4 /* DatabaseMigrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrations.swift; sourceTree = "<group>"; };
+		C3B9FFB82E4072150041E5E4 /* DatabaseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRecords.swift; sourceTree = "<group>"; };
+		C3B9FFB92E4072150041E5E4 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		C3B9FFBA2E4072150041E5E4 /* PokemonDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -144,6 +197,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B9FFE72E40736D0041E5E4 /* ConfettiSwiftUI in Frameworks */,
+				C3B9FFC22E40736D0041E5E4 /* Lottie in Frameworks */,
+				C3B9FFD02E40736D0041E5E4 /* PopupView in Frameworks */,
+				C3B9FFC72E40736D0041E5E4 /* Hero in Frameworks */,
+				C3B9FFF32E40736D0041E5E4 /* Pulse in Frameworks */,
+				C3B9FFF72E40736D0041E5E4 /* PulseUI in Frameworks */,
+				C3B9000A2E40736D0041E5E4 /* Inject in Frameworks */,
+				C392A1552E4076D700A1C052 /* GRDB in Frameworks */,
+				C3B9FFEB2E40736D0041E5E4 /* Wave in Frameworks */,
+				C3B9FFC92E40736D0041E5E4 /* SwiftUIIntrospect in Frameworks */,
+				C3B9FFD62E40736D0041E5E4 /* NukeUI in Frameworks */,
+				C3B9FFFD2E40736D0041E5E4 /* CachedAsyncImage in Frameworks */,
+				C3B900062E40736D0041E5E4 /* Liquid in Frameworks */,
+				C3B9FFEF2E40736D0041E5E4 /* SwiftUIX in Frameworks */,
+				C3B9FFCE2E40736D0041E5E4 /* SwiftUIIntrospect-Static in Frameworks */,
+				C3B9FFD22E40736D0041E5E4 /* Nuke in Frameworks */,
+				C3B9FFF52E40736D0041E5E4 /* PulseProxy in Frameworks */,
+				C3B900082E40736D0041E5E4 /* ActivityIndicatorView in Frameworks */,
+				C3B9FFE92E40736D0041E5E4 /* Pow in Frameworks */,
+				C3B9FFE32E40736D0041E5E4 /* Shimmer in Frameworks */,
+				C3B9FFFF2E40736D0041E5E4 /* DGCharts in Frameworks */,
+				C3B9FFED2E40736D0041E5E4 /* WrappingHStack in Frameworks */,
+				C3B9FFD82E40736D0041E5E4 /* NukeVideo in Frameworks */,
+				C3B9FFD42E40736D0041E5E4 /* NukeExtensions in Frameworks */,
+				C3B9FFE12E40736D0041E5E4 /* AsyncAlgorithms in Frameworks */,
+				C3B900042E40736D0041E5E4 /* SwiftUICharts in Frameworks */,
+				C3B9FFE52E40736D0041E5E4 /* WhatsNewKit in Frameworks */,
+				C3B9FFF12E40736D0041E5E4 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +251,7 @@
 				C37525E52E3D61A200505277 /* LuminaDex */,
 				C37525C22E3D5E9600505277 /* LuminaDexTests */,
 				C37525CC2E3D5E9600505277 /* LuminaDexUITests */,
+				C3B9FFC02E4073090041E5E4 /* Frameworks */,
 				C37525B32E3D5E9500505277 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -216,6 +298,7 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FFB42E4071FF0041E5E4 /* DataLoadingView.swift */,
 				C3B9FF8E2E40082F0041E5E4 /* ProfileView.swift */,
 				C3B9FF8C2E40022F0041E5E4 /* AchievementsView.swift */,
 				C3B9FF802E3FFC660041E5E4 /* CollectionViewModel.swift */,
@@ -261,6 +344,11 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FFB62E4072150041E5E4 /* DatabaseManager.swift */,
+				C3B9FFB72E4072150041E5E4 /* DatabaseMigrations.swift */,
+				C3B9FFB82E4072150041E5E4 /* DatabaseRecords.swift */,
+				C3B9FFB92E4072150041E5E4 /* ImageManager.swift */,
+				C3B9FFBA2E4072150041E5E4 /* PokemonDataFetcher.swift */,
 				C3B9FF882E3FFD810041E5E4 /* Pokemon+Collection.swift */,
 				C37CA8F62E3EB21F002F20DB /* CompanionData.swift */,
 				C37526022E3D771000505277 /* PokemonRepository.swift */,
@@ -294,6 +382,13 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		C3B9FFC02E4073090041E5E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,6 +400,7 @@
 				C37525AF2E3D5E9500505277 /* Frameworks */,
 				C37525B02E3D5E9500505277 /* Resources */,
 				C37525F52E3D6A5100505277 /* SwiftLint */,
+				C3B9000B2E40736D0041E5E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,6 +408,34 @@
 			);
 			name = LuminaDex;
 			packageProductDependencies = (
+				C3B9FFC12E40736D0041E5E4 /* Lottie */,
+				C3B9FFC62E40736D0041E5E4 /* Hero */,
+				C3B9FFC82E40736D0041E5E4 /* SwiftUIIntrospect */,
+				C3B9FFCD2E40736D0041E5E4 /* SwiftUIIntrospect-Static */,
+				C3B9FFCF2E40736D0041E5E4 /* PopupView */,
+				C3B9FFD12E40736D0041E5E4 /* Nuke */,
+				C3B9FFD32E40736D0041E5E4 /* NukeExtensions */,
+				C3B9FFD52E40736D0041E5E4 /* NukeUI */,
+				C3B9FFD72E40736D0041E5E4 /* NukeVideo */,
+				C3B9FFE02E40736D0041E5E4 /* AsyncAlgorithms */,
+				C3B9FFE22E40736D0041E5E4 /* Shimmer */,
+				C3B9FFE42E40736D0041E5E4 /* WhatsNewKit */,
+				C3B9FFE62E40736D0041E5E4 /* ConfettiSwiftUI */,
+				C3B9FFE82E40736D0041E5E4 /* Pow */,
+				C3B9FFEA2E40736D0041E5E4 /* Wave */,
+				C3B9FFEC2E40736D0041E5E4 /* WrappingHStack */,
+				C3B9FFEE2E40736D0041E5E4 /* SwiftUIX */,
+				C3B9FFF02E40736D0041E5E4 /* KeychainAccess */,
+				C3B9FFF22E40736D0041E5E4 /* Pulse */,
+				C3B9FFF42E40736D0041E5E4 /* PulseProxy */,
+				C3B9FFF62E40736D0041E5E4 /* PulseUI */,
+				C3B9FFFC2E40736D0041E5E4 /* CachedAsyncImage */,
+				C3B9FFFE2E40736D0041E5E4 /* DGCharts */,
+				C3B900032E40736D0041E5E4 /* SwiftUICharts */,
+				C3B900052E40736D0041E5E4 /* Liquid */,
+				C3B900072E40736D0041E5E4 /* ActivityIndicatorView */,
+				C3B900092E40736D0041E5E4 /* Inject */,
+				C392A1542E4076D700A1C052 /* GRDB */,
 			);
 			productName = LuminaDex;
 			productReference = C37525B22E3D5E9500505277 /* LuminaDex.app */;
@@ -401,6 +525,24 @@
 				C37525F22E3D692000505277 /* XCRemoteSwiftPackageReference "Hero" */,
 				C37525F32E3D693700505277 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				C37525F42E3D695D00505277 /* XCRemoteSwiftPackageReference "PopupView" */,
+				C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */,
+				C3B9FFA32E405BB20041E5E4 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				C3B9FFA42E405BC00041E5E4 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				C3B9FFA52E405BD20041E5E4 /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
+				C3B9FFA62E405BEA0041E5E4 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				C3B9FFA72E405C020041E5E4 /* XCRemoteSwiftPackageReference "Pow" */,
+				C3B9FFA82E405C150041E5E4 /* XCRemoteSwiftPackageReference "Wave" */,
+				C3B9FFA92E405C200041E5E4 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				C3B9FFAA2E405C310041E5E4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				C3B9FFAB2E405C420041E5E4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				C3B9FFAC2E405C5A0041E5E4 /* XCRemoteSwiftPackageReference "Pulse" */,
+				C3B9FFAE2E405C890041E5E4 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				C3B9FFAF2E405CE70041E5E4 /* XCRemoteSwiftPackageReference "Charts" */,
+				C3B9FFB02E405CF70041E5E4 /* XCRemoteSwiftPackageReference "ChartView" */,
+				C3B9FFB12E405D080041E5E4 /* XCRemoteSwiftPackageReference "liquid" */,
+				C3B9FFB22E405D190041E5E4 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
+				C3B9FFB32E405D8A0041E5E4 /* XCRemoteSwiftPackageReference "Inject" */,
+				C392A1532E4076B000A1C052 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C37525B32E3D5E9500505277 /* Products */;
@@ -501,6 +643,7 @@
 				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
 				C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */,
 				C3B9FF7F2E3FFBCA0041E5E4 /* CollectionView.swift in Sources */,
+				C3B9FFB52E4071FF0041E5E4 /* DataLoadingView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
 				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
@@ -512,6 +655,11 @@
 				C37526012E3D764100505277 /* PokemonAPI.swift in Sources */,
 				C37CA8FF2E3EE597002F20DB /* DNAHelixViewer.swift in Sources */,
 				C37525EF2E3D62A500505277 /* ThemeManager.swift in Sources */,
+				C3B9FFBB2E4072150041E5E4 /* PokemonDataFetcher.swift in Sources */,
+				C3B9FFBC2E4072150041E5E4 /* ImageManager.swift in Sources */,
+				C3B9FFBD2E4072150041E5E4 /* DatabaseRecords.swift in Sources */,
+				C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */,
+				C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */,
 				C3B9FF832E3FFCE00041E5E4 /* PokemonGridCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,7 +1025,294 @@
 				minimumVersion = 4.1.11;
 			};
 		};
+		C392A1532E4076B000A1C052 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
+		C3B9FFA32E405BB20041E5E4 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		C3B9FFA42E405BC00041E5E4 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+		C3B9FFA52E405BD20041E5E4 /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+		C3B9FFA62E405BEA0041E5E4 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
+		C3B9FFA72E405C020041E5E4 /* XCRemoteSwiftPackageReference "Pow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EmergeTools/Pow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+		C3B9FFA82E405C150041E5E4 /* XCRemoteSwiftPackageReference "Wave" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrivedi/Wave";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.3;
+			};
+		};
+		C3B9FFA92E405C200041E5E4 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.11;
+			};
+		};
+		C3B9FFAA2E405C310041E5E4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.4;
+			};
+		};
+		C3B9FFAB2E405C420041E5E4 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C3B9FFAC2E405C5A0041E5E4 /* XCRemoteSwiftPackageReference "Pulse" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Pulse";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.4;
+			};
+		};
+		C3B9FFAE2E405C890041E5E4 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+		C3B9FFAF2E405CE70041E5E4 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		C3B9FFB02E405CF70041E5E4 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+		C3B9FFB12E405D080041E5E4 /* XCRemoteSwiftPackageReference "liquid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/liquid";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C3B9FFB22E405D190041E5E4 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		C3B9FFB32E405D8A0041E5E4 /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C392A1542E4076D700A1C052 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C392A1532E4076B000A1C052 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		C3B900032E40736D0041E5E4 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFB02E405CF70041E5E4 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+		C3B900052E40736D0041E5E4 /* Liquid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFB12E405D080041E5E4 /* XCRemoteSwiftPackageReference "liquid" */;
+			productName = Liquid;
+		};
+		C3B900072E40736D0041E5E4 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFB22E405D190041E5E4 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
+		};
+		C3B900092E40736D0041E5E4 /* Inject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFB32E405D8A0041E5E4 /* XCRemoteSwiftPackageReference "Inject" */;
+			productName = Inject;
+		};
+		C3B9FFC12E40736D0041E5E4 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37525F12E3D68EA00505277 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		C3B9FFC62E40736D0041E5E4 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37525F22E3D692000505277 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+		C3B9FFC82E40736D0041E5E4 /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37525F32E3D693700505277 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = SwiftUIIntrospect;
+		};
+		C3B9FFCD2E40736D0041E5E4 /* SwiftUIIntrospect-Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37525F32E3D693700505277 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = "SwiftUIIntrospect-Static";
+		};
+		C3B9FFCF2E40736D0041E5E4 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37525F42E3D695D00505277 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+		C3B9FFD12E40736D0041E5E4 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C3B9FFD32E40736D0041E5E4 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		C3B9FFD52E40736D0041E5E4 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		C3B9FFD72E40736D0041E5E4 /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA12E405B2D0041E5E4 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
+		C3B9FFE02E40736D0041E5E4 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA32E405BB20041E5E4 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+		C3B9FFE22E40736D0041E5E4 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA42E405BC00041E5E4 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+		C3B9FFE42E40736D0041E5E4 /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA52E405BD20041E5E4 /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
+		};
+		C3B9FFE62E40736D0041E5E4 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA62E405BEA0041E5E4 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+		C3B9FFE82E40736D0041E5E4 /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA72E405C020041E5E4 /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
+		};
+		C3B9FFEA2E40736D0041E5E4 /* Wave */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA82E405C150041E5E4 /* XCRemoteSwiftPackageReference "Wave" */;
+			productName = Wave;
+		};
+		C3B9FFEC2E40736D0041E5E4 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFA92E405C200041E5E4 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+		C3B9FFEE2E40736D0041E5E4 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAA2E405C310041E5E4 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		C3B9FFF02E40736D0041E5E4 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAB2E405C420041E5E4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		C3B9FFF22E40736D0041E5E4 /* Pulse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAC2E405C5A0041E5E4 /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = Pulse;
+		};
+		C3B9FFF42E40736D0041E5E4 /* PulseProxy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAC2E405C5A0041E5E4 /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseProxy;
+		};
+		C3B9FFF62E40736D0041E5E4 /* PulseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAC2E405C5A0041E5E4 /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseUI;
+		};
+		C3B9FFFC2E40736D0041E5E4 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAE2E405C890041E5E4 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		C3B9FFFE2E40736D0041E5E4 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B9FFAF2E405CE70041E5E4 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C37525AA2E3D5E9500505277 /* Project object */;
 }

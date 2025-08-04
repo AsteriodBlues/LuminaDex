@@ -73,13 +73,64 @@ class CollectionViewModel: ObservableObject {
     func loadData() {
         isLoading = true
         
-        // Simulate async data loading
         Task {
-            try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
-            await loadSampleData()
+            // Load real Pokemon data from database
+            await loadPokemonFromDatabase()
             await loadAchievements()
             filterPokemon()
             isLoading = false
+        }
+    }
+    
+    private func loadPokemonFromDatabase() async {
+        do {
+            // Get Pokemon from the database
+            let database = DatabaseManager.shared
+            let pokemonRecords = try await database.databaseQueue.read { db in
+                try PokemonRecord.fetchAll(db)
+            }
+            
+            // Convert database records to Pokemon models (simplified)
+            let loadedPokemon = pokemonRecords.map { record in
+                Pokemon(
+                    id: record.id,
+                    name: record.name,
+                    height: record.height,
+                    weight: record.weight,
+                    baseExperience: record.baseExperience,
+                    order: record.orderIndex,
+                    isDefault: record.isDefault,
+                    sprites: PokemonSprites(
+                        frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(record.id).png",
+                        frontShiny: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/\(record.id).png",
+                        frontFemale: nil, frontShinyFemale: nil,
+                        backDefault: nil, backShiny: nil, backFemale: nil, backShinyFemale: nil,
+                        other: PokemonSpritesOther(
+                            dreamWorld: nil,
+                            home: nil,
+                            officialArtwork: PokemonOfficialArtwork(
+                                frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(record.id).png",
+                                frontShiny: nil
+                            )
+                        )
+                    ),
+                    types: [], // Will be loaded separately
+                    abilities: [], // Will be loaded separately  
+                    stats: [], // Will be loaded separately
+                    species: PokemonSpecies(name: record.name, url: ""),
+                    moves: [],
+                    gameIndices: []
+                )
+            }
+            
+            await MainActor.run {
+                self.pokemon = loadedPokemon
+            }
+            
+        } catch {
+            print("Error loading Pokemon from database: \(error)")
+            // Fallback to sample data if database fails
+            await loadSampleData()
         }
     }
     
@@ -90,7 +141,7 @@ class CollectionViewModel: ObservableObject {
                 id: 1, name: "charizard", height: 17, weight: 905, baseExperience: 267, order: 5, isDefault: true,
                 sprites: PokemonSprites(frontDefault: nil, frontShiny: nil, frontFemale: nil, frontShinyFemale: nil,
                                       backDefault: nil, backShiny: nil, backFemale: nil, backShinyFemale: nil, other: nil),
-                types: [PokemonTypeSlot(slot: 1, type: .fire), PokemonTypeSlot(slot: 2, type: .flying)],
+                types: [PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "fire", url: "")), PokemonTypeSlot(slot: 2, type: PokemonTypeInfo(name: "flying", url: ""))],
                 abilities: [], stats: [
                     PokemonStat(baseStat: 78, effort: 0, stat: StatType(name: "hp", url: "")),
                     PokemonStat(baseStat: 84, effort: 0, stat: StatType(name: "attack", url: "")),
@@ -102,7 +153,7 @@ class CollectionViewModel: ObservableObject {
                 id: 2, name: "blastoise", height: 16, weight: 855, baseExperience: 239, order: 9, isDefault: true,
                 sprites: PokemonSprites(frontDefault: nil, frontShiny: nil, frontFemale: nil, frontShinyFemale: nil,
                                       backDefault: nil, backShiny: nil, backFemale: nil, backShinyFemale: nil, other: nil),
-                types: [PokemonTypeSlot(slot: 1, type: .water)],
+                types: [PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "water", url: ""))],
                 abilities: [], stats: [
                     PokemonStat(baseStat: 79, effort: 0, stat: StatType(name: "hp", url: "")),
                     PokemonStat(baseStat: 83, effort: 0, stat: StatType(name: "attack", url: ""))
@@ -127,7 +178,7 @@ class CollectionViewModel: ObservableObject {
         
         // Apply type filter
         if let selectedType = selectedType {
-            filtered = filtered.filter { $0.types.contains { $0.type == selectedType } }
+            filtered = filtered.filter { $0.types.contains { $0.pokemonType == selectedType } }
         }
         
         // Apply favorites filter
@@ -144,7 +195,7 @@ class CollectionViewModel: ObservableObject {
         if !searchText.isEmpty {
             filtered = filtered.filter { pokemon in
                 pokemon.displayName.localizedCaseInsensitiveContains(searchText) ||
-                pokemon.types.contains { $0.type.rawValue.localizedCaseInsensitiveContains(searchText) }
+                pokemon.types.contains { $0.pokemonType.rawValue.localizedCaseInsensitiveContains(searchText) }
             }
         }
         

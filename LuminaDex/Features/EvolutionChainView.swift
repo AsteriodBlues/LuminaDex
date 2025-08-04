@@ -189,7 +189,7 @@ class EvolutionEngine: ObservableObject {
                 name: pokemon.displayName,
                 stageNumber: 1,
                 spriteURL: pokemon.sprites.officialArtwork,
-                types: pokemon.types.map { $0.type },
+                types: pokemon.types.map { $0.pokemonType },
                 primaryColor: pokemon.primaryType.color,
                 requirements: [],
                 stats: pokemon.stats.map { $0.baseStat }
@@ -198,7 +198,7 @@ class EvolutionEngine: ObservableObject {
                 name: "\(pokemon.displayName) Stage 2",
                 stageNumber: 2,
                 spriteURL: pokemon.sprites.officialArtwork,
-                types: pokemon.types.map { $0.type },
+                types: pokemon.types.map { $0.pokemonType },
                 primaryColor: pokemon.primaryType.color.opacity(0.8),
                 requirements: [
                     EvolutionRequirement(
@@ -215,7 +215,7 @@ class EvolutionEngine: ObservableObject {
                 name: "\(pokemon.displayName) Final",
                 stageNumber: 3,
                 spriteURL: pokemon.sprites.officialArtwork,
-                types: pokemon.types.map { $0.type },
+                types: pokemon.types.map { $0.pokemonType },
                 primaryColor: pokemon.primaryType.color.opacity(0.6),
                 requirements: [
                     EvolutionRequirement(
@@ -1216,7 +1216,7 @@ struct EvolutionChainView: View {
             other: nil
         ),
         types: [
-            PokemonTypeSlot(slot: 1, type: .electric)
+            PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "electric", url: ""))
         ],
         abilities: [],
         stats: [

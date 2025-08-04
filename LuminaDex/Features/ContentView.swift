@@ -9,18 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var companionManager = CompanionManager()
+    @EnvironmentObject var dataFetcher: PokemonDataFetcher
+    @EnvironmentObject var database: DatabaseManager
     @State private var selectedTab = 0
     @State private var showWorldMap = false
     @State private var showCompanionSelection = false
     @State private var isAnimating = false
+    @State private var needsDataLoading = false
+    @State private var hasCheckedDatabase = false
     
     var body: some View {
-        if showCompanionSelection {
-            companionSelectionView
-        } else if companionManager.currentCompanion != nil {
-            mainTabView
-        } else {
-            welcomeScreen
+        Group {
+            if needsDataLoading || dataFetcher.isLoading {
+                DataLoadingView()
+                    .environmentObject(dataFetcher)
+            } else if showCompanionSelection {
+                companionSelectionView
+            } else if companionManager.currentCompanion != nil {
+                mainTabView
+            } else {
+                welcomeScreen
+            }
+        }
+        .onAppear {
+            if !hasCheckedDatabase {
+                Task {
+                    // Check if we need to fetch data
+                    let info = try? await database.getDatabaseInfo()
+                    if info?.pokemonCount == 0 {
+                        print("🚀 Starting initial data fetch...")
+                        needsDataLoading = true
+                        await dataFetcher.fetchAllPokemonData()
+                        needsDataLoading = false
+                    }
+                    hasCheckedDatabase = true
+                }
+            }
         }
     }
     

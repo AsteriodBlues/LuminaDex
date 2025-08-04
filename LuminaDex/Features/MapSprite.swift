@@ -288,7 +288,7 @@ class SpritePopulationManager: ObservableObject {
     @Published var sprites: [MapSprite] = []
     
     private var lastUpdateTime: TimeInterval = 0
-    private let maxSpritesPerRegion = 8 // Reduced for better performance
+    private let maxSpritesPerRegion = 3 // Further reduced to avoid clutter
     private let spawnCooldown: TimeInterval = 3.0
     private var lastSpawnTime: TimeInterval = 0
     
@@ -347,9 +347,10 @@ class SpritePopulationManager: ObservableObject {
                 sprite.lastUpdateTime = 0
             } else {
                 // Create new sprite
+                let randomPokemonId = Int.random(in: 1...1010)
                 sprite = MapSprite(
-                    pokemonId: Int.random(in: 1...1010),
-                    spriteURL: "placeholder_sprite_\(randomType.rawValue)",
+                    pokemonId: randomPokemonId,
+                    spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(randomPokemonId).png",
                     type: randomType,
                     position: spawnPosition,
                     movementPattern: movementPattern,

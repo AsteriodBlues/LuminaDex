@@ -262,7 +262,7 @@ struct DNAGene: Identifiable, Hashable {
         
         // Secondary type gene (if exists)
         if pokemon.types.count > 1 {
-            let secondaryType = pokemon.types[1].type
+            let secondaryType = pokemon.types[1].pokemonType
             genes.append(DNAGene(
                 name: "\(secondaryType.displayName) Support Gene",
                 code: "SUP",
@@ -413,7 +413,7 @@ struct AnalysisResult {
                 other: nil
             ),
             types: [
-                PokemonTypeSlot(slot: 1, type: .electric)
+                PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "electric", url: ""))
             ],
             abilities: [],
             stats: [],

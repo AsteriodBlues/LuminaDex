@@ -1685,15 +1685,15 @@ struct QuantumSearchResultCard: View {
                 
                 HStack(spacing: 10) {
                     ForEach(pokemon.types, id: \.slot) { typeSlot in
-                        Text(typeSlot.type.displayName)
+                        Text(typeSlot.pokemonType.displayName)
                             .font(.system(size: 13, weight: .semibold, design: .rounded))
                             .foregroundColor(.white)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 8)
                             .background(
                                 Capsule()
-                                    .fill(typeSlot.type.color)
-                                    .shadow(color: typeSlot.type.color.opacity(0.6), radius: 10)
+                                    .fill(typeSlot.pokemonType.color)
+                                    .shadow(color: typeSlot.pokemonType.color.opacity(0.6), radius: 10)
                             )
                     }
                 }

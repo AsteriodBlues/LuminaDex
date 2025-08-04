@@ -72,7 +72,7 @@ struct NeuralFlowMapView: View {
                     cameraOffset: cameraOffset,
                     zoomScale: zoomScale
                 )
-                .onChange(of: timeline.date) { _ in
+                .onReceive(Timer.publish(every: 0.016, on: .main, in: .common).autoconnect()) { _ in
                     updateSpriteSystem()
                 }
             }

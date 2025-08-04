@@ -14,10 +14,9 @@ struct PokemonListCard: View {
     var body: some View {
         HStack(spacing: 16) {
             // Pokemon Sprite
-            Text(pokemon.sprite)
-                .font(.system(size: 40))
+            ImageManager.shared.loadThumbnail(url: pokemon.sprites.frontDefault)
                 .frame(width: 60, height: 60)
-                .background(.ultraThinMaterial, in: Circle())
+            .background(.ultraThinMaterial, in: Circle())
             
             // Pokemon Info
             VStack(alignment: .leading, spacing: 4) {
@@ -35,11 +34,11 @@ struct PokemonListCard: View {
                 
                 HStack {
                     ForEach(pokemon.types, id: \.slot) { typeSlot in
-                        Text(typeSlot.type.rawValue)
+                        Text(typeSlot.pokemonType.rawValue)
                             .font(.caption)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(typeSlot.type.color.opacity(0.3), in: Capsule())
+                            .background(typeSlot.pokemonType.color.opacity(0.3), in: Capsule())
                     }
                     
                     Spacer()

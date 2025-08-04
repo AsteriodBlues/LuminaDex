@@ -26,6 +26,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Mewtwo",
+                pokemonId: 150,
                 emoji: "🧬",
                 region: "Kanto",
                 position: CGPoint(x: 100, y: 150),
@@ -38,6 +39,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Lugia",
+                pokemonId: 249,
                 emoji: "🌊",
                 region: "Johto",
                 position: CGPoint(x: 250, y: 200),
@@ -50,6 +52,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Rayquaza",
+                pokemonId: 384,
                 emoji: "🐉",
                 region: "Hoenn",
                 position: CGPoint(x: 400, y: 100),
@@ -62,6 +65,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Dialga",
+                pokemonId: 483,
                 emoji: "⏰",
                 region: "Sinnoh",
                 position: CGPoint(x: 150, y: 350),
@@ -74,6 +78,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Reshiram",
+                pokemonId: 643,
                 emoji: "🔥",
                 region: "Unova",
                 position: CGPoint(x: 300, y: 400),
@@ -86,6 +91,7 @@ class LegendaryGuardianManager: ObservableObject {
             LegendaryGuardian(
                 id: UUID(),
                 name: "Xerneas",
+                pokemonId: 716,
                 emoji: "🦌",
                 region: "Kalos",
                 position: CGPoint(x: 500, y: 250),
@@ -211,6 +217,8 @@ class LegendaryGuardianManager: ObservableObject {
 class LegendaryGuardian: ObservableObject, Identifiable {
     let id: UUID
     let name: String
+    let pokemonId: Int
+    let spriteURL: String
     let emoji: String
     let region: String
     let position: CGPoint
@@ -226,9 +234,11 @@ class LegendaryGuardian: ObservableObject, Identifiable {
     @Published var scale: CGFloat = 1.0
     @Published var rotation: CGFloat = 0
     
-    init(id: UUID, name: String, emoji: String, region: String, position: CGPoint, primaryColor: Color, secondaryColor: Color, guardianType: GuardianType, powerLevel: PowerLevel, isAwakened: Bool) {
+    init(id: UUID, name: String, pokemonId: Int, emoji: String, region: String, position: CGPoint, primaryColor: Color, secondaryColor: Color, guardianType: GuardianType, powerLevel: PowerLevel, isAwakened: Bool) {
         self.id = id
         self.name = name
+        self.pokemonId = pokemonId
+        self.spriteURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonId).png"
         self.emoji = emoji
         self.region = region
         self.position = position
@@ -402,15 +412,15 @@ struct LegendaryGuardianView: View {
                 }
             }
             
-            // Guardian sprite
-            Text(guardian.emoji)
-                .font(.system(size: 32 * zoomScale))
-                .scaleEffect(guardian.scale)
-                .rotationEffect(.radians(guardian.rotation * 0.1))
-                .shadow(
-                    color: guardian.primaryColor.opacity(guardian.glowIntensity),
-                    radius: 10 * zoomScale
-                )
+            // Guardian sprite - using real Pokemon image
+            ImageManager.shared.loadThumbnail(url: guardian.spriteURL)
+                .frame(width: 40 * zoomScale, height: 40 * zoomScale)
+            .scaleEffect(guardian.scale)
+            .rotationEffect(.radians(guardian.rotation * 0.1))
+            .shadow(
+                color: guardian.primaryColor.opacity(guardian.glowIntensity),
+                radius: 10 * zoomScale
+            )
             
             // Guardian name (when awakened)
             if guardian.isAwakened {
@@ -442,37 +452,105 @@ struct MysteryMarkerView: View {
     let cameraOffset: CGSize
     let zoomScale: CGFloat
     
+    private var pulseScale: CGFloat {
+        1.0 + sin(animationPhase * marker.pulseSpeed) * 0.3
+    }
+    
+    private var rotationAngle: CGFloat {
+        animationPhase * marker.pulseSpeed * 0.5
+    }
+    
     var body: some View {
         ZStack {
-            // Mystery glow
+            // Outer energy ring
             if marker.isRevealed {
                 Circle()
-                    .fill(
-                        RadialGradient(
+                    .stroke(
+                        LinearGradient(
                             colors: [
-                                marker.markerType.color.opacity(0.6),
-                                marker.markerType.color.opacity(0.2),
+                                marker.markerType.color.opacity(0.8),
+                                marker.markerType.color.opacity(0.3),
                                 Color.clear
                             ],
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 30 * zoomScale
-                        )
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 2 * zoomScale
                     )
-                    .frame(width: 60 * zoomScale, height: 60 * zoomScale)
-                    .scaleEffect(1.0 + sin(animationPhase * marker.pulseSpeed) * 0.3)
+                    .frame(width: 50 * zoomScale, height: 50 * zoomScale)
+                    .scaleEffect(pulseScale)
+                    .rotationEffect(.radians(rotationAngle))
             }
             
-            // Mystery marker
-            Text(marker.markerType.emoji)
-                .font(.system(size: 20 * zoomScale))
-                .scaleEffect(1.0 + sin(animationPhase * marker.pulseSpeed) * 0.2)
-                .opacity(marker.isRevealed ? 1.0 : 0.3)
+            // Inner glow core
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            marker.markerType.color.opacity(marker.isRevealed ? 0.8 : 0.3),
+                            marker.markerType.color.opacity(marker.isRevealed ? 0.4 : 0.1),
+                            Color.clear
+                        ],
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: 20 * zoomScale
+                    )
+                )
+                .frame(width: 40 * zoomScale, height: 40 * zoomScale)
+                .scaleEffect(1.0 + sin(animationPhase * marker.pulseSpeed * 1.5) * 0.2)
+            
+            // Mystery symbol based on type
+            mysterySymbol
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Color.white,
+                            marker.markerType.color,
+                            Color.white
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .font(.system(size: 16 * zoomScale, weight: .bold))
+                .scaleEffect(1.0 + sin(animationPhase * marker.pulseSpeed * 2) * 0.15)
+                .opacity(marker.isRevealed ? 1.0 : 0.5)
+                .shadow(color: marker.markerType.color, radius: 4 * zoomScale)
+            
+            // Floating particles around revealed markers
+            if marker.isRevealed {
+                ForEach(0..<6, id: \.self) { i in
+                    let angle = rotationAngle + CGFloat(i) * .pi / 3
+                    let radius = 25 * zoomScale
+                    let xOffset = cos(angle) * radius
+                    let yOffset = sin(angle) * radius
+                    let opacity = 0.6 + sin(animationPhase * 3 + CGFloat(i)) * 0.4
+                    
+                    Circle()
+                        .fill(marker.markerType.color.opacity(opacity))
+                        .frame(width: 3 * zoomScale, height: 3 * zoomScale)
+                        .offset(x: xOffset, y: yOffset)
+                }
+            }
         }
         .position(
             x: marker.position.x * zoomScale + cameraOffset.width,
             y: marker.position.y * zoomScale + cameraOffset.height
         )
+    }
+    
+    @ViewBuilder
+    private var mysterySymbol: some View {
+        switch marker.markerType {
+        case .hiddenPower:
+            Image(systemName: "diamond.fill")
+        case .ancientRuin:
+            Image(systemName: "building.columns.fill")
+        case .temporalRift:
+            Image(systemName: "tornado")
+        case .legendaryEssence:
+            Image(systemName: "sparkles")
+        }
     }
 }
 

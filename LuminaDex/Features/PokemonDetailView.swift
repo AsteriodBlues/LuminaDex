@@ -264,7 +264,7 @@ struct PokemonDetailView: View {
             ForEach(Array(pokemon.types.enumerated()), id: \.offset) { index, typeSlot in
                 Circle()
                     .stroke(
-                        typeSlot.type.color.opacity(0.4),
+                        typeSlot.pokemonType.color.opacity(0.4),
                         style: StrokeStyle(lineWidth: 3, dash: [10, 5])
                     )
                     .frame(width: 220 + CGFloat(index * 40), height: 220 + CGFloat(index * 40))
@@ -306,7 +306,7 @@ struct PokemonDetailView: View {
             // Type badges
             HStack(spacing: 8) {
                 ForEach(Array(pokemon.types.enumerated()), id: \.offset) { index, typeSlot in
-                    typeBadge(type: typeSlot.type, index: index)
+                    typeBadge(type: typeSlot.pokemonType, index: index)
                         .scaleEffect(1.0 - progress * 0.2)
                 }
             }
@@ -1249,7 +1249,7 @@ extension CompanionManager {
                 )
             ),
             types: [
-                PokemonTypeSlot(slot: 1, type: .electric)
+                PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "electric", url: ""))
             ],
             abilities: [
                 PokemonAbilitySlot(

@@ -78,15 +78,15 @@ extension Pokemon {
         }
         
         // Add type-based collections
-        if types.contains(where: { $0.type == .fire }) {
+        if types.contains(where: { $0.pokemonType == .fire }) {
             lists.append("Fire Team")
         }
         
-        if types.contains(where: { $0.type == .water }) {
+        if types.contains(where: { $0.pokemonType == .water }) {
             lists.append("Water Team")
         }
         
-        if types.contains(where: { $0.type == .electric }) {
+        if types.contains(where: { $0.pokemonType == .electric }) {
             lists.append("Electric Team")
         }
         
@@ -100,7 +100,7 @@ extension Pokemon {
     
     // MARK: - Search Properties
     var searchableText: String {
-        let typeNames = types.map { $0.type.displayName }.joined(separator: " ")
+        let typeNames = types.map { $0.pokemonType.displayName }.joined(separator: " ")
         let abilityNames = abilities.map { $0.ability.displayName }.joined(separator: " ")
         
         return "\(displayName) \(typeNames) \(abilityNames) #\(id)".lowercased()
@@ -122,7 +122,7 @@ extension Pokemon {
         
         // Type-specific achievements
         for typeSlot in types {
-            switch typeSlot.type {
+            switch typeSlot.pokemonType {
             case .fire:
                 contributions[.firemaster] = (contributions[.firemaster] ?? 0) + 1.0
             case .water:

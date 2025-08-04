@@ -48,18 +48,18 @@ struct PokemonGridCard: View {
             // Interactive Pokemon Sprite
             ZStack {
                 // Sprite with reactions
-                Text(getSpriteEmoji())
-                    .font(.system(size: 50))
-                    .scaleEffect(isPressed ? 0.85 : pulseScale)
-                    .rotationEffect(.degrees(spriteRotation))
-                    .animation(.spring(response: 0.4, dampingFraction: 0.7), value: isPressed)
-                    .animation(.spring(response: 0.6, dampingFraction: 0.5), value: spriteRotation)
-                    .onTapGesture {
-                        withAnimation(.spring(response: 0.3)) {
-                            spriteRotation += 15
-                            triggerHappyReaction()
-                        }
+                ImageManager.shared.loadThumbnail(url: pokemon.sprites.frontDefault)
+                    .frame(width: 60, height: 60)
+                .scaleEffect(isPressed ? 0.85 : pulseScale)
+                .rotationEffect(.degrees(spriteRotation))
+                .animation(.spring(response: 0.4, dampingFraction: 0.7), value: isPressed)
+                .animation(.spring(response: 0.6, dampingFraction: 0.5), value: spriteRotation)
+                .onTapGesture {
+                    withAnimation(.spring(response: 0.3)) {
+                        spriteRotation += 15
+                        triggerHappyReaction()
                     }
+                }
                 
                 // Celebration particles
                 if showCelebration {
@@ -78,16 +78,16 @@ struct PokemonGridCard: View {
             HStack(spacing: 4) {
                 ForEach(pokemon.types, id: \.slot) { typeSlot in
                     HStack(spacing: 2) {
-                        Text(typeSlot.type.emoji)
+                        Text(typeSlot.pokemonType.emoji)
                             .font(.caption2)
-                        Text(typeSlot.type.rawValue.capitalized)
+                        Text(typeSlot.pokemonType.rawValue.capitalized)
                             .font(.caption2)
                             .fontWeight(.medium)
                     }
                     .padding(.horizontal, 6)
                     .padding(.vertical, 3)
-                    .background(typeSlot.type.color.opacity(0.2), in: Capsule())
-                    .overlay(Capsule().stroke(typeSlot.type.color.opacity(0.6), lineWidth: 1))
+                    .background(typeSlot.pokemonType.color.opacity(0.2), in: Capsule())
+                    .overlay(Capsule().stroke(typeSlot.pokemonType.color.opacity(0.6), lineWidth: 1))
                 }
             }
             

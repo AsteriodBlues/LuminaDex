@@ -94,7 +94,7 @@ struct TypeEffectivenessView: View {
         HStack(spacing: ThemeManager.Spacing.sm) {
             ForEach(pokemon.types, id: \.slot) { typeSlot in
                 TypeBadge(
-                    type: typeSlot.type,
+                    type: typeSlot.pokemonType,
                     isDefending: true,
                     glowIntensity: 0.6 + sin(Double(animationPhase + CGFloat(typeSlot.slot))) * 0.3
                 )
@@ -120,7 +120,7 @@ struct TypeEffectivenessView: View {
             ForEach(PokemonType.allCases.filter { $0 != .unknown }, id: \.self) { attackingType in
                 TypeEffectivenessCell(
                     attackingType: attackingType,
-                    defendingTypes: pokemon.types.map { $0.type },
+                    defendingTypes: pokemon.types.map { $0.pokemonType },
                     isSelected: selectedAttackingType == attackingType,
                     animationPhase: animationPhase
                 ) {
@@ -352,7 +352,7 @@ struct TypeEffectivenessView: View {
     private func simulateBattle() {
         let effectiveness = TypeEffectiveness.effectiveness(
             attackingType: selectedAttackingType,
-            defendingTypes: pokemon.types.map { $0.type }
+            defendingTypes: pokemon.types.map { $0.pokemonType }
         )
         
         battleResult = BattleResult(
@@ -673,7 +673,7 @@ struct AnimatedBattleSprite {
                 other: nil
             ),
             types: [
-                PokemonTypeSlot(slot: 1, type: .electric)
+                PokemonTypeSlot(slot: 1, type: PokemonTypeInfo(name: "electric", url: ""))
             ],
             abilities: [],
             stats: [],
