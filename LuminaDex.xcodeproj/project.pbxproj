@@ -51,6 +51,9 @@
 		C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */; };
 		C3B9FF982E4034E50041E5E4 /* MLBarCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */; };
 		C3B9FF9A2E40364E0041E5E4 /* InteractiveChartSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */; };
+		C3B9FF9C2E4038280041E5E4 /* TypeRelationshipNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9B2E4038270041E5E4 /* TypeRelationshipNetwork.swift */; };
+		C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9D2E4039240041E5E4 /* EvolutionTrees.swift */; };
+		C3B9FFA02E4040930041E5E4 /* EvolutionPerformanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF9F2E4040920041E5E4 /* EvolutionPerformanceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +121,9 @@
 		C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChart.swift; sourceTree = "<group>"; };
 		C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBarCharts.swift; sourceTree = "<group>"; };
 		C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveChartSystem.swift; sourceTree = "<group>"; };
+		C3B9FF9B2E4038270041E5E4 /* TypeRelationshipNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRelationshipNetwork.swift; sourceTree = "<group>"; };
+		C3B9FF9D2E4039240041E5E4 /* EvolutionTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionTrees.swift; sourceTree = "<group>"; };
+		C3B9FF9F2E4040920041E5E4 /* EvolutionPerformanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionPerformanceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -278,6 +284,9 @@
 		C3B9FF932E402D400041E5E4 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FF9F2E4040920041E5E4 /* EvolutionPerformanceManager.swift */,
+				C3B9FF9D2E4039240041E5E4 /* EvolutionTrees.swift */,
+				C3B9FF9B2E4038270041E5E4 /* TypeRelationshipNetwork.swift */,
 				C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */,
 				C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */,
 				C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */,
@@ -464,6 +473,7 @@
 				C3B9FF872E3FFD470041E5E4 /* CollectionComponents.swift in Sources */,
 				C3B9FF852E3FFCFA0041E5E4 /* PokemonListCard.swift in Sources */,
 				C37525FF2E3D75A200505277 /* Stats.swift in Sources */,
+				C3B9FF9C2E4038280041E5E4 /* TypeRelationshipNetwork.swift in Sources */,
 				C37525FD2E3D757100505277 /* Region.swift in Sources */,
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
@@ -489,11 +499,13 @@
 				C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */,
 				C3B9FF8B2E4002280041E5E4 /* NeuralNetworkBackground.swift in Sources */,
 				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
+				C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */,
 				C3B9FF7F2E3FFBCA0041E5E4 /* CollectionView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
 				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
 				C3B9FF8F2E40082F0041E5E4 /* ProfileView.swift in Sources */,
+				C3B9FFA02E4040930041E5E4 /* EvolutionPerformanceManager.swift in Sources */,
 				C37CA8FB2E3EB6A2002F20DB /* MigrationSystem.swift in Sources */,
 				C36019AC2E3E9489000BE42C /* SpriteRenderer.swift in Sources */,
 				C37525E82E3D61A200505277 /* ContentView.swift in Sources */,
