@@ -48,6 +48,9 @@
 		C3B9FF8B2E4002280041E5E4 /* NeuralNetworkBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF8A2E4002280041E5E4 /* NeuralNetworkBackground.swift */; };
 		C3B9FF8D2E40022F0041E5E4 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF8C2E40022F0041E5E4 /* AchievementsView.swift */; };
 		C3B9FF8F2E40082F0041E5E4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF8E2E40082F0041E5E4 /* ProfileView.swift */; };
+		C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */; };
+		C3B9FF982E4034E50041E5E4 /* MLBarCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */; };
+		C3B9FF9A2E40364E0041E5E4 /* InteractiveChartSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		C3B9FF8A2E4002280041E5E4 /* NeuralNetworkBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralNetworkBackground.swift; sourceTree = "<group>"; };
 		C3B9FF8C2E40022F0041E5E4 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		C3B9FF8E2E40082F0041E5E4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChart.swift; sourceTree = "<group>"; };
+		C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBarCharts.swift; sourceTree = "<group>"; };
+		C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveChartSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -236,6 +242,7 @@
 		C37525EB2E3D61C300505277 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				C3B9FF932E402D400041E5E4 /* Charts */,
 				C3B9FF8A2E4002280041E5E4 /* NeuralNetworkBackground.swift */,
 				C3B9FF862E3FFD460041E5E4 /* CollectionComponents.swift */,
 				C3B9FF842E3FFCF80041E5E4 /* PokemonListCard.swift */,
@@ -266,6 +273,16 @@
 				C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C3B9FF932E402D400041E5E4 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				C3B9FF992E40364D0041E5E4 /* InteractiveChartSystem.swift */,
+				C3B9FF972E4034E40041E5E4 /* MLBarCharts.swift */,
+				C3B9FF952E402D4F0041E5E4 /* RadarChart.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,8 +468,11 @@
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
+				C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */,
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
 				C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */,
+				C3B9FF982E4034E50041E5E4 /* MLBarCharts.swift in Sources */,
+				C3B9FF9A2E40364E0041E5E4 /* InteractiveChartSystem.swift in Sources */,
 				C36019A92E3E9488000BE42C /* RegionNode.swift in Sources */,
 				C3B9FF892E3FFD840041E5E4 /* Pokemon+Collection.swift in Sources */,
 				C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */,
