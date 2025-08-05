@@ -266,6 +266,99 @@ enum PokemonType: String, CaseIterable, Codable, Hashable {
             return "❓"
         }
     }
+    
+    // MARK: - Shimmer Colors
+    
+    // Base shimmer color for skeleton loading
+    var shimmerBaseColor: Color {
+        switch self {
+        case .normal:
+            return Color(hex: "E5E5DC")
+        case .fire:
+            return Color(hex: "FFE4E1")
+        case .water:
+            return Color(hex: "E0F6FF")
+        case .electric:
+            return Color(hex: "FFFACD")
+        case .grass:
+            return Color(hex: "F0FFF0")
+        case .ice:
+            return Color(hex: "F0F8FF")
+        case .fighting:
+            return Color(hex: "FFE4E1")
+        case .poison:
+            return Color(hex: "E6E6FA")
+        case .ground:
+            return Color(hex: "F5DEB3")
+        case .flying:
+            return Color(hex: "E6E6FA")
+        case .psychic:
+            return Color(hex: "FFE4E6")
+        case .bug:
+            return Color(hex: "F5FFFA")
+        case .rock:
+            return Color(hex: "F5DEB3")
+        case .ghost:
+            return Color(hex: "E6E6FA")
+        case .dragon:
+            return Color(hex: "E6E6FA")
+        case .dark:
+            return Color(hex: "F5F5DC")
+        case .steel:
+            return Color(hex: "F8F8FF")
+        case .fairy:
+            return Color(hex: "FFF0F5")
+        case .unknown:
+            return Color(hex: "F0F8FF")
+        }
+    }
+    
+    // Shimmer highlight color
+    var shimmerHighlightColor: Color {
+        color.opacity(0.3)
+    }
+    
+    // Shimmer gradient for animated effects
+    var shimmerGradient: Gradient {
+        Gradient(colors: [
+            shimmerBaseColor,
+            shimmerHighlightColor,
+            color.opacity(0.1),
+            shimmerHighlightColor,
+            shimmerBaseColor
+        ])
+    }
+    
+    // Alternative shimmer gradient with more contrast
+    var vibrantShimmerGradient: Gradient {
+        Gradient(colors: [
+            color.opacity(0.1),
+            color.opacity(0.3),
+            color.opacity(0.6),
+            color.opacity(0.3),
+            color.opacity(0.1)
+        ])
+    }
+    
+    // Subtle shimmer gradient for backgrounds
+    var subtleShimmerGradient: Gradient {
+        Gradient(colors: [
+            Color.clear,
+            shimmerBaseColor.opacity(0.5),
+            Color.clear
+        ])
+    }
+    
+    // Pulsing shimmer colors
+    var pulseColors: [Color] {
+        [
+            color.opacity(0.2),
+            color.opacity(0.4),
+            color.opacity(0.6),
+            color.opacity(0.4),
+            color.opacity(0.2)
+        ]
+    }
 }
 
 // MARK: - Type Effectiveness Calculator
