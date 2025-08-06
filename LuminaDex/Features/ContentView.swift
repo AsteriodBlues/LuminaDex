@@ -102,13 +102,29 @@ struct ContentView: View {
                 }
                 .tag(5)
             
+            // Gym Badges
+            GymBadgeListView()
+                .tabItem {
+                    Image(systemName: "shield.fill")
+                    Text("Badges")
+                }
+                .tag(6)
+            
+            // Characters
+            CharacterListView()
+                .tabItem {
+                    Image(systemName: "person.3.fill")
+                    Text("Characters")
+                }
+                .tag(7)
+            
             // Profile & Stats
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(6)
+                .tag(8)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

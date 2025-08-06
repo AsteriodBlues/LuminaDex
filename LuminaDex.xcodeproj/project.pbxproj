@@ -37,6 +37,12 @@
 		C3253DC02E43DF19002B742E /* BerryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DBF2E43DF19002B742E /* BerryFetcher.swift */; };
 		C3253DC32E43DF28002B742E /* BerryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC22E43DF28002B742E /* BerryListView.swift */; };
 		C3253DC42E43DF28002B742E /* BerryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC12E43DF28002B742E /* BerryDetailView.swift */; };
+		C3253DC72E43E506002B742E /* GymBadgeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC62E43E506002B742E /* GymBadgeData.swift */; };
+		C3253DC82E43E506002B742E /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC52E43E506002B742E /* CharacterData.swift */; };
+		C3253DCE2E43E522002B742E /* GymBadgeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DCC2E43E522002B742E /* GymBadgeListView.swift */; };
+		C3253DCF2E43E522002B742E /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DCA2E43E522002B742E /* CharacterListView.swift */; };
+		C3253DD02E43E522002B742E /* GymBadgeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */; };
+		C3253DD42E43E9D9002B742E /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -201,6 +207,12 @@
 		C3253DBF2E43DF19002B742E /* BerryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryFetcher.swift; sourceTree = "<group>"; };
 		C3253DC12E43DF28002B742E /* BerryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryDetailView.swift; sourceTree = "<group>"; };
 		C3253DC22E43DF28002B742E /* BerryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryListView.swift; sourceTree = "<group>"; };
+		C3253DC52E43E506002B742E /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		C3253DC62E43E506002B742E /* GymBadgeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBadgeData.swift; sourceTree = "<group>"; };
+		C3253DCA2E43E522002B742E /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
+		C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBadgeDetailView.swift; sourceTree = "<group>"; };
+		C3253DCC2E43E522002B742E /* GymBadgeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBadgeListView.swift; sourceTree = "<group>"; };
+		C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -440,6 +452,10 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */,
+				C3253DCA2E43E522002B742E /* CharacterListView.swift */,
+				C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */,
+				C3253DCC2E43E522002B742E /* GymBadgeListView.swift */,
 				C3253DC12E43DF28002B742E /* BerryDetailView.swift */,
 				C3253DC22E43DF28002B742E /* BerryListView.swift */,
 				C3253D812E439515002B742E /* DamageCalculatorView.swift */,
@@ -493,6 +509,8 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DC52E43E506002B742E /* CharacterData.swift */,
+				C3253DC62E43E506002B742E /* GymBadgeData.swift */,
 				C3253DBF2E43DF19002B742E /* BerryFetcher.swift */,
 				C3253D872E4398E3002B742E /* MoveDataFetcher.swift */,
 				C3253D7D2E4394E5002B742E /* MoveData.swift */,
@@ -859,6 +877,9 @@
 				C3253D762E432C21002B742E /* PokeballCollectionView.swift in Sources */,
 				C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */,
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
+				C3253DCE2E43E522002B742E /* GymBadgeListView.swift in Sources */,
+				C3253DCF2E43E522002B742E /* CharacterListView.swift in Sources */,
+				C3253DD02E43E522002B742E /* GymBadgeDetailView.swift in Sources */,
 				C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */,
 				C3B9FF982E4034E50041E5E4 /* MLBarCharts.swift in Sources */,
 				C3B9FF9A2E40364E0041E5E4 /* InteractiveChartSystem.swift in Sources */,
@@ -919,9 +940,12 @@
 				A1000007E44000000000001 /* BreedingData.swift in Sources */,
 				A1000009E44000000000001 /* BerryData.swift in Sources */,
 				A1000011E44000000000001 /* ItemData.swift in Sources */,
+				C3253DD42E43E9D9002B742E /* CharacterDetailView.swift in Sources */,
 				A1000013E44000000000001 /* ComprehensiveFetcher.swift in Sources */,
 				A1000015E44000000000001 /* TrainingView.swift in Sources */,
 				C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */,
+				C3253DC72E43E506002B742E /* GymBadgeData.swift in Sources */,
+				C3253DC82E43E506002B742E /* CharacterData.swift in Sources */,
 				C3253D642E43023C002B742E /* PokemonForms.swift in Sources */,
 				C3253D722E432933002B742E /* QuantumSearchView.swift in Sources */,
 				C3B9FF832E3FFCE00041E5E4 /* PokemonGridCard.swift in Sources */,
