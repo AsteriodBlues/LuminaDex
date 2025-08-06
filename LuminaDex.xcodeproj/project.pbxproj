@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1000001E44000000000001 /* NatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002E44000000000001 /* NatureData.swift */; };
+		A1000003E44000000000001 /* AbilityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004E44000000000001 /* AbilityData.swift */; };
+		A1000005E44000000000001 /* EVIVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006E44000000000001 /* EVIVData.swift */; };
+		A1000007E44000000000001 /* BreedingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008E44000000000001 /* BreedingData.swift */; };
+		A1000009E44000000000001 /* BerryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010E44000000000001 /* BerryData.swift */; };
+		A1000011E44000000000001 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012E44000000000001 /* ItemData.swift */; };
+		A1000013E44000000000001 /* ComprehensiveFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014E44000000000001 /* ComprehensiveFetcher.swift */; };
+		A1000015E44000000000001 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016E44000000000001 /* TrainingView.swift */; };
 		C3253D642E43023C002B742E /* PokemonForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D632E43023C002B742E /* PokemonForms.swift */; };
 		C3253D692E430274002B742E /* CelebrationAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D652E430274002B742E /* CelebrationAnimations.swift */; };
 		C3253D6A2E430274002B742E /* CompleteInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D662E430274002B742E /* CompleteInfoDisplay.swift */; };
@@ -26,6 +34,9 @@
 		C3253D882E4398E3002B742E /* MoveDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D872E4398E3002B742E /* MoveDataFetcher.swift */; };
 		C3253D8A2E4398F4002B742E /* PokemonMovesDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */; };
 		C3253D8C2E439B12002B742E /* MoveTypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */; };
+		C3253DC02E43DF19002B742E /* BerryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DBF2E43DF19002B742E /* BerryFetcher.swift */; };
+		C3253DC32E43DF28002B742E /* BerryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC22E43DF28002B742E /* BerryListView.swift */; };
+		C3253DC42E43DF28002B742E /* BerryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DC12E43DF28002B742E /* BerryDetailView.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -160,6 +171,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A1000002E44000000000001 /* NatureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatureData.swift; sourceTree = "<group>"; };
+		A1000004E44000000000001 /* AbilityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityData.swift; sourceTree = "<group>"; };
+		A1000006E44000000000001 /* EVIVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVIVData.swift; sourceTree = "<group>"; };
+		A1000008E44000000000001 /* BreedingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingData.swift; sourceTree = "<group>"; };
+		A1000010E44000000000001 /* BerryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryData.swift; sourceTree = "<group>"; };
+		A1000012E44000000000001 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
+		A1000014E44000000000001 /* ComprehensiveFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensiveFetcher.swift; sourceTree = "<group>"; };
+		A1000016E44000000000001 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		C3253D632E43023C002B742E /* PokemonForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonForms.swift; sourceTree = "<group>"; };
 		C3253D652E430274002B742E /* CelebrationAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationAnimations.swift; sourceTree = "<group>"; };
 		C3253D662E430274002B742E /* CompleteInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInfoDisplay.swift; sourceTree = "<group>"; };
@@ -179,6 +198,9 @@
 		C3253D872E4398E3002B742E /* MoveDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDataFetcher.swift; sourceTree = "<group>"; };
 		C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMovesDetailSection.swift; sourceTree = "<group>"; };
 		C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTypeBadge.swift; sourceTree = "<group>"; };
+		C3253DBF2E43DF19002B742E /* BerryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryFetcher.swift; sourceTree = "<group>"; };
+		C3253DC12E43DF28002B742E /* BerryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryDetailView.swift; sourceTree = "<group>"; };
+		C3253DC22E43DF28002B742E /* BerryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryListView.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -418,6 +440,8 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DC12E43DF28002B742E /* BerryDetailView.swift */,
+				C3253DC22E43DF28002B742E /* BerryListView.swift */,
 				C3253D812E439515002B742E /* DamageCalculatorView.swift */,
 				C3253D822E439515002B742E /* MoveDetailView.swift */,
 				C3253D832E439515002B742E /* MoveEncyclopediaView.swift */,
@@ -448,6 +472,7 @@
 				C36019A62E3E9489000BE42C /* MapSprite.swift */,
 				C36019A72E3E9489000BE42C /* SpriteRenderer.swift */,
 				C37525E42E3D61A200505277 /* ContentView.swift */,
+				A1000016E44000000000001 /* TrainingView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -468,6 +493,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DBF2E43DF19002B742E /* BerryFetcher.swift */,
 				C3253D872E4398E3002B742E /* MoveDataFetcher.swift */,
 				C3253D7D2E4394E5002B742E /* MoveData.swift */,
 				C3253D732E432C05002B742E /* PokeballData.swift */,
@@ -489,6 +515,13 @@
 				C37525FC2E3D756E00505277 /* Region.swift */,
 				C37525FA2E3D74AF00505277 /* PokemonType.swift */,
 				C37525F82E3D739D00505277 /* Pokemon.swift */,
+				A1000002E44000000000001 /* NatureData.swift */,
+				A1000004E44000000000001 /* AbilityData.swift */,
+				A1000006E44000000000001 /* EVIVData.swift */,
+				A1000008E44000000000001 /* BreedingData.swift */,
+				A1000010E44000000000001 /* BerryData.swift */,
+				A1000012E44000000000001 /* ItemData.swift */,
+				A1000014E44000000000001 /* ComprehensiveFetcher.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -816,6 +849,7 @@
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
 				C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */,
 				C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */,
+				C3253DC02E43DF19002B742E /* BerryFetcher.swift in Sources */,
 				C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */,
 				C32CB5B72E418AD6001583AF /* ComparisonCard.swift in Sources */,
 				C3253D842E439515002B742E /* MoveDetailView.swift in Sources */,
@@ -841,6 +875,8 @@
 				C3F932892E42F0CF0035999C /* FilterQueries.swift in Sources */,
 				C3F932862E42F0BF0035999C /* PersistentViewModel.swift in Sources */,
 				C3F932872E42F0BF0035999C /* DefaultsKeys.swift in Sources */,
+				C3253DC32E43DF28002B742E /* BerryListView.swift in Sources */,
+				C3253DC42E43DF28002B742E /* BerryDetailView.swift in Sources */,
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
 				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
@@ -877,6 +913,14 @@
 				C3253D7E2E4394E5002B742E /* MoveData.swift in Sources */,
 				C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */,
 				C3253D882E4398E3002B742E /* MoveDataFetcher.swift in Sources */,
+				A1000001E44000000000001 /* NatureData.swift in Sources */,
+				A1000003E44000000000001 /* AbilityData.swift in Sources */,
+				A1000005E44000000000001 /* EVIVData.swift in Sources */,
+				A1000007E44000000000001 /* BreedingData.swift in Sources */,
+				A1000009E44000000000001 /* BerryData.swift in Sources */,
+				A1000011E44000000000001 /* ItemData.swift in Sources */,
+				A1000013E44000000000001 /* ComprehensiveFetcher.swift in Sources */,
+				A1000015E44000000000001 /* TrainingView.swift in Sources */,
 				C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */,
 				C3253D642E43023C002B742E /* PokemonForms.swift in Sources */,
 				C3253D722E432933002B742E /* QuantumSearchView.swift in Sources */,

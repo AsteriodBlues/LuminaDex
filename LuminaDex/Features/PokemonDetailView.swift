@@ -806,6 +806,8 @@ struct PokemonDetailView: View {
                 evolutionContent
             case .typeChart:
                 typeChartContent
+            case .training:
+                trainingContent
             case .dna:
                 dnaContent
             }
@@ -1082,6 +1084,68 @@ struct PokemonDetailView: View {
         .padding()
     }
     
+    private var trainingContent: some View {
+        NavigationLink(destination: TrainingView(pokemon: pokemon)) {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Training Calculator")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.white)
+                        
+                        Text("Optimize EVs, IVs, and Natures")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
+                
+                HStack(spacing: 12) {
+                    VStack {
+                        Image(systemName: "chart.bar.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(.orange)
+                        Text("EVs")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Image(systemName: "dna")
+                            .font(.system(size: 20))
+                            .foregroundColor(.purple)
+                        Text("IVs")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Image(systemName: "leaf.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(.green)
+                        Text("Natures")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding()
+                .background(Color.white.opacity(0.05))
+                .cornerRadius(12)
+            }
+            .padding()
+            .background(pokemon.primaryType.color.opacity(0.1))
+            .cornerRadius(16)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+    
     private var dnaContent: some View {
         VStack(spacing: 20) {
             Text("DNA Preview")
@@ -1210,6 +1274,7 @@ enum DetailTab: String, CaseIterable {
     case moves = "Moves"
     case evolution = "Evolution"
     case typeChart = "Type Chart"
+    case training = "Training"
     case dna = "DNA"
     
     var title: String { rawValue }
@@ -1221,6 +1286,7 @@ enum DetailTab: String, CaseIterable {
         case .moves: return "bolt"
         case .evolution: return "arrow.triangle.branch"
         case .typeChart: return "bolt.batteryblock.fill"
+        case .training: return "figure.run"
         case .dna: return "atom"
         }
     }

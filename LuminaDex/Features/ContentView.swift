@@ -94,13 +94,21 @@ struct ContentView: View {
                 }
                 .tag(4)
             
+            // Berry Collection
+            BerryListView()
+                .tabItem {
+                    Image(systemName: "leaf.fill")
+                    Text("Berries")
+                }
+                .tag(5)
+            
             // Profile & Stats
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(5)
+                .tag(6)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

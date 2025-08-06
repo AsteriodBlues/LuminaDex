@@ -93,7 +93,7 @@ struct TypeEffectivenessView: View {
     private var typesSection: some View {
         HStack(spacing: ThemeManager.Spacing.sm) {
             ForEach(pokemon.types, id: \.slot) { typeSlot in
-                TypeBadge(
+                EffectivenessTypeBadge(
                     type: typeSlot.pokemonType,
                     isDefending: true,
                     glowIntensity: 0.6 + sin(Double(animationPhase + CGFloat(typeSlot.slot))) * 0.3
@@ -474,7 +474,7 @@ struct TypeEffectivenessCell: View {
     }
 }
 
-struct TypeBadge: View {
+struct EffectivenessTypeBadge: View {
     let type: PokemonType
     let isDefending: Bool
     let glowIntensity: CGFloat
