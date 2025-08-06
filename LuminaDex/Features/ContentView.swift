@@ -78,13 +78,21 @@ struct ContentView: View {
                 }
                 .tag(2)
             
+            // Pokeball Collection
+            PokeballCollectionView()
+                .tabItem {
+                    Image(systemName: "circle.circle.fill")
+                    Text("Pokéballs")
+                }
+                .tag(3)
+            
             // Profile & Stats
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(3)
+                .tag(4)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

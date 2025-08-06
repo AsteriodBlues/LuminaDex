@@ -197,7 +197,7 @@ struct RegionBubbleCard: View {
                         
                         HStack(spacing: 4) {
                             ForEach(Array(region.dominantTypes.prefix(3)), id: \.self) { type in
-                                TypeChip(type: type, size: .small)
+                                RegionTypeChip(type: type, size: .small)
                             }
                         }
                         Spacer()
@@ -374,7 +374,7 @@ struct RegionBubbleCard: View {
     }
 }
 
-struct TypeChip: View {
+struct RegionTypeChip: View {
     let type: PokemonType
     let size: ChipSize
     

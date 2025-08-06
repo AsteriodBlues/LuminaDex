@@ -17,7 +17,7 @@ struct AbilityCloudView: View {
                 .font(.headline)
                 .foregroundColor(.primary)
             
-            FlowLayout(spacing: 8) {
+            AbilityFlowLayout(spacing: 8) {
                 ForEach(0..<abilities.count, id: \.self) { index in
                     let abilitySlot = abilities[index]
                     let abilityName = abilitySlot.ability.name
@@ -164,7 +164,7 @@ struct AbilityDetailView: View {
 }
 
 // MARK: - Flow Layout
-struct FlowLayout: Layout {
+struct AbilityFlowLayout: Layout {
     var spacing: CGFloat = 8
     
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {

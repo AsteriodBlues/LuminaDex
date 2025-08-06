@@ -128,7 +128,7 @@ struct PokemonDetailView: View {
             }
             .frame(height: 500)
             .offset(y: minY > 0 ? -minY * 0.8 : 0)
-            .onChange(of: minY) { _, newValue in
+            .onAppear {
                 scrollProgress = progress
             }
         }
@@ -323,51 +323,76 @@ struct PokemonDetailView: View {
     
     private var statsSection: some View {
         VStack(spacing: 40) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Battle Performance")
-                        .font(.system(size: 32, weight: .black, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.white, .white.opacity(0.7)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                    
-                    Text("Neural Analysis")
-                        .font(.system(size: 14, weight: .medium, design: .rounded))
-                        .foregroundColor(pokemon.primaryType.color)
-                        .tracking(2)
-                }
-                
-                Spacer()
-                
-                // Performance rating
-                performanceRating
-            }
-            
-            ZStack {
-                // Holographic grid background
-                holographicGrid
-                
-                // Central hub with connecting beams
-                centralHub
-                
-                // Floating stat orbs
-                ForEach(Array(pokemon.stats.enumerated()), id: \.offset) { index, stat in
-                    let angle = Double(index) * .pi / 3 - .pi / 2
-                    let radius: CGFloat = 140
-                    
-                    futuristicStatOrb(stat: stat, angle: angle, radius: radius, index: index)
-                }
-                
-                // Data streams
-                dataStreams
-            }
-            .frame(height: 350)
+            statsSectionHeader
+            statsSectionContent
         }
         .padding(.vertical, 40)
+    }
+    
+    private var statsSectionHeader: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Battle Performance")
+                    .font(.system(size: 32, weight: .black, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, .white.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                
+                Text("Neural Analysis")
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .foregroundColor(pokemon.primaryType.color)
+                    .tracking(2)
+            }
+            
+            Spacer()
+            
+            performanceRating
+        }
+    }
+    
+    private var statsSectionContent: some View {
+        ZStack {
+            centralHub
+            connectionLines
+            statOrbs
+        }
+        .frame(width: 350, height: 350)
+        .background(Color.black.opacity(0.1))
+    }
+    
+    private var connectionLines: some View {
+        ForEach(0..<6, id: \.self) { index in
+            connectionLine(for: index)
+        }
+    }
+    
+    private func connectionLine(for index: Int) -> some View {
+        let angle = Double(index) * .pi / 3 - .pi / 2
+        
+        return Path { path in
+            path.move(to: CGPoint(x: 175, y: 175))
+            path.addLine(to: CGPoint(
+                x: 175 + cos(angle) * 120,
+                y: 175 + sin(angle) * 120
+            ))
+        }
+        .stroke(
+            Color.white.opacity(0.05),
+            style: StrokeStyle(lineWidth: 1, dash: [4, 2])
+        )
+    }
+    
+    private var statOrbs: some View {
+        ForEach(Array(pokemon.stats.enumerated()), id: \.offset) { index, stat in
+            let angle = Double(index) * .pi / 3 - .pi / 2
+            let radius: CGFloat = 120
+            
+            futuristicStatOrb(stat: stat, angle: angle, radius: radius, index: index)
+        }
     }
     
     private var performanceRating: some View {
@@ -535,103 +560,71 @@ struct PokemonDetailView: View {
     private func futuristicStatOrb(stat: PokemonStat, angle: Double, radius: CGFloat, index: Int) -> some View {
         let color = enhancedStatColor(for: stat.stat.name)
         let normalizedValue = CGFloat(stat.baseStat) / 255.0
-        let orbSize: CGFloat = 80
+        let orbSize: CGFloat = 70
         
-        return ZStack {
-            // Connection beam to center
-            connectionBeam(angle: angle, radius: radius, color: color, intensity: normalizedValue)
-            
-            // Main orb
+        return VStack(spacing: 4) {
+            // Main orb - simplified without rotation
             ZStack {
-                // Outer glow
+                // Background glow
                 Circle()
                     .fill(
                         RadialGradient(
                             colors: [
-                                color.opacity(0.6),
-                                color.opacity(0.3),
+                                color.opacity(0.4),
+                                color.opacity(0.1),
                                 Color.clear
                             ],
                             center: .center,
                             startRadius: 0,
-                            endRadius: orbSize / 2
+                            endRadius: 35
                         )
                     )
+                    .frame(width: orbSize + 20, height: orbSize + 20)
+                
+                // Progress ring background
+                Circle()
+                    .stroke(color.opacity(0.2), lineWidth: 3)
                     .frame(width: orbSize, height: orbSize)
-                    .scaleEffect(1.0 + Darwin.sin(animationPhase + CGFloat(index) * 0.5) * 0.15)
                 
                 // Progress ring
                 Circle()
-                    .stroke(color.opacity(0.3), lineWidth: 3)
-                    .frame(width: orbSize - 10, height: orbSize - 10)
-                
-                Circle()
                     .trim(from: 0, to: normalizedValue)
                     .stroke(
-                        AngularGradient(
-                            colors: [
-                                color.opacity(0.4),
-                                color,
-                                color.opacity(0.8),
-                                color.opacity(0.6)
-                            ],
-                            center: .center
+                        LinearGradient(
+                            colors: [color, color.opacity(0.6)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
                         ),
-                        style: StrokeStyle(lineWidth: 3, lineCap: .round)
+                        style: StrokeStyle(lineWidth: 4, lineCap: .round)
                     )
-                    .frame(width: orbSize - 10, height: orbSize - 10)
+                    .frame(width: orbSize, height: orbSize)
                     .rotationEffect(.degrees(-90))
-                    .animation(.easeInOut(duration: 1.2).delay(Double(index) * 0.15), value: normalizedValue)
                 
-                // Inner core
+                // Inner circle
                 Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                color.opacity(0.8),
-                                color.opacity(0.4),
-                                Color.black.opacity(0.8)
-                            ],
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 25
-                        )
-                    )
-                    .frame(width: 50, height: 50)
+                    .fill(Color.black.opacity(0.8))
+                    .frame(width: orbSize - 10, height: orbSize - 10)
                     .overlay(
                         Circle()
-                            .stroke(color.opacity(0.6), lineWidth: 1)
+                            .stroke(color.opacity(0.4), lineWidth: 1)
                     )
                 
                 // Stat value
-                Text("\(stat.baseStat)")
-                    .font(.system(size: 16, weight: .black, design: .rounded))
-                    .foregroundColor(.white)
-                    .shadow(color: color.opacity(0.8), radius: 4)
+                VStack(spacing: 0) {
+                    Text("\(stat.baseStat)")
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                    
+                    Text(stat.stat.shortName)
+                        .font(.system(size: 9, weight: .medium, design: .rounded))
+                        .foregroundColor(color)
+                }
             }
             
-            // Floating label
-            VStack(spacing: 6) {
-                Spacer()
-                
-                Text(stat.stat.displayName)
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(Color.black.opacity(0.8))
-                            .overlay(
-                                Capsule()
-                                    .stroke(color.opacity(0.6), lineWidth: 1)
-                            )
-                    )
-                
-                // Performance indicator
-                performanceIndicator(value: stat.baseStat, color: color)
-            }
-            .frame(height: orbSize + 40)
+            // Label below orb
+            Text(stat.stat.displayName)
+                .font(.system(size: 10, weight: .medium, design: .rounded))
+                .foregroundColor(.gray)
         }
         .offset(
             x: cos(angle) * radius,
@@ -825,12 +818,16 @@ struct PokemonDetailView: View {
     }
     
     private var overviewContent: some View {
-        VStack(spacing: 24) {
+        LazyVStack(spacing: 24) { // Changed to LazyVStack for better performance
             // Form Switcher (Day 25)
             FormSwitcher(pokemon: pokemon)
                 .padding(.bottom, 12)
             
-            // Complete Info Display (Day 25)
+            // Pokeball Catch Rate Calculator
+            PokemonCatchRateCard(pokemon: pokemon)
+                .padding(.horizontal)
+            
+            // Complete Info Display
             CompleteInfoDisplay(pokemon: pokemon)
             
             // Abilities with new Ability Cloud View
@@ -1157,6 +1154,35 @@ struct PokemonDetailView: View {
     private func setupView() {
         startAnimations()
         companionManager.reactToNewPokemon(pokemon)
+        
+        // Debug: Check if stats are loaded
+        print("📊 Pokemon \(pokemon.name) has \(pokemon.stats.count) stats")
+        for (index, stat) in pokemon.stats.enumerated() {
+            print("  Stat \(index): \(stat.stat.displayName) = \(stat.baseStat)")
+        }
+    }
+    
+    private func createDefaultStat(for index: Int) -> PokemonStat {
+        let statNames = ["hp", "attack", "defense", "special-attack", "special-defense", "speed"]
+        let statName = statNames[index % statNames.count]
+        
+        // Use Pokemon's collection stats as fallback if available
+        let baseValue: Int
+        switch statName {
+        case "hp": baseValue = pokemon.collectionStats.hp
+        case "attack": baseValue = pokemon.collectionStats.attack
+        case "defense": baseValue = pokemon.collectionStats.defense
+        case "special-attack": baseValue = pokemon.collectionStats.specialAttack
+        case "special-defense": baseValue = pokemon.collectionStats.specialDefense
+        case "speed": baseValue = pokemon.collectionStats.speed
+        default: baseValue = 50
+        }
+        
+        return PokemonStat(
+            baseStat: baseValue,
+            effort: 0,
+            stat: StatType(name: statName, url: "")
+        )
     }
     
     private func startAnimations() {
