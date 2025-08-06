@@ -14,6 +14,9 @@ struct PokemonGridCard: View {
     @State private var spriteRotation = 0.0
     @State private var showCelebration = false
     @State private var pulseScale = 1.0
+    @State private var showingDetail = false
+    @State private var isShowingShiny = false
+    @AppStorage("shinyMode") private var globalShinyMode = false
     
     var body: some View {
         VStack(spacing: 12) {
@@ -47,8 +50,29 @@ struct PokemonGridCard: View {
             
             // Interactive Pokemon Sprite
             ZStack {
+                // Shiny sparkle effect
+                if isShowingShiny || globalShinyMode {
+                    ForEach(0..<4, id: \.self) { index in
+                        Image(systemName: "sparkle")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 8))
+                            .offset(x: CGFloat.random(in: -30...30), y: CGFloat.random(in: -30...30))
+                            .opacity(Double.random(in: 0.5...1))
+                            .animation(
+                                .easeInOut(duration: Double.random(in: 1...2))
+                                    .repeatForever(autoreverses: true)
+                                    .delay(Double(index) * 0.2),
+                                value: isShowingShiny
+                            )
+                    }
+                }
+                
                 // Sprite with reactions
-                ImageManager.shared.loadThumbnail(url: pokemon.sprites.frontDefault)
+                ImageManager.shared.loadThumbnail(
+                    url: (isShowingShiny || globalShinyMode) ? 
+                         (pokemon.sprites.frontShiny ?? pokemon.sprites.frontDefault) : 
+                         pokemon.sprites.frontDefault
+                )
                     .frame(width: 60, height: 60)
                 .scaleEffect(isPressed ? 0.85 : pulseScale)
                 .rotationEffect(.degrees(spriteRotation))
@@ -58,6 +82,7 @@ struct PokemonGridCard: View {
                     withAnimation(.spring(response: 0.3)) {
                         spriteRotation += 15
                         triggerHappyReaction()
+                        showingDetail = true
                     }
                 }
                 
@@ -191,6 +216,11 @@ struct PokemonGridCard: View {
         }
         .onAppear {
             startIdleAnimation()
+        }
+        .sheet(isPresented: $showingDetail) {
+            NavigationView {
+                PokemonDetailView(pokemon: pokemon)
+            }
         }
     }
     

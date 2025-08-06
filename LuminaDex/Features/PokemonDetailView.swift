@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct PokemonDetailView: View {
     let pokemon: Pokemon
@@ -17,6 +18,9 @@ struct PokemonDetailView: View {
     @State private var scrollProgress: CGFloat = 0
     @State private var isLoaded: Bool = false
     @State private var showEvolutionChain: Bool = false
+    @State private var confettiCounter: Int = 0
+    @State private var showFormSwitcher: Bool = false
+    @State private var isShowingShiny: Bool = false
     
     // Direct haptic generators instead of custom HapticsEngine
     @State private var lightHaptic = UIImpactFeedbackGenerator(style: .light)
@@ -54,6 +58,20 @@ struct PokemonDetailView: View {
         .onAppear {
             setupView()
         }
+        .onChange(of: isFavorite) { _, newValue in
+            if newValue {
+                confettiCounter += 1
+                mediumHaptic.impactOccurred()
+            }
+        }
+        .confettiCannon(
+            trigger: $confettiCounter,
+            num: 50,
+            confettis: [.text("🎉"), .text("✨"), .text("🌟")],
+            colors: [pokemon.primaryType.color, .yellow, .orange],
+            rainHeight: 600,
+            radius: 400
+        )
         .sheet(isPresented: $showDNAViewer) {
             DNAHelixViewer(pokemon: pokemon)
         }
@@ -172,52 +190,14 @@ struct PokemonDetailView: View {
             
             Spacer()
             
-            favoriteButton(progress: progress)
+            AnimatedFavoriteButton(
+                isFavorite: $isFavorite,
+                color: pokemon.primaryType.color
+            )
+            .scaleEffect(1.0 - progress * 0.2)
+            .opacity(1.0 - progress)
         }
     }
-    
-    private func favoriteButton(progress: CGFloat) -> some View {
-        Button(action: {
-            mediumHaptic.impactOccurred()
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
-                isFavorite.toggle()
-            }
-        }) {
-            ZStack {
-                Circle()
-                    .fill(isFavorite ? pokemon.primaryType.color : Color.black.opacity(0.3))
-                    .frame(width: 44, height: 44)
-                    .scaleEffect(isFavorite ? 1.1 : 1.0)
-                
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(.white)
-                    .scaleEffect(isFavorite ? 1.2 : 1.0)
-                
-                // Favorite particles
-                if isFavorite {
-                    ForEach(0..<6, id: \.self) { i in
-                        Circle()
-                            .fill(pokemon.primaryType.color.opacity(0.8))
-                            .frame(width: 4, height: 4)
-                            .offset(
-                                x: cos(Double(i) * .pi / 3) * 25,
-                                y: sin(Double(i) * .pi / 3) * 25
-                            )
-                            .scaleEffect(isFavorite ? 1.0 : 0.0)
-                            .animation(
-                                .spring(response: 0.6, dampingFraction: 0.8)
-                                .delay(Double(i) * 0.1),
-                                value: isFavorite
-                            )
-                    }
-                }
-            }
-        }
-        .scaleEffect(1.0 - progress * 0.2)
-        .opacity(1.0 - progress)
-    }
-    
     private func pokemonShowcase(progress: CGFloat) -> some View {
         ZStack {
             // Platform
@@ -236,29 +216,10 @@ struct PokemonDetailView: View {
                 .frame(width: 200, height: 200)
                 .scaleEffect(1.0 + Darwin.sin(animationPhase) * 0.1)
             
-            // Pokemon image
-            AsyncImage(url: URL(string: pokemon.sprites.officialArtwork)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 180, height: 180)
-                    .shadow(
-                        color: pokemon.primaryType.color.opacity(0.5),
-                        radius: 20,
-                        x: 0,
-                        y: 10
-                    )
-                    .scaleEffect(1.0 - progress * 0.3)
-                    .offset(y: Darwin.sin(animationPhase * 0.5) * 8)
-            } placeholder: {
-                Circle()
-                    .fill(Color.black.opacity(0.3))
-                    .frame(width: 180, height: 180)
-                    .overlay(
-                        Text(pokemon.primaryType.emoji)
-                            .font(.system(size: 80))
-                    )
-            }
+            // Pokemon image with Shiny support
+            ShinyPokemonView(pokemon: pokemon)
+                .scaleEffect(1.0 - progress * 0.3)
+                .offset(y: Darwin.sin(animationPhase * 0.5) * 8)
             
             // Energy rings
             ForEach(Array(pokemon.types.enumerated()), id: \.offset) { index, typeSlot in
@@ -751,13 +712,19 @@ struct PokemonDetailView: View {
     }
     
     private func getPerformanceRating(total: Int) -> (grade: String, color: Color, tier: String) {
+        // More impressive tier system based on competitive Pokemon standards
         switch total {
-        case 0..<300: return ("D", .red, "BASIC")
-        case 300..<400: return ("C", .orange, "DECENT")
-        case 400..<500: return ("B", .yellow, "STRONG")
-        case 500..<600: return ("A", .green, "ELITE")
-        case 600..<700: return ("S", .blue, "LEGEND")
-        default: return ("S+", .purple, "MYTHIC")
+        case 0..<200: return ("F", .gray, "TINY")           // Baby Pokemon like Magikarp
+        case 200..<300: return ("E", .brown, "WEAK")        // Early route Pokemon
+        case 300..<380: return ("D", .red, "BASIC")         // Common Pokemon
+        case 380..<450: return ("C", .orange, "DECENT")     // Average Pokemon
+        case 450..<500: return ("B", .yellow, "STRONG")     // Good Pokemon
+        case 500..<540: return ("A", .green, "ELITE")       // Very strong Pokemon
+        case 540..<580: return ("A+", .mint, "CHAMPION")    // Pseudo-legendaries
+        case 580..<600: return ("S", .blue, "LEGENDARY")    // Legendary Pokemon
+        case 600..<680: return ("S+", .purple, "MYTHICAL")  // Strong legendaries
+        case 680..<720: return ("SS", .pink, "DIVINE")      // Ultra beasts, box legendaries
+        default: return ("SSS", .indigo, "GODLIKE")         // Mega Rayquaza, Eternamax
         }
     }
     
@@ -818,8 +785,17 @@ struct PokemonDetailView: View {
     }
     
     private var typeChartContent: some View {
-        TypeEffectivenessView(pokemon: pokemon)
-            .padding(.vertical, 20)
+        VStack(spacing: 24) {
+            // Type Effectiveness View
+            TypeEffectivenessView(pokemon: pokemon)
+                .padding(.vertical, 20)
+            
+            // Weakness/Resistance Card (Day 25)
+            WeaknessResistanceCard(pokemon: pokemon)
+            
+            // Type Coverage Radar (Day 25)
+            TypeCoverageRadar(pokemon: pokemon)
+        }
     }
     
     // MARK: - Content Section
@@ -850,8 +826,17 @@ struct PokemonDetailView: View {
     
     private var overviewContent: some View {
         VStack(spacing: 24) {
-            physicalCharacteristics
+            // Form Switcher (Day 25)
+            FormSwitcher(pokemon: pokemon)
+                .padding(.bottom, 12)
+            
+            // Complete Info Display (Day 25)
+            CompleteInfoDisplay(pokemon: pokemon)
+            
+            // Abilities with new Ability Cloud View
             abilitiesSection
+            
+            // DNA Access
             dnaAccessButton
         }
     }
@@ -919,14 +904,9 @@ struct PokemonDetailView: View {
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(.white)
             
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 12) {
-                ForEach(Array(pokemon.abilities.enumerated()), id: \.offset) { index, ability in
-                    abilityCard(ability: ability, index: index)
-                }
-            }
+            // Use the new AbilityCloudView from Day 25
+            AbilityCloudView(abilities: pokemon.abilities)
+                .frame(height: 120)
         }
     }
     
@@ -1018,15 +998,25 @@ struct PokemonDetailView: View {
     }
     
     private var statsContent: some View {
-        Text("Advanced stats coming soon...")
-            .foregroundColor(.white.opacity(0.7))
-            .padding()
+        VStack(spacing: 24) {
+            // Complete Info Display Stats Section
+            CompleteInfoDisplay(pokemon: pokemon)
+            
+            // Stats Distribution
+            StatsDistribution(pokemon: pokemon)
+        }
     }
     
     private var movesContent: some View {
-        Text("Move list coming soon...")
-            .foregroundColor(.white.opacity(0.7))
-            .padding()
+        VStack(spacing: 20) {
+            Text("Move Pool")
+                .font(.system(size: 24, weight: .bold))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            // Moves Section from Day 25
+            MovesSection(moves: pokemon.moves ?? [])
+        }
     }
     
     private var evolutionContent: some View {

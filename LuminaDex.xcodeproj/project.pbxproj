@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3253D642E43023C002B742E /* PokemonForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D632E43023C002B742E /* PokemonForms.swift */; };
+		C3253D692E430274002B742E /* CelebrationAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D652E430274002B742E /* CelebrationAnimations.swift */; };
+		C3253D6A2E430274002B742E /* CompleteInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D662E430274002B742E /* CompleteInfoDisplay.swift */; };
+		C3253D6B2E430274002B742E /* WeaknessResistanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D682E430274002B742E /* WeaknessResistanceCard.swift */; };
+		C3253D6C2E430274002B742E /* FormSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D672E430274002B742E /* FormSwitcher.swift */; };
+		C3253D6E2E43263E002B742E /* ShinyPokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D6D2E43263E002B742E /* ShinyPokemonView.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -141,6 +147,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3253D632E43023C002B742E /* PokemonForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonForms.swift; sourceTree = "<group>"; };
+		C3253D652E430274002B742E /* CelebrationAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationAnimations.swift; sourceTree = "<group>"; };
+		C3253D662E430274002B742E /* CompleteInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInfoDisplay.swift; sourceTree = "<group>"; };
+		C3253D672E430274002B742E /* FormSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSwitcher.swift; sourceTree = "<group>"; };
+		C3253D682E430274002B742E /* WeaknessResistanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaknessResistanceCard.swift; sourceTree = "<group>"; };
+		C3253D6D2E43263E002B742E /* ShinyPokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShinyPokemonView.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -425,6 +437,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3253D632E43023C002B742E /* PokemonForms.swift */,
 				C3F932822E42F0BF0035999C /* DefaultsKeys.swift */,
 				C3F932832E42F0BF0035999C /* KeychainManager.swift */,
 				C3F932842E42F0BF0035999C /* PersistentViewModel.swift */,
@@ -502,6 +515,11 @@
 		C3F932992E42F10B0035999C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C3253D6D2E43263E002B742E /* ShinyPokemonView.swift */,
+				C3253D652E430274002B742E /* CelebrationAnimations.swift */,
+				C3253D662E430274002B742E /* CompleteInfoDisplay.swift */,
+				C3253D672E430274002B742E /* FormSwitcher.swift */,
+				C3253D682E430274002B742E /* WeaknessResistanceCard.swift */,
 				C3F932902E42F10B0035999C /* Loading */,
 				C3F932932E42F10B0035999C /* Shimmer */,
 				C3F932942E42F10B0035999C /* AbilityCloudView.swift */,
@@ -750,6 +768,10 @@
 				C3B9FF9C2E4038280041E5E4 /* TypeRelationshipNetwork.swift in Sources */,
 				C37525FD2E3D757100505277 /* Region.swift in Sources */,
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
+				C3253D692E430274002B742E /* CelebrationAnimations.swift in Sources */,
+				C3253D6A2E430274002B742E /* CompleteInfoDisplay.swift in Sources */,
+				C3253D6B2E430274002B742E /* WeaknessResistanceCard.swift in Sources */,
+				C3253D6C2E430274002B742E /* FormSwitcher.swift in Sources */,
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
 				C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */,
@@ -781,6 +803,7 @@
 				C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */,
 				C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */,
 				C3B9FF8B2E4002280041E5E4 /* NeuralNetworkBackground.swift in Sources */,
+				C3253D6E2E43263E002B742E /* ShinyPokemonView.swift in Sources */,
 				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
 				C3F9328D2E42F0EF0035999C /* FilterViewModel.swift in Sources */,
 				C3F9328E2E42F0EF0035999C /* FilterView.swift in Sources */,
@@ -804,6 +827,7 @@
 				C3B9FFBD2E4072150041E5E4 /* DatabaseRecords.swift in Sources */,
 				C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */,
 				C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */,
+				C3253D642E43023C002B742E /* PokemonForms.swift in Sources */,
 				C3B9FF832E3FFCE00041E5E4 /* PokemonGridCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1135,91 +1135,114 @@ struct UltimateOrbContent: View {
     let pulsePhase: Double
     let showRipple: Bool
     
+    // Helper view properties
+    private var outerEnergyField: some View {
+        Circle()
+            .fill(outerFieldGradient)
+            .frame(width: 280, height: 280)
+            .scaleEffect(1.0 + sin(animationPhase * 2.2) * 0.2)
+            .blur(radius: 30)
+            .opacity(0.8)
+    }
+    
+    private var secondaryEnergyLayer: some View {
+        Circle()
+            .fill(secondaryFieldGradient)
+            .frame(width: 220, height: 220)
+            .scaleEffect(1.0 + sin(animationPhase * 1.8 + 0.5) * 0.15)
+            .blur(radius: 20)
+            .opacity(0.6)
+    }
+    
+    private var mainOrbBody: some View {
+        ZStack {
+            // Base orb with gradient
+            Circle()
+                .fill(mainOrbGradient)
+                .frame(width: 180, height: 180)
+            
+            // Prismatic overlay
+            Circle()
+                .fill(prismaticOverlay)
+                .frame(width: 180, height: 180)
+                .blendMode(.overlay)
+            
+            // Glass reflection effect
+            Circle()
+                .fill(glassReflectionGradient)
+                .frame(width: 180, height: 180)
+            
+            // Border ring
+            Circle()
+                .stroke(borderGradient, lineWidth: 4)
+                .frame(width: 180, height: 180)
+        }
+    }
+    
+    private var searchIcon: some View {
+        ZStack {
+            // Icon glow
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 70, weight: .light))
+                .foregroundColor(Color(red: 0.42, green: 0.37, blue: 1.0).opacity(0.8))
+                .blur(radius: 8)
+                .scaleEffect(1.2)
+            
+            // Main icon
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 70, weight: .light))
+                .foregroundStyle(iconGradient)
+                .shadow(color: .black.opacity(0.5), radius: 10)
+        }
+        .scaleEffect(1.0 + sin(animationPhase * 3.5) * 0.1)
+        .rotationEffect(.degrees(sin(animationPhase * 0.8) * 3))
+    }
+    
+    private var quantumParticles: some View {
+        ForEach(0..<8, id: \.self) { index in
+            Circle()
+                .fill(particleGradient)
+                .frame(width: 8, height: 8)
+                .offset(
+                    x: cos(animationPhase * 2.8 + Double(index) * .pi / 4) * 70,
+                    y: sin(animationPhase * 2.8 + Double(index) * .pi / 4) * 70
+                )
+                .opacity(0.8 + sin(animationPhase * 3.5 + Double(index)) * 0.2)
+                .blur(radius: 2)
+                .scaleEffect(0.6 + sin(animationPhase * 2.2 + Double(index)) * 0.6)
+        }
+    }
+    
+    private var energyStreams: some View {
+        ForEach(0..<4, id: \.self) { index in
+            Rectangle()
+                .fill(streamGradient)
+                .frame(width: 60, height: 2)
+                .offset(x: 45)
+                .rotationEffect(.degrees(Double(index) * 90 + animationPhase * 120))
+                .opacity(0.7 + sin(animationPhase * 4 + Double(index)) * 0.3)
+                .blur(radius: 1)
+        }
+    }
+    
     var body: some View {
         ZStack {
-            // Outer energy field
-            Circle()
-                .fill(outerFieldGradient)
-                .frame(width: 280, height: 280)
-                .scaleEffect(1.0 + sin(animationPhase * 2.2) * 0.2)
-                .blur(radius: 30)
-                .opacity(0.8)
-            
-            // Secondary energy layer
-            Circle()
-                .fill(secondaryFieldGradient)
-                .frame(width: 220, height: 220)
-                .scaleEffect(1.0 + sin(animationPhase * 1.8 + 0.5) * 0.15)
-                .blur(radius: 20)
-                .opacity(0.6)
-            
-            // Main orb body
-            ZStack {
-                // Base orb with complex gradient
-                Circle()
-                    .fill(mainOrbGradient)
-                    .frame(width: 180, height: 180)
-                
-                // Prismatic overlay
-                Circle()
-                    .fill(prismaticOverlay)
-                    .frame(width: 180, height: 180)
-                    .blendMode(.overlay)
-                
-                // Glass reflection effect
-                Circle()
-                    .fill(glassReflectionGradient)
-                    .frame(width: 180, height: 180)
-                
-                // Border ring
-                Circle()
-                    .stroke(borderGradient, lineWidth: 4)
-                    .frame(width: 180, height: 180)
-            }
-            .shadow(color: Color(red: 0.42, green: 0.37, blue: 1.0).opacity(0.8), radius: 40, x: 0, y: 20)
-            .scaleEffect(breathingScale)
-            
-            // Search icon with quantum effects
-            ZStack {
-                // Icon glow
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 70, weight: .light))
-                    .foregroundColor(Color(red: 0.42, green: 0.37, blue: 1.0).opacity(0.8))
-                    .blur(radius: 8)
-                    .scaleEffect(1.2)
-                
-                // Main icon
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 70, weight: .light))
-                    .foregroundStyle(iconGradient)
-                    .shadow(color: .black.opacity(0.5), radius: 10)
-            }
-            .scaleEffect(1.0 + sin(animationPhase * 3.5) * 0.1)
-            .rotationEffect(.degrees(sin(animationPhase * 0.8) * 3))
-            
-            // Quantum particles orbiting the orb
-            ForEach(0..<8, id: \.self) { particleIndex in
-                Circle()
-                    .fill(particleGradient)
-                    .frame(width: 8, height: 8)
-                    .offset(
-                        x: cos(animationPhase * 2.8 + Double(particleIndex) * .pi / 4) * 70,
-                        y: sin(animationPhase * 2.8 + Double(particleIndex) * .pi / 4) * 70
-                    )
-                    .opacity(0.8 + sin(animationPhase * 3.5 + Double(particleIndex)) * 0.2)
-                    .blur(radius: 2)
-                    .scaleEffect(0.6 + sin(animationPhase * 2.2 + Double(particleIndex)) * 0.6)
+            // Background layers
+            Group {
+                outerEnergyField
+                secondaryEnergyLayer
             }
             
-            // Energy streams
-            ForEach(0..<4, id: \.self) { streamIndex in
-                Rectangle()
-                    .fill(streamGradient)
-                    .frame(width: 60, height: 2)
-                    .offset(x: 45)
-                    .rotationEffect(.degrees(Double(streamIndex) * 90 + animationPhase * 120))
-                    .opacity(0.7 + sin(animationPhase * 4 + Double(streamIndex)) * 0.3)
-                    .blur(radius: 1)
+            // Main orb
+            mainOrbBody
+                .shadow(color: Color(red: 0.42, green: 0.37, blue: 1.0).opacity(0.8), radius: 40, x: 0, y: 20)
+                .scaleEffect(breathingScale)
+            
+            // Foreground elements
+            Group {
+                searchIcon
+                quantumParticles
+                energyStreams
             }
         }
     }

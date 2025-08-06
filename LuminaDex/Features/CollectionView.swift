@@ -12,6 +12,7 @@ struct CollectionView: View {
     @Namespace private var animationNamespace
     @State private var showingFilters = false
     @State private var filterCriteria = FilterCriteria()
+    @AppStorage("shinyMode") private var globalShinyMode = false
     
     private var hasActiveFilters: Bool {
         !filterCriteria.types.isEmpty ||
@@ -49,6 +50,14 @@ struct CollectionView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
+                    // Shiny Collection Tracker
+                    if globalShinyMode {
+                        ShinyCollectionTracker(totalPokemon: viewModel.totalCount)
+                            .padding(.horizontal)
+                            .padding(.top)
+                            .transition(.move(edge: .top).combined(with: .opacity))
+                    }
+                    
                     // Header Stats
                     headerStatsView
                         .padding(.horizontal)
@@ -151,6 +160,10 @@ struct CollectionView: View {
                 .frame(width: 150)
                 
                 Spacer()
+                
+                // Sort Menu
+                // Shiny Mode Toggle
+                ShinyToggleButton(showShiny: $globalShinyMode)
                 
                 // Sort Menu
                 Menu {
