@@ -18,6 +18,14 @@
 		C3253D742E432C05002B742E /* PokeballData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D732E432C05002B742E /* PokeballData.swift */; };
 		C3253D762E432C21002B742E /* PokeballCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D752E432C21002B742E /* PokeballCollectionView.swift */; };
 		C3253D782E432F35002B742E /* PokemonCatchRateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D772E432F35002B742E /* PokemonCatchRateCard.swift */; };
+		C3253D7E2E4394E5002B742E /* MoveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D7D2E4394E5002B742E /* MoveData.swift */; };
+		C3253D802E4394F5002B742E /* PokemonPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D7F2E4394F5002B742E /* PokemonPickerView.swift */; };
+		C3253D842E439515002B742E /* MoveDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D822E439515002B742E /* MoveDetailView.swift */; };
+		C3253D852E439515002B742E /* DamageCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D812E439515002B742E /* DamageCalculatorView.swift */; };
+		C3253D862E439515002B742E /* MoveEncyclopediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D832E439515002B742E /* MoveEncyclopediaView.swift */; };
+		C3253D882E4398E3002B742E /* MoveDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D872E4398E3002B742E /* MoveDataFetcher.swift */; };
+		C3253D8A2E4398F4002B742E /* PokemonMovesDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */; };
+		C3253D8C2E439B12002B742E /* MoveTypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -163,6 +171,14 @@
 		C3253D732E432C05002B742E /* PokeballData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeballData.swift; sourceTree = "<group>"; };
 		C3253D752E432C21002B742E /* PokeballCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeballCollectionView.swift; sourceTree = "<group>"; };
 		C3253D772E432F35002B742E /* PokemonCatchRateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCatchRateCard.swift; sourceTree = "<group>"; };
+		C3253D7D2E4394E5002B742E /* MoveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveData.swift; sourceTree = "<group>"; };
+		C3253D7F2E4394F5002B742E /* PokemonPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPickerView.swift; sourceTree = "<group>"; };
+		C3253D812E439515002B742E /* DamageCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageCalculatorView.swift; sourceTree = "<group>"; };
+		C3253D822E439515002B742E /* MoveDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailView.swift; sourceTree = "<group>"; };
+		C3253D832E439515002B742E /* MoveEncyclopediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEncyclopediaView.swift; sourceTree = "<group>"; };
+		C3253D872E4398E3002B742E /* MoveDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDataFetcher.swift; sourceTree = "<group>"; };
+		C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMovesDetailSection.swift; sourceTree = "<group>"; };
+		C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTypeBadge.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -402,6 +418,9 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3253D812E439515002B742E /* DamageCalculatorView.swift */,
+				C3253D822E439515002B742E /* MoveDetailView.swift */,
+				C3253D832E439515002B742E /* MoveEncyclopediaView.swift */,
 				C3253D712E432933002B742E /* QuantumSearchView.swift */,
 				C3B9FFB42E4071FF0041E5E4 /* DataLoadingView.swift */,
 				C3B9FF8E2E40082F0041E5E4 /* ProfileView.swift */,
@@ -449,6 +468,8 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3253D872E4398E3002B742E /* MoveDataFetcher.swift */,
+				C3253D7D2E4394E5002B742E /* MoveData.swift */,
 				C3253D732E432C05002B742E /* PokeballData.swift */,
 				C3253D6F2E432929002B742E /* QuantumSearchEngine.swift */,
 				C3253D632E43023C002B742E /* PokemonForms.swift */,
@@ -529,6 +550,9 @@
 		C3F932992E42F10B0035999C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */,
+				C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */,
+				C3253D7F2E4394F5002B742E /* PokemonPickerView.swift */,
 				C3253D772E432F35002B742E /* PokemonCatchRateCard.swift */,
 				C3253D6D2E43263E002B742E /* ShinyPokemonView.swift */,
 				C3253D652E430274002B742E /* CelebrationAnimations.swift */,
@@ -794,6 +818,9 @@
 				C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */,
 				C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */,
 				C32CB5B72E418AD6001583AF /* ComparisonCard.swift in Sources */,
+				C3253D842E439515002B742E /* MoveDetailView.swift in Sources */,
+				C3253D852E439515002B742E /* DamageCalculatorView.swift in Sources */,
+				C3253D862E439515002B742E /* MoveEncyclopediaView.swift in Sources */,
 				C32CB5B92E418AD6001583AF /* SizeComparisonView.swift in Sources */,
 				C3253D762E432C21002B742E /* PokeballCollectionView.swift in Sources */,
 				C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */,
@@ -808,6 +835,8 @@
 				C3B9FF7D2E3FEA730041E5E4 /* AlakazamAssistant.swift in Sources */,
 				C37CA8FD2E3EBECB002F20DB /* DynamicIslandManager.swift in Sources */,
 				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
+				C3253D802E4394F5002B742E /* PokemonPickerView.swift in Sources */,
+				C3253D8C2E439B12002B742E /* MoveTypeBadge.swift in Sources */,
 				C3F932852E42F0BF0035999C /* KeychainManager.swift in Sources */,
 				C3F932892E42F0CF0035999C /* FilterQueries.swift in Sources */,
 				C3F932862E42F0BF0035999C /* PersistentViewModel.swift in Sources */,
@@ -815,6 +844,7 @@
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
 				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
+				C3253D8A2E4398F4002B742E /* PokemonMovesDetailSection.swift in Sources */,
 				C3B9FF812E3FFC670041E5E4 /* CollectionViewModel.swift in Sources */,
 				C3B9FF8D2E40022F0041E5E4 /* AchievementsView.swift in Sources */,
 				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,
@@ -844,7 +874,9 @@
 				C3B9FFBB2E4072150041E5E4 /* PokemonDataFetcher.swift in Sources */,
 				C3B9FFBC2E4072150041E5E4 /* ImageManager.swift in Sources */,
 				C3B9FFBD2E4072150041E5E4 /* DatabaseRecords.swift in Sources */,
+				C3253D7E2E4394E5002B742E /* MoveData.swift in Sources */,
 				C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */,
+				C3253D882E4398E3002B742E /* MoveDataFetcher.swift in Sources */,
 				C3B9FFBF2E4072150041E5E4 /* DatabaseMigrations.swift in Sources */,
 				C3253D642E43023C002B742E /* PokemonForms.swift in Sources */,
 				C3253D722E432933002B742E /* QuantumSearchView.swift in Sources */,

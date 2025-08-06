@@ -45,7 +45,7 @@ struct ComparisonView: View {
                 }
             }
             .sheet(isPresented: $showingPokemonPicker) {
-                PokemonPickerView(viewModel: viewModel, selectedSlot: selectedSlot)
+                ComparisonPokemonPickerView(viewModel: viewModel, selectedSlot: selectedSlot)
             }
         }
     }
@@ -223,7 +223,7 @@ extension StatType {
     ]
 }
 
-struct PokemonPickerView: View {
+struct ComparisonPokemonPickerView: View {
     @ObservedObject var viewModel: ComparisonViewModel
     let selectedSlot: Int
     @Environment(\.dismiss) private var dismiss

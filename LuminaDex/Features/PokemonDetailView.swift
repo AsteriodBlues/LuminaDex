@@ -1011,8 +1011,8 @@ struct PokemonDetailView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            // Moves Section from Day 25
-            MovesSection(moves: pokemon.moves ?? [])
+            // Enhanced Moves Section with PokeAPI Integration
+            PokemonMovesDetailSection(pokemonId: pokemon.id)
         }
     }
     

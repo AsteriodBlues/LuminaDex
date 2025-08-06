@@ -78,13 +78,21 @@ struct ContentView: View {
                 }
                 .tag(2)
             
+            // Move Encyclopedia
+            MoveEncyclopediaView()
+                .tabItem {
+                    Image(systemName: "bolt.fill")
+                    Text("Moves")
+                }
+                .tag(3)
+            
             // Pokeball Collection
             PokeballCollectionView()
                 .tabItem {
                     Image(systemName: "circle.circle.fill")
                     Text("Pokéballs")
                 }
-                .tag(3)
+                .tag(4)
             
             // Profile & Stats
             ProfileView()
@@ -92,7 +100,7 @@ struct ContentView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(4)
+                .tag(5)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

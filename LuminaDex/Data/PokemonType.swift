@@ -361,17 +361,75 @@ enum PokemonType: String, CaseIterable, Codable, Hashable {
     }
 }
 
+// MARK: - Type Effectiveness Extension
+extension PokemonType {
+    // Calculate effectiveness of this type against another
+    func effectiveness(against defenderType: PokemonType) -> Double {
+        // Simplified type chart
+        switch (self, defenderType) {
+        // Super effective (2x)
+        case (.fire, .grass), (.fire, .ice), (.fire, .bug), (.fire, .steel),
+             (.water, .fire), (.water, .ground), (.water, .rock),
+             (.electric, .water), (.electric, .flying),
+             (.grass, .water), (.grass, .ground), (.grass, .rock),
+             (.ice, .grass), (.ice, .ground), (.ice, .flying), (.ice, .dragon),
+             (.fighting, .normal), (.fighting, .ice), (.fighting, .rock), (.fighting, .dark), (.fighting, .steel),
+             (.poison, .grass), (.poison, .fairy),
+             (.ground, .fire), (.ground, .electric), (.ground, .poison), (.ground, .rock), (.ground, .steel),
+             (.flying, .grass), (.flying, .fighting), (.flying, .bug),
+             (.psychic, .fighting), (.psychic, .poison),
+             (.bug, .grass), (.bug, .psychic), (.bug, .dark),
+             (.rock, .fire), (.rock, .ice), (.rock, .flying), (.rock, .bug),
+             (.ghost, .psychic), (.ghost, .ghost),
+             (.dragon, .dragon),
+             (.dark, .psychic), (.dark, .ghost),
+             (.steel, .ice), (.steel, .rock), (.steel, .fairy),
+             (.fairy, .fighting), (.fairy, .dragon), (.fairy, .dark):
+            return 2.0
+            
+        // Not very effective (0.5x)
+        case (.fire, .fire), (.fire, .water), (.fire, .rock), (.fire, .dragon),
+             (.water, .water), (.water, .grass), (.water, .dragon),
+             (.electric, .electric), (.electric, .grass), (.electric, .dragon),
+             (.grass, .fire), (.grass, .grass), (.grass, .poison), (.grass, .flying), 
+             (.grass, .bug), (.grass, .dragon), (.grass, .steel),
+             (.ice, .fire), (.ice, .water), (.ice, .ice), (.ice, .steel),
+             (.fighting, .poison), (.fighting, .flying), (.fighting, .psychic), 
+             (.fighting, .bug), (.fighting, .fairy),
+             (.poison, .poison), (.poison, .ground), (.poison, .rock), (.poison, .ghost),
+             (.ground, .grass), (.ground, .bug),
+             (.flying, .electric), (.flying, .rock), (.flying, .steel),
+             (.psychic, .psychic), (.psychic, .steel),
+             (.bug, .fire), (.bug, .fighting), (.bug, .poison), (.bug, .flying), 
+             (.bug, .ghost), (.bug, .steel), (.bug, .fairy),
+             (.rock, .fighting), (.rock, .ground), (.rock, .steel),
+             (.ghost, .dark),
+             (.dragon, .steel),
+             (.dark, .fighting), (.dark, .dark), (.dark, .fairy),
+             (.steel, .fire), (.steel, .water), (.steel, .electric), (.steel, .steel),
+             (.fairy, .fire), (.fairy, .poison), (.fairy, .steel):
+            return 0.5
+            
+        // No effect (0x)
+        case (.normal, .ghost), (.electric, .ground), (.fighting, .ghost),
+             (.poison, .steel), (.ground, .flying), (.psychic, .dark),
+             (.ghost, .normal), (.dragon, .fairy):
+            return 0
+            
+        // Normal effectiveness (1x)
+        default:
+            return 1.0
+        }
+    }
+}
+
 // MARK: - Type Effectiveness Calculator
 struct TypeEffectiveness {
     static func effectiveness(attackingType: PokemonType, defendingTypes: [PokemonType]) -> Double {
         var multiplier = 1.0
         
         for defendingType in defendingTypes {
-            if attackingType.strongAgainst.contains(defendingType) {
-                multiplier *= 2.0
-            } else if attackingType.weakTo.contains(defendingType) {
-                multiplier *= 0.5
-            }
+            multiplier *= attackingType.effectiveness(against: defendingType)
         }
         
         return multiplier
@@ -381,15 +439,15 @@ struct TypeEffectiveness {
         switch multiplier {
         case 0:
             return "No Effect"
-        case 0.25:
+        case 0..<0.5:
             return "Not Very Effective"
-        case 0.5:
+        case 0.5..<1.0:
             return "Not Very Effective"
         case 1.0:
             return "Normal Damage"
-        case 2.0:
+        case 1.0..<2.0:
             return "Super Effective"
-        case 4.0:
+        case 2.0...:
             return "Super Effective"
         default:
             return "Normal Damage"

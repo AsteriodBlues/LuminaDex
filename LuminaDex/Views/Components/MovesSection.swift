@@ -95,7 +95,7 @@ struct MovesSection: View {
             ScrollView {
                 LazyVStack(spacing: 8) {
                     ForEach(filteredMoves, id: \.move.name) { move in
-                        MoveCard(
+                        MoveListCard(
                             move: move,
                             isExpanded: expandedMoves.contains(move.move.name)
                         ) {
@@ -168,7 +168,7 @@ struct MoveCategoryChip: View {
 }
 
 // MARK: - Move Card
-struct MoveCard: View {
+struct MoveListCard: View {
     let move: PokemonMove
     let isExpanded: Bool
     let onTap: () -> Void
