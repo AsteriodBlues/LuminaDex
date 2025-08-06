@@ -11,6 +11,35 @@ struct CollectionView: View {
     @StateObject private var viewModel = CollectionViewModel()
     @Namespace private var animationNamespace
     @State private var showingFilters = false
+    @State private var filterCriteria = FilterCriteria()
+    
+    private var hasActiveFilters: Bool {
+        !filterCriteria.types.isEmpty ||
+        !filterCriteria.generations.isEmpty ||
+        !filterCriteria.minStats.isEmpty ||
+        !filterCriteria.maxStats.isEmpty ||
+        filterCriteria.minHeight != nil ||
+        filterCriteria.maxHeight != nil ||
+        filterCriteria.minWeight != nil ||
+        filterCriteria.maxWeight != nil ||
+        filterCriteria.isLegendary != nil ||
+        filterCriteria.isMythical != nil ||
+        filterCriteria.isBaby != nil ||
+        !filterCriteria.abilities.isEmpty
+    }
+    
+    private var activeFilterCount: Int {
+        var count = 0
+        if !filterCriteria.types.isEmpty { count += 1 }
+        if !filterCriteria.generations.isEmpty { count += 1 }
+        if !filterCriteria.minStats.isEmpty || !filterCriteria.maxStats.isEmpty { count += 1 }
+        if filterCriteria.minHeight != nil || filterCriteria.maxHeight != nil ||
+           filterCriteria.minWeight != nil || filterCriteria.maxWeight != nil { count += 1 }
+        if filterCriteria.isLegendary != nil || filterCriteria.isMythical != nil || 
+           filterCriteria.isBaby != nil { count += 1 }
+        if !filterCriteria.abilities.isEmpty { count += 1 }
+        return count
+    }
     
     var body: some View {
         NavigationView {
@@ -64,6 +93,18 @@ struct CollectionView: View {
         }
         .sheet(isPresented: $viewModel.showAchievements) {
             AchievementsView(viewModel: viewModel)
+        }
+        .sheet(isPresented: $showingFilters) {
+            FilterView(
+                isPresented: $showingFilters,
+                initialCriteria: filterCriteria
+            ) { newCriteria in
+                filterCriteria = newCriteria
+                viewModel.applyFilterCriteria(newCriteria)
+            }
+        }
+        .onChange(of: filterCriteria) { _ in
+            viewModel.applyFilterCriteria(filterCriteria)
         }
     }
     
@@ -131,6 +172,32 @@ struct CollectionView: View {
             // Filter Chips
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
+                    // Advanced Filter Button
+                    Button(action: { showingFilters = true }) {
+                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle.fill")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(hasActiveFilters ? .white : .primary)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(
+                                hasActiveFilters ? Color.blue : Color.gray.opacity(0.2)
+                            )
+                            .cornerRadius(20)
+                            .overlay(
+                                hasActiveFilters ? 
+                                    Text("\(activeFilterCount)")
+                                        .font(.caption2)
+                                        .foregroundColor(.white)
+                                        .padding(4)
+                                        .background(Circle().fill(Color.red))
+                                        .offset(x: 10, y: -10)
+                                : nil
+                            )
+                    }
+                    
+                    Divider()
+                        .frame(height: 20)
+                    
                     // Favorites Toggle
                     FilterChip(
                         title: "Favorites",

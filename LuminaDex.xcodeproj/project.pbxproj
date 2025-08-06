@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
+		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
+		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
+		C32CB5B72E418AD6001583AF /* ComparisonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A22E418AD6001583AF /* ComparisonCard.swift */; };
+		C32CB5B92E418AD6001583AF /* SizeComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A62E418AD6001583AF /* SizeComparisonView.swift */; };
+		C32CB5BE2E418AF4001583AF /* ComparisonQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5BB2E418AF4001583AF /* ComparisonQueries.swift */; };
 		C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A52E3E9488000BE42C /* TypeFlow.swift */; };
 		C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */; };
 		C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36019A42E3E9488000BE42C /* StarFieldView.swift */; };
@@ -88,6 +94,20 @@
 		C3B9FFF72E40736D0041E5E4 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFF62E40736D0041E5E4 /* PulseUI */; };
 		C3B9FFFD2E40736D0041E5E4 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFFC2E40736D0041E5E4 /* CachedAsyncImage */; };
 		C3B9FFFF2E40736D0041E5E4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B9FFFE2E40736D0041E5E4 /* DGCharts */; };
+		C3F932852E42F0BF0035999C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932832E42F0BF0035999C /* KeychainManager.swift */; };
+		C3F932862E42F0BF0035999C /* PersistentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932842E42F0BF0035999C /* PersistentViewModel.swift */; };
+		C3F932872E42F0BF0035999C /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932822E42F0BF0035999C /* DefaultsKeys.swift */; };
+		C3F932892E42F0CF0035999C /* FilterQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932882E42F0CF0035999C /* FilterQueries.swift */; };
+		C3F9328D2E42F0EF0035999C /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9328B2E42F0EF0035999C /* FilterViewModel.swift */; };
+		C3F9328E2E42F0EF0035999C /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9328A2E42F0EF0035999C /* FilterView.swift */; };
+		C3F9329A2E42F10B0035999C /* TypeBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932982E42F10B0035999C /* TypeBadgeView.swift */; };
+		C3F9329B2E42F10B0035999C /* MovesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932972E42F10B0035999C /* MovesSection.swift */; };
+		C3F9329C2E42F10B0035999C /* ShimmerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932922E42F10B0035999C /* ShimmerModifier.swift */; };
+		C3F9329D2E42F10B0035999C /* PokemonCardShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932912E42F10B0035999C /* PokemonCardShimmer.swift */; };
+		C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932942E42F10B0035999C /* AbilityCloudView.swift */; };
+		C3F9329F2E42F10B0035999C /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932962E42F10B0035999C /* FilterModal.swift */; };
+		C3F932A02E42F10B0035999C /* TypedActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9328F2E42F10B0035999C /* TypedActivityIndicator.swift */; };
+		C3F932A12E42F10B0035999C /* EnhancedSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F932952E42F10B0035999C /* EnhancedSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +141,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
+		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
+		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
+		C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonViewModel.swift; sourceTree = "<group>"; };
+		C32CB5A62E418AD6001583AF /* SizeComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonView.swift; sourceTree = "<group>"; };
+		C32CB5BB2E418AF4001583AF /* ComparisonQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonQueries.swift; sourceTree = "<group>"; };
 		C36019A12E3E9488000BE42C /* NeuralFlowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralFlowMapView.swift; sourceTree = "<group>"; };
 		C36019A22E3E9488000BE42C /* RegionBubbleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBubbleCard.swift; sourceTree = "<group>"; };
 		C36019A32E3E9488000BE42C /* RegionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionNode.swift; sourceTree = "<group>"; };
@@ -177,6 +203,20 @@
 		C3B9FFB82E4072150041E5E4 /* DatabaseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRecords.swift; sourceTree = "<group>"; };
 		C3B9FFB92E4072150041E5E4 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		C3B9FFBA2E4072150041E5E4 /* PokemonDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDataFetcher.swift; sourceTree = "<group>"; };
+		C3F932822E42F0BF0035999C /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		C3F932832E42F0BF0035999C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		C3F932842E42F0BF0035999C /* PersistentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentViewModel.swift; sourceTree = "<group>"; };
+		C3F932882E42F0CF0035999C /* FilterQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterQueries.swift; sourceTree = "<group>"; };
+		C3F9328A2E42F0EF0035999C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		C3F9328B2E42F0EF0035999C /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		C3F9328F2E42F10B0035999C /* TypedActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedActivityIndicator.swift; sourceTree = "<group>"; };
+		C3F932912E42F10B0035999C /* PokemonCardShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardShimmer.swift; sourceTree = "<group>"; };
+		C3F932922E42F10B0035999C /* ShimmerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerModifier.swift; sourceTree = "<group>"; };
+		C3F932942E42F10B0035999C /* AbilityCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityCloudView.swift; sourceTree = "<group>"; };
+		C3F932952E42F10B0035999C /* EnhancedSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedSearchBar.swift; sourceTree = "<group>"; };
+		C3F932962E42F10B0035999C /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
+		C3F932972E42F10B0035999C /* MovesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesSection.swift; sourceTree = "<group>"; };
+		C3F932982E42F10B0035999C /* TypeBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -245,6 +285,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C32CB5A72E418AD6001583AF /* Comparison */ = {
+			isa = PBXGroup;
+			children = (
+				C32CB5A22E418AD6001583AF /* ComparisonCard.swift */,
+				C32CB5A32E418AD6001583AF /* ComparisonChart.swift */,
+				C32CB5A42E418AD6001583AF /* ComparisonView.swift */,
+				C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */,
+				C32CB5A62E418AD6001583AF /* SizeComparisonView.swift */,
+			);
+			path = Comparison;
+			sourceTree = "<group>";
+		};
+		C32CB5B02E418AD6001583AF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3F932992E42F10B0035999C /* Components */,
+				C3F9328C2E42F0EF0035999C /* Filter */,
+				C32CB5A72E418AD6001583AF /* Comparison */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C32CB5BC2E418AF4001583AF /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				C3F932882E42F0CF0035999C /* FilterQueries.swift */,
+				C32CB5BB2E418AF4001583AF /* ComparisonQueries.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		C32CB5BD2E418AF4001583AF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				C32CB5BC2E418AF4001583AF /* Queries */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		C37525A92E3D5E9500505277 = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +356,8 @@
 		C37525E52E3D61A200505277 /* LuminaDex */ = {
 			isa = PBXGroup;
 			children = (
+				C32CB5BD2E418AF4001583AF /* Database */,
+				C32CB5B02E418AD6001583AF /* Views */,
 				C37525ED2E3D61D100505277 /* Resources */,
 				C37525EC2E3D61CD00505277 /* Data */,
 				C37525EB2E3D61C300505277 /* Design */,
@@ -344,6 +425,9 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3F932822E42F0BF0035999C /* DefaultsKeys.swift */,
+				C3F932832E42F0BF0035999C /* KeychainManager.swift */,
+				C3F932842E42F0BF0035999C /* PersistentViewModel.swift */,
 				C3B9FFB62E4072150041E5E4 /* DatabaseManager.swift */,
 				C3B9FFB72E4072150041E5E4 /* DatabaseMigrations.swift */,
 				C3B9FFB82E4072150041E5E4 /* DatabaseRecords.swift */,
@@ -387,6 +471,46 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3F9328C2E42F0EF0035999C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				C3F9328A2E42F0EF0035999C /* FilterView.swift */,
+				C3F9328B2E42F0EF0035999C /* FilterViewModel.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		C3F932902E42F10B0035999C /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				C3F9328F2E42F10B0035999C /* TypedActivityIndicator.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		C3F932932E42F10B0035999C /* Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				C3F932912E42F10B0035999C /* PokemonCardShimmer.swift */,
+				C3F932922E42F10B0035999C /* ShimmerModifier.swift */,
+			);
+			path = Shimmer;
+			sourceTree = "<group>";
+		};
+		C3F932992E42F10B0035999C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C3F932902E42F10B0035999C /* Loading */,
+				C3F932932E42F10B0035999C /* Shimmer */,
+				C3F932942E42F10B0035999C /* AbilityCloudView.swift */,
+				C3F932952E42F10B0035999C /* EnhancedSearchBar.swift */,
+				C3F932962E42F10B0035999C /* FilterModal.swift */,
+				C3F932972E42F10B0035999C /* MovesSection.swift */,
+				C3F932982E42F10B0035999C /* TypeBadgeView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,6 +735,14 @@
 			files = (
 				C37525E72E3D61A200505277 /* LuminaDexApp.swift in Sources */,
 				C37525F92E3D73A000505277 /* Pokemon.swift in Sources */,
+				C3F9329A2E42F10B0035999C /* TypeBadgeView.swift in Sources */,
+				C3F9329B2E42F10B0035999C /* MovesSection.swift in Sources */,
+				C3F9329C2E42F10B0035999C /* ShimmerModifier.swift in Sources */,
+				C3F9329D2E42F10B0035999C /* PokemonCardShimmer.swift in Sources */,
+				C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */,
+				C3F9329F2E42F10B0035999C /* FilterModal.swift in Sources */,
+				C3F932A02E42F10B0035999C /* TypedActivityIndicator.swift in Sources */,
+				C3F932A12E42F10B0035999C /* EnhancedSearchBar.swift in Sources */,
 				C37525FB2E3D74B100505277 /* PokemonType.swift in Sources */,
 				C3B9FF872E3FFD470041E5E4 /* CollectionComponents.swift in Sources */,
 				C3B9FF852E3FFCFA0041E5E4 /* PokemonListCard.swift in Sources */,
@@ -620,6 +752,11 @@
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
+				C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */,
+				C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */,
+				C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */,
+				C32CB5B72E418AD6001583AF /* ComparisonCard.swift in Sources */,
+				C32CB5B92E418AD6001583AF /* SizeComparisonView.swift in Sources */,
 				C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */,
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
 				C37CA9012E3EE5B3002F20DB /* MetalDNAHelixView.swift in Sources */,
@@ -631,6 +768,10 @@
 				C3B9FF7D2E3FEA730041E5E4 /* AlakazamAssistant.swift in Sources */,
 				C37CA8FD2E3EBECB002F20DB /* DynamicIslandManager.swift in Sources */,
 				C36019AA2E3E9488000BE42C /* RegionBubbleCard.swift in Sources */,
+				C3F932852E42F0BF0035999C /* KeychainManager.swift in Sources */,
+				C3F932892E42F0CF0035999C /* FilterQueries.swift in Sources */,
+				C3F932862E42F0BF0035999C /* PersistentViewModel.swift in Sources */,
+				C3F932872E42F0BF0035999C /* DefaultsKeys.swift in Sources */,
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
 				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
@@ -641,11 +782,14 @@
 				C3B9FF792E3FD07C0041E5E4 /* TypeEffectivenessView.swift in Sources */,
 				C3B9FF8B2E4002280041E5E4 /* NeuralNetworkBackground.swift in Sources */,
 				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
+				C3F9328D2E42F0EF0035999C /* FilterViewModel.swift in Sources */,
+				C3F9328E2E42F0EF0035999C /* FilterView.swift in Sources */,
 				C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */,
 				C3B9FF7F2E3FFBCA0041E5E4 /* CollectionView.swift in Sources */,
 				C3B9FFB52E4071FF0041E5E4 /* DataLoadingView.swift in Sources */,
 				C36019AB2E3E9489000BE42C /* MapSprite.swift in Sources */,
 				C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */,
+				C32CB5BE2E418AF4001583AF /* ComparisonQueries.swift in Sources */,
 				C37CA8FA2E3EB6A2002F20DB /* LegendaryGuardians.swift in Sources */,
 				C3B9FF8F2E40082F0041E5E4 /* ProfileView.swift in Sources */,
 				C3B9FFA02E4040930041E5E4 /* EvolutionPerformanceManager.swift in Sources */,

@@ -23,9 +23,11 @@ class CollectionViewModel: ObservableObject {
     @Published var sortOption: SortOption = .number
     @Published var achievements: [Achievement] = []
     @Published var isLoading: Bool = false
+    @Published var currentFilterCriteria: FilterCriteria = FilterCriteria()
     
     // MARK: - Private Properties
     private var cancellables = Set<AnyCancellable>()
+    private let database = DatabaseManager.shared
     
     // MARK: - Computed Properties
     var caughtCount: Int {
@@ -85,7 +87,6 @@ class CollectionViewModel: ObservableObject {
     private func loadPokemonFromDatabase() async {
         do {
             // Get Pokemon from the database
-            let database = DatabaseManager.shared
             let pokemonRecords = try await database.databaseQueue.read { db in
                 try PokemonRecord.fetchAll(db)
             }
@@ -172,6 +173,29 @@ class CollectionViewModel: ObservableObject {
         ]
     }
     
+    // MARK: - Filter Criteria
+    func applyFilterCriteria(_ criteria: FilterCriteria) {
+        currentFilterCriteria = criteria
+        
+        Task {
+            isLoading = true
+            do {
+                // Use the database filter queries
+                let filteredResults = try await database.fetchFilteredPokemon(criteria: criteria)
+                
+                await MainActor.run {
+                    self.filteredPokemon = filteredResults.sorted(by: { applySortingComparison($0, $1) })
+                    isLoading = false
+                }
+            } catch {
+                print("Error applying filters: \(error)")
+                // Fallback to basic filtering
+                filterPokemon()
+                isLoading = false
+            }
+        }
+    }
+    
     // MARK: - Filtering & Sorting
     func filterPokemon() {
         var filtered = pokemon
@@ -209,25 +233,23 @@ class CollectionViewModel: ObservableObject {
     }
     
     private func applySorting(to pokemon: [Pokemon]) -> [Pokemon] {
+        return pokemon.sorted { applySortingComparison($0, $1) }
+    }
+    
+    private func applySortingComparison(_ pokemon1: Pokemon, _ pokemon2: Pokemon) -> Bool {
         switch sortOption {
         case .number:
-            return pokemon.sorted { $0.id < $1.id }
+            return pokemon1.id < pokemon2.id
         case .name:
-            return pokemon.sorted { $0.name < $1.name }
+            return pokemon1.name < pokemon2.name
         case .type:
-            return pokemon.sorted { $0.primaryType.rawValue < $1.primaryType.rawValue }
+            return pokemon1.primaryType.rawValue < pokemon2.primaryType.rawValue
         case .stats:
-            return pokemon.sorted { (pokemon1, pokemon2) in
-                return pokemon1.collectionStats.total > pokemon2.collectionStats.total
-            }
+            return pokemon1.collectionStats.total > pokemon2.collectionStats.total
         case .favorites:
-            return pokemon.sorted { (pokemon1, pokemon2) in
-                return pokemon1.isFavorite && !pokemon2.isFavorite
-            }
+            return pokemon1.isFavorite && !pokemon2.isFavorite
         case .caught:
-            return pokemon.sorted { (pokemon1, pokemon2) in
-                return pokemon1.isCaught && !pokemon2.isCaught
-            }
+            return pokemon1.isCaught && !pokemon2.isCaught
         }
     }
     
