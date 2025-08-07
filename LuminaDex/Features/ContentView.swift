@@ -118,13 +118,21 @@ struct ContentView: View {
                 }
                 .tag(7)
             
+            // Achievements
+            EnhancedAchievementsView()
+                .tabItem {
+                    Image(systemName: "trophy.fill")
+                    Text("Achievements")
+                }
+                .tag(8)
+            
             // Profile & Stats
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(8)
+                .tag(9)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

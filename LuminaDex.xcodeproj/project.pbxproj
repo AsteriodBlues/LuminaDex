@@ -48,6 +48,11 @@
 		C3253DF32E443912002B742E /* EnhancedDNAHelixViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */; };
 		C3253DF42E443912002B742E /* DNAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DEF2E443912002B742E /* DNAViewModel.swift */; };
 		C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF12E443912002B742E /* UltraDNAHelixView.swift */; };
+		C3253DF72E4465BB002B742E /* AchievementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF62E4465BB002B742E /* AchievementSystem.swift */; };
+		C3253DF92E4465C8002B742E /* EnhancedAchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF82E4465C8002B742E /* EnhancedAchievementsView.swift */; };
+		C3253DFB2E4465D8002B742E /* AchievementNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DFA2E4465D8002B742E /* AchievementNotification.swift */; };
+		C3253DFE2E4465F5002B742E /* AchievementTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DFC2E4465F5002B742E /* AchievementTracker.swift */; };
+		C3253E002E446CA0002B742E /* AchievementNotificationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DFF2E446CA0002B742E /* AchievementNotificationOverlay.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -223,6 +228,11 @@
 		C3253DEF2E443912002B742E /* DNAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAViewModel.swift; sourceTree = "<group>"; };
 		C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedDNAHelixViewer.swift; sourceTree = "<group>"; };
 		C3253DF12E443912002B742E /* UltraDNAHelixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltraDNAHelixView.swift; sourceTree = "<group>"; };
+		C3253DF62E4465BB002B742E /* AchievementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSystem.swift; sourceTree = "<group>"; };
+		C3253DF82E4465C8002B742E /* EnhancedAchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedAchievementsView.swift; sourceTree = "<group>"; };
+		C3253DFA2E4465D8002B742E /* AchievementNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNotification.swift; sourceTree = "<group>"; };
+		C3253DFC2E4465F5002B742E /* AchievementTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTracker.swift; sourceTree = "<group>"; };
+		C3253DFF2E446CA0002B742E /* AchievementNotificationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNotificationOverlay.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -367,6 +377,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3253DFD2E4465F5002B742E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C3253DFC2E4465F5002B742E /* AchievementTracker.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C32CB5A72E418AD6001583AF /* Comparison */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +457,7 @@
 		C37525E52E3D61A200505277 /* LuminaDex */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DFD2E4465F5002B742E /* Services */,
 				C3253DEC2E443813002B742E /* AdvancedDNAShaders.metal */,
 				C32CB5BD2E418AF4001583AF /* Database */,
 				C32CB5B02E418AD6001583AF /* Views */,
@@ -463,6 +482,7 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DF82E4465C8002B742E /* EnhancedAchievementsView.swift */,
 				C3253DEE2E443912002B742E /* Advanced3DDNAHelixView.swift */,
 				C3253DEF2E443912002B742E /* DNAViewModel.swift */,
 				C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */,
@@ -524,6 +544,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DF62E4465BB002B742E /* AchievementSystem.swift */,
 				C3253DC52E43E506002B742E /* CharacterData.swift */,
 				C3253DC62E43E506002B742E /* GymBadgeData.swift */,
 				C3253DBF2E43DF19002B742E /* BerryFetcher.swift */,
@@ -616,6 +637,8 @@
 		C3F932992E42F10B0035999C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DFF2E446CA0002B742E /* AchievementNotificationOverlay.swift */,
+				C3253DFA2E4465D8002B742E /* AchievementNotification.swift */,
 				C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */,
 				C3253D892E4398F4002B742E /* PokemonMovesDetailSection.swift */,
 				C3253D7F2E4394F5002B742E /* PokemonPickerView.swift */,
@@ -864,6 +887,7 @@
 				C3F9329D2E42F10B0035999C /* PokemonCardShimmer.swift in Sources */,
 				C3253DF22E443912002B742E /* Advanced3DDNAHelixView.swift in Sources */,
 				C3253DF32E443912002B742E /* EnhancedDNAHelixViewer.swift in Sources */,
+				C3253DFB2E4465D8002B742E /* AchievementNotification.swift in Sources */,
 				C3253DF42E443912002B742E /* DNAViewModel.swift in Sources */,
 				C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */,
 				C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */,
@@ -876,6 +900,7 @@
 				C3B9FF852E3FFCFA0041E5E4 /* PokemonListCard.swift in Sources */,
 				C37525FF2E3D75A200505277 /* Stats.swift in Sources */,
 				C3B9FF9C2E4038280041E5E4 /* TypeRelationshipNetwork.swift in Sources */,
+				C3253DF92E4465C8002B742E /* EnhancedAchievementsView.swift in Sources */,
 				C37525FD2E3D757100505277 /* Region.swift in Sources */,
 				C37526032E3D771200505277 /* PokemonRepository.swift in Sources */,
 				C3253D692E430274002B742E /* CelebrationAnimations.swift in Sources */,
@@ -890,6 +915,7 @@
 				C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */,
 				C32CB5B72E418AD6001583AF /* ComparisonCard.swift in Sources */,
 				C3253D842E439515002B742E /* MoveDetailView.swift in Sources */,
+				C3253DFE2E4465F5002B742E /* AchievementTracker.swift in Sources */,
 				C3253D852E439515002B742E /* DamageCalculatorView.swift in Sources */,
 				C3253D862E439515002B742E /* MoveEncyclopediaView.swift in Sources */,
 				C32CB5B92E418AD6001583AF /* SizeComparisonView.swift in Sources */,
@@ -956,9 +982,11 @@
 				A1000001E44000000000001 /* NatureData.swift in Sources */,
 				C3253DED2E443813002B742E /* AdvancedDNAShaders.metal in Sources */,
 				A1000003E44000000000001 /* AbilityData.swift in Sources */,
+				C3253DF72E4465BB002B742E /* AchievementSystem.swift in Sources */,
 				A1000005E44000000000001 /* EVIVData.swift in Sources */,
 				A1000007E44000000000001 /* BreedingData.swift in Sources */,
 				A1000009E44000000000001 /* BerryData.swift in Sources */,
+				C3253E002E446CA0002B742E /* AchievementNotificationOverlay.swift in Sources */,
 				A1000011E44000000000001 /* ItemData.swift in Sources */,
 				C3253DD42E43E9D9002B742E /* CharacterDetailView.swift in Sources */,
 				A1000013E44000000000001 /* ComprehensiveFetcher.swift in Sources */,
