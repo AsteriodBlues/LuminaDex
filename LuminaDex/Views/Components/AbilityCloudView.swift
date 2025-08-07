@@ -13,9 +13,6 @@ struct AbilityCloudView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Abilities")
-                .font(.headline)
-                .foregroundColor(.primary)
             
             AbilityFlowLayout(spacing: 8) {
                 ForEach(0..<abilities.count, id: \.self) { index in
@@ -105,61 +102,75 @@ struct AbilityChip: View {
 // MARK: - Ability Detail View
 struct AbilityDetailView: View {
     let abilitySlot: PokemonAbilitySlot
-    @State private var abilityDescription = "Loading..."
+    private let abilityInfo: AbilityInfo
+    
+    init(abilitySlot: PokemonAbilitySlot) {
+        self.abilitySlot = abilitySlot
+        self.abilityInfo = AbilityDatabase.shared.getAbilityInfo(for: abilitySlot.ability.name)
+    }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
+            // Header
             HStack {
-                Text(abilitySlot.ability.displayName)
-                    .font(.headline)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(abilityInfo.name)
+                        .font(.headline)
+                    
+                    if abilitySlot.isHidden {
+                        Label("Hidden Ability", systemImage: "eye.slash.fill")
+                            .font(.caption)
+                            .foregroundColor(.purple)
+                    } else if abilitySlot.slot == 1 {
+                        Label("Primary Ability", systemImage: "star.fill")
+                            .font(.caption)
+                            .foregroundColor(.orange)
+                    }
+                }
                 
                 Spacer()
-                
-                if abilitySlot.isHidden {
-                    Label("Hidden", systemImage: "eye.slash.fill")
-                        .font(.caption)
-                        .foregroundColor(.purple)
-                }
             }
             
-            Text(abilityDescription)
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+            Divider()
             
-            if abilitySlot.slot == 1 {
-                Label("Primary Ability", systemImage: "star.fill")
-                    .font(.caption2)
-                    .foregroundColor(.orange)
+            // Description
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Description")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .textCase(.uppercase)
+                
+                Text(abilityInfo.description)
+                    .font(.subheadline)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            
+            // Effect
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Battle Effect")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .textCase(.uppercase)
+                
+                HStack(spacing: 8) {
+                    Image(systemName: "bolt.fill")
+                        .font(.caption)
+                        .foregroundColor(.yellow)
+                    
+                    Text(abilityInfo.effect)
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundColor(.primary)
+                }
+                .padding(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.yellow.opacity(0.1))
+                )
             }
         }
         .padding()
-        .onAppear {
-            loadAbilityDescription()
-        }
-    }
-    
-    private func loadAbilityDescription() {
-        // In a real app, this would fetch from the database
-        abilityDescription = getAbilityDescription(abilitySlot.ability.name)
-    }
-    
-    private func getAbilityDescription(_ name: String) -> String {
-        // Sample descriptions for common abilities
-        switch name {
-        case "overgrow":
-            return "Powers up Grass-type moves when the Pokémon's HP is low."
-        case "blaze":
-            return "Powers up Fire-type moves when the Pokémon's HP is low."
-        case "torrent":
-            return "Powers up Water-type moves when the Pokémon's HP is low."
-        case "chlorophyll":
-            return "Boosts the Pokémon's Speed stat in harsh sunlight."
-        case "solar-power":
-            return "In harsh sunlight, the Pokémon's Sp. Atk stat is boosted, but its HP decreases every turn."
-        default:
-            return "A unique ability that affects battle performance."
-        }
+        .frame(width: 280)
     }
 }
 
