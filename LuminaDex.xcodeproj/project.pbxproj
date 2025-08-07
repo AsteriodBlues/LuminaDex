@@ -43,6 +43,11 @@
 		C3253DCF2E43E522002B742E /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DCA2E43E522002B742E /* CharacterListView.swift */; };
 		C3253DD02E43E522002B742E /* GymBadgeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */; };
 		C3253DD42E43E9D9002B742E /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */; };
+		C3253DED2E443813002B742E /* AdvancedDNAShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C3253DEC2E443813002B742E /* AdvancedDNAShaders.metal */; };
+		C3253DF22E443912002B742E /* Advanced3DDNAHelixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DEE2E443912002B742E /* Advanced3DDNAHelixView.swift */; };
+		C3253DF32E443912002B742E /* EnhancedDNAHelixViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */; };
+		C3253DF42E443912002B742E /* DNAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DEF2E443912002B742E /* DNAViewModel.swift */; };
+		C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3253DF12E443912002B742E /* UltraDNAHelixView.swift */; };
 		C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A52E418AD6001583AF /* ComparisonViewModel.swift */; };
 		C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A32E418AD6001583AF /* ComparisonChart.swift */; };
 		C32CB5B62E418AD6001583AF /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CB5A42E418AD6001583AF /* ComparisonView.swift */; };
@@ -213,6 +218,11 @@
 		C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBadgeDetailView.swift; sourceTree = "<group>"; };
 		C3253DCC2E43E522002B742E /* GymBadgeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBadgeListView.swift; sourceTree = "<group>"; };
 		C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		C3253DEC2E443813002B742E /* AdvancedDNAShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AdvancedDNAShaders.metal; sourceTree = "<group>"; };
+		C3253DEE2E443912002B742E /* Advanced3DDNAHelixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advanced3DDNAHelixView.swift; sourceTree = "<group>"; };
+		C3253DEF2E443912002B742E /* DNAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAViewModel.swift; sourceTree = "<group>"; };
+		C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedDNAHelixViewer.swift; sourceTree = "<group>"; };
+		C3253DF12E443912002B742E /* UltraDNAHelixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltraDNAHelixView.swift; sourceTree = "<group>"; };
 		C32CB5A22E418AD6001583AF /* ComparisonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonCard.swift; sourceTree = "<group>"; };
 		C32CB5A32E418AD6001583AF /* ComparisonChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChart.swift; sourceTree = "<group>"; };
 		C32CB5A42E418AD6001583AF /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -429,6 +439,7 @@
 		C37525E52E3D61A200505277 /* LuminaDex */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DEC2E443813002B742E /* AdvancedDNAShaders.metal */,
 				C32CB5BD2E418AF4001583AF /* Database */,
 				C32CB5B02E418AD6001583AF /* Views */,
 				C37525ED2E3D61D100505277 /* Resources */,
@@ -452,6 +463,10 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3253DEE2E443912002B742E /* Advanced3DDNAHelixView.swift */,
+				C3253DEF2E443912002B742E /* DNAViewModel.swift */,
+				C3253DF02E443912002B742E /* EnhancedDNAHelixViewer.swift */,
+				C3253DF12E443912002B742E /* UltraDNAHelixView.swift */,
 				C3253DD32E43E9D9002B742E /* CharacterDetailView.swift */,
 				C3253DCA2E43E522002B742E /* CharacterListView.swift */,
 				C3253DCB2E43E522002B742E /* GymBadgeDetailView.swift */,
@@ -847,6 +862,10 @@
 				C3F9329B2E42F10B0035999C /* MovesSection.swift in Sources */,
 				C3F9329C2E42F10B0035999C /* ShimmerModifier.swift in Sources */,
 				C3F9329D2E42F10B0035999C /* PokemonCardShimmer.swift in Sources */,
+				C3253DF22E443912002B742E /* Advanced3DDNAHelixView.swift in Sources */,
+				C3253DF32E443912002B742E /* EnhancedDNAHelixViewer.swift in Sources */,
+				C3253DF42E443912002B742E /* DNAViewModel.swift in Sources */,
+				C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */,
 				C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */,
 				C3F9329F2E42F10B0035999C /* FilterModal.swift in Sources */,
 				C3253D782E432F35002B742E /* PokemonCatchRateCard.swift in Sources */,
@@ -935,6 +954,7 @@
 				C3B9FFBE2E4072150041E5E4 /* DatabaseManager.swift in Sources */,
 				C3253D882E4398E3002B742E /* MoveDataFetcher.swift in Sources */,
 				A1000001E44000000000001 /* NatureData.swift in Sources */,
+				C3253DED2E443813002B742E /* AdvancedDNAShaders.metal in Sources */,
 				A1000003E44000000000001 /* AbilityData.swift in Sources */,
 				A1000005E44000000000001 /* EVIVData.swift in Sources */,
 				A1000007E44000000000001 /* BreedingData.swift in Sources */,

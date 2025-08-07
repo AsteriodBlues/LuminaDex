@@ -9,6 +9,41 @@ import SwiftUI
 import SceneKit
 import SpriteKit
 
+// MARK: - UIColor Extensions for Color Blending
+extension UIColor {
+    static func blend(color1: UIColor, color2: UIColor, ratio: CGFloat) -> UIColor {
+        let ratio = max(0, min(1, ratio))
+        
+        var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 0
+        var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0
+        
+        color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+        
+        return UIColor(
+            red: r1 * ratio + r2 * (1 - ratio),
+            green: g1 * ratio + g2 * (1 - ratio),
+            blue: b1 * ratio + b2 * (1 - ratio),
+            alpha: a1 * ratio + a2 * (1 - ratio)
+        )
+    }
+}
+
+extension Color {
+    func adjustedHue(by amount: Double) -> Color {
+        let uiColor = UIColor(self)
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        
+        let newHue = (hue + CGFloat(amount)).truncatingRemainder(dividingBy: 1.0)
+        return Color(UIColor(hue: newHue, saturation: saturation, brightness: brightness, alpha: alpha))
+    }
+}
+
 struct UltraDNAHelixView: View {
     let pokemon: Pokemon
     
@@ -568,12 +603,12 @@ struct DNA3DSceneView: UIViewRepresentable {
         let dnaNode = SCNNode()
         dnaNode.name = "dna"
         
-        // Vary helix parameters based on Pokemon
-        let helixHeight: CGFloat = 8
-        let helixRadius: CGFloat = 1.0 + CGFloat(pokemon.height) / 50.0  // Vary by height
-        let segments = 100 + (pokemon.id % 50)  // Unique segment count
-        let basePairs = 20 + (pokemon.weight % 20)  // Vary base pairs by weight
-        let twists = 2.0 + Double(pokemon.id % 3)  // 2-4 twists based on ID
+        // Vary helix parameters MORE dramatically based on Pokemon
+        let helixHeight: CGFloat = 6.0 + CGFloat(pokemon.height) / 20.0  // 6-12 based on height
+        let helixRadius: CGFloat = 0.8 + CGFloat(pokemon.weight) / 200.0  // 0.8-2.5 based on weight
+        let segments = 80 + (pokemon.id % 100)  // 80-180 segments
+        let basePairs = 10 + (pokemon.stats.reduce(0) { $0 + $1.baseStat } % 30)  // 10-40 base pairs
+        let twists = 1.5 + Double(pokemon.id % 5)  // 1.5-5.5 twists based on ID
         
         // Create double helix strands with Pokemon-specific pattern
         for i in 0..<segments {
@@ -581,16 +616,37 @@ struct DNA3DSceneView: UIViewRepresentable {
             let angle = t * CGFloat.pi * CGFloat(twists * 2) // Variable twists
             let y = (t - 0.5) * helixHeight
             
-            // Add unique wobble based on Pokemon stats
+            // Add unique wobble based on Pokemon stats - MORE dramatic
             let statModifier = CGFloat(pokemon.stats[i % pokemon.stats.count].baseStat) / 255.0
-            let wobble = sin(t * CGFloat.pi * 4) * statModifier * 0.1
+            let wobble = sin(t * CGFloat.pi * 4) * statModifier * 0.3  // Increased from 0.1
             
-            // First strand with size variation
-            let sphereSize = 0.08 + statModifier * 0.04
+            // First strand with MORE size variation and VIBRANT colors
+            let sphereSize = 0.06 + statModifier * 0.08  // Bigger range: 0.06-0.14
             let sphere1 = SCNSphere(radius: sphereSize)
-            sphere1.firstMaterial?.diffuse.contents = pokemon.primaryType.color
-            sphere1.firstMaterial?.emission.contents = pokemon.primaryType.color
-            sphere1.firstMaterial?.emission.intensity = 0.2 + statModifier * 0.3
+            
+            // Create gradient color based on position and stats
+            let hue = Double(i) / Double(segments) + Double(pokemon.id % 100) / 100.0
+            let saturation = 0.7 + statModifier * 0.3
+            let brightness = 0.8 + statModifier * 0.2
+            let gradientColor = UIColor(hue: hue.truncatingRemainder(dividingBy: 1.0), 
+                                       saturation: saturation, 
+                                       brightness: brightness, 
+                                       alpha: 1.0)
+            
+            // Mix gradient with Pokemon's primary type color
+            sphere1.firstMaterial?.diffuse.contents = UIColor.blend(
+                color1: UIColor(pokemon.primaryType.color),
+                color2: gradientColor,
+                ratio: 0.6
+            )
+            sphere1.firstMaterial?.emission.contents = UIColor.blend(
+                color1: UIColor(pokemon.primaryType.color),
+                color2: gradientColor,
+                ratio: 0.7
+            )
+            sphere1.firstMaterial?.emission.intensity = 0.3 + statModifier * 0.5
+            sphere1.firstMaterial?.metalness.contents = 0.3
+            sphere1.firstMaterial?.roughness.contents = 0.2
             
             let node1 = SCNNode(geometry: sphere1)
             node1.position = SCNVector3(
@@ -600,11 +656,33 @@ struct DNA3DSceneView: UIViewRepresentable {
             )
             dnaNode.addChildNode(node1)
             
-            // Second strand with complementary size
-            let sphere2 = SCNSphere(radius: 0.08 + (1.0 - statModifier) * 0.04)
-            sphere2.firstMaterial?.diffuse.contents = pokemon.secondaryType?.color ?? pokemon.primaryType.color.opacity(0.7)
-            sphere2.firstMaterial?.emission.contents = pokemon.secondaryType?.color ?? pokemon.primaryType.color
-            sphere2.firstMaterial?.emission.intensity = 0.2 + (1.0 - statModifier) * 0.3
+            // Second strand with complementary size - MORE variation and VIBRANT colors
+            let sphere2 = SCNSphere(radius: 0.06 + (1.0 - statModifier) * 0.08)  // Bigger range
+            
+            // Create complementary gradient color
+            let hue2 = (Double(i) / Double(segments) + 0.5 + Double(pokemon.id % 100) / 100.0).truncatingRemainder(dividingBy: 1.0)
+            let saturation2 = 0.7 + (1.0 - statModifier) * 0.3
+            let brightness2 = 0.8 + (1.0 - statModifier) * 0.2
+            let gradientColor2 = UIColor(hue: hue2, 
+                                        saturation: saturation2, 
+                                        brightness: brightness2, 
+                                        alpha: 1.0)
+            
+            // Use secondary type color if available, otherwise use complementary color
+            let baseColor = pokemon.secondaryType?.color ?? pokemon.primaryType.color.adjustedHue(by: 0.5)
+            sphere2.firstMaterial?.diffuse.contents = UIColor.blend(
+                color1: UIColor(baseColor),
+                color2: gradientColor2,
+                ratio: 0.6
+            )
+            sphere2.firstMaterial?.emission.contents = UIColor.blend(
+                color1: UIColor(baseColor),
+                color2: gradientColor2,
+                ratio: 0.7
+            )
+            sphere2.firstMaterial?.emission.intensity = 0.3 + (1.0 - statModifier) * 0.5
+            sphere2.firstMaterial?.metalness.contents = 0.3
+            sphere2.firstMaterial?.roughness.contents = 0.2
             
             let node2 = SCNNode(geometry: sphere2)
             node2.position = SCNVector3(
@@ -614,12 +692,24 @@ struct DNA3DSceneView: UIViewRepresentable {
             )
             dnaNode.addChildNode(node2)
             
-            // Add base pairs
+            // Add COLORFUL base pairs
             if i % (segments / basePairs) == 0 {
                 let cylinder = SCNCylinder(radius: 0.05, height: helixRadius * 2)
-                cylinder.firstMaterial?.diffuse.contents = getBasePairColor(index: i / (segments / basePairs))
-                cylinder.firstMaterial?.emission.contents = getBasePairColor(index: i / (segments / basePairs))
-                cylinder.firstMaterial?.emission.intensity = 0.5
+                
+                // Create unique base pair color based on Pokemon stats
+                let statIndex = (i / (segments / basePairs)) % pokemon.stats.count
+                let statValue = CGFloat(pokemon.stats[statIndex].baseStat) / 255.0
+                let basePairHue = Double(pokemon.id + i) / 200.0
+                let basePairColor = UIColor(hue: basePairHue.truncatingRemainder(dividingBy: 1.0),
+                                           saturation: 0.8,
+                                           brightness: 0.6 + statValue * 0.4,
+                                           alpha: 1.0)
+                
+                cylinder.firstMaterial?.diffuse.contents = basePairColor
+                cylinder.firstMaterial?.emission.contents = basePairColor
+                cylinder.firstMaterial?.emission.intensity = 0.4 + statValue * 0.4
+                cylinder.firstMaterial?.metalness.contents = 0.5
+                cylinder.firstMaterial?.roughness.contents = 0.3
                 
                 let basePairNode = SCNNode(geometry: cylinder)
                 basePairNode.position = SCNVector3(0, y, 0)
