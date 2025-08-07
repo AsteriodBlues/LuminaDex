@@ -126,12 +126,12 @@ struct CharacterDetailView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                 
-                InfoRow(label: "Region", value: character.region, icon: "map")
-                InfoRow(label: "Hometown", value: character.hometown, icon: "house.fill")
+                CharacterInfoRow(label: "Region", value: character.region, icon: "map")
+                CharacterInfoRow(label: "Hometown", value: character.hometown, icon: "house.fill")
                 if let age = character.age {
-                    InfoRow(label: "Age", value: "\(age) years old", icon: "calendar")
+                    CharacterInfoRow(label: "Age", value: "\(age) years old", icon: "calendar")
                 }
-                InfoRow(label: "Debut", value: character.debut, icon: "tv")
+                CharacterInfoRow(label: "Debut", value: character.debut, icon: "tv")
             }
             .padding()
             .background(Color.white.opacity(0.05))
@@ -230,7 +230,7 @@ struct CharacterDetailView: View {
     }
 }
 
-struct InfoRow: View {
+struct CharacterInfoRow: View {
     let label: String
     let value: String
     let icon: String

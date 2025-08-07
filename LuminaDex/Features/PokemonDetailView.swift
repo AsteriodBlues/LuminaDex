@@ -73,7 +73,7 @@ struct PokemonDetailView: View {
             radius: 400
         )
         .sheet(isPresented: $showDNAViewer) {
-            DNAHelixViewer(pokemon: pokemon)
+            UltraDNAHelixView(pokemon: pokemon)
         }
         .sheet(isPresented: $showEvolutionChain) {
             EvolutionChainView(pokemon: pokemon)

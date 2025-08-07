@@ -240,7 +240,7 @@ enum PokemonSpeciesType: String, CaseIterable {
     }
 }
 
-enum MigrationIntensity: CaseIterable {
+enum MigrationIntensity: String, CaseIterable {
     case light, medium, heavy, celebration
     
     var particleCount: Int {
@@ -258,6 +258,15 @@ enum MigrationIntensity: CaseIterable {
         case .medium: return 4.0
         case .heavy: return 6.0
         case .celebration: return 8.0
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .light: return .green
+        case .medium: return .yellow
+        case .heavy: return .orange
+        case .celebration: return .purple
         }
     }
 }
@@ -299,6 +308,182 @@ struct SeasonalEvent: Identifiable {
             isActive: false
         )
     ]
+}
+
+// MARK: - Main Migration System View
+
+struct MigrationSystemView: View {
+    @StateObject private var migrationManager = MigrationManager()
+    @State private var selectedStream: MigrationStream?
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                // Header
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Migration Patterns")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Text("Track Pokemon movements across regions")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                
+                // Active Migrations
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Active Migrations")
+                        .font(.headline)
+                        .padding(.horizontal)
+                    
+                    if migrationManager.migrationStreams.isEmpty {
+                        Text("No active migrations")
+                            .foregroundColor(.secondary)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        ForEach(migrationManager.migrationStreams) { stream in
+                            MigrationCard(stream: stream)
+                                .onTapGesture {
+                                    selectedStream = stream
+                                }
+                        }
+                    }
+                }
+                
+                // Seasonal Events
+                if !migrationManager.seasonalEvents.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Seasonal Events")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        
+                        ForEach(migrationManager.seasonalEvents) { event in
+                            SeasonalEventCard(event: event)
+                        }
+                    }
+                }
+            }
+            .padding(.vertical)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct MigrationCard: View {
+    @ObservedObject var stream: MigrationStream
+    
+    private var isActive: Bool {
+        stream.progress < 1.0 && stream.progress > 0.0
+    }
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(stream.species.emoji)
+                .font(.largeTitle)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text(stream.fromRegion)
+                        .fontWeight(.medium)
+                    Image(systemName: "arrow.right")
+                        .font(.caption)
+                    Text(stream.toRegion)
+                        .fontWeight(.medium)
+                }
+                
+                HStack {
+                    Text(stream.species.rawValue.capitalized)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Text("•")
+                        .foregroundColor(.secondary)
+                    
+                    Text(stream.intensity.rawValue.capitalized)
+                        .font(.caption)
+                        .foregroundColor(stream.intensity.color)
+                }
+            }
+            
+            Spacer()
+            
+            // Migration progress indicator
+            ZStack {
+                Circle()
+                    .stroke(Color.gray.opacity(0.3), lineWidth: 2)
+                    .frame(width: 40, height: 40)
+                
+                Circle()
+                    .trim(from: 0, to: stream.progress)
+                    .stroke(
+                        isActive ? Color.green : Color.gray,
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round)
+                    )
+                    .frame(width: 40, height: 40)
+                    .rotationEffect(.degrees(-90))
+                
+                Text("\(Int(stream.progress * 100))%")
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(isActive ? .green : .gray)
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemBackground))
+                .shadow(radius: 2)
+        )
+        .padding(.horizontal)
+    }
+}
+
+struct SeasonalEventCard: View {
+    let event: SeasonalEvent
+    
+    private var eventIcon: String {
+        switch event.specialSpecies {
+        case .bird: return "bird.fill"
+        case .water: return "drop.fill"
+        case .electric: return "bolt.fill"
+        case .fire: return "flame.fill"
+        case .grass: return "leaf.fill"
+        case .psychic: return "brain.head.profile"
+        case .dragon: return "sparkles"
+        case .legendary: return "star.circle.fill"
+        case .ice: return "snowflake"
+        }
+    }
+    
+    private var eventColor: Color {
+        event.specialSpecies.color
+    }
+    
+    var body: some View {
+        HStack {
+            Image(systemName: eventIcon)
+                .font(.title2)
+                .foregroundColor(eventColor)
+            
+            VStack(alignment: .leading) {
+                Text(event.name)
+                    .fontWeight(.medium)
+                Text(event.description)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(eventColor.opacity(0.1))
+        )
+        .padding(.horizontal)
+    }
 }
 
 // MARK: - Migration View Component

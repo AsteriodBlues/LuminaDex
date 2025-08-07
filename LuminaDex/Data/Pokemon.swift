@@ -43,6 +43,11 @@ struct Pokemon: Identifiable, Codable {
         types.first?.pokemonType ?? .unknown
     }
     
+    var secondaryType: PokemonType? {
+        guard types.count > 1 else { return nil }
+        return types[1].pokemonType
+    }
+    
     var formattedHeight: String {
         let meters = Double(height) / 10.0
         return String(format: "%.1f m", meters)
