@@ -43,22 +43,43 @@ struct CompanionData {
 // MARK: - Companion Types
 
 enum CompanionType: String, CaseIterable {
-    case pikachu, eevee, mew
+    case pikachu, eevee, mew, dragonite
     
     var name: String {
         switch self {
         case .pikachu: return "Pikachu"
         case .eevee: return "Eevee"
         case .mew: return "Mew"
+        case .dragonite: return "Dragonite"
         }
     }
     
+    var pokemonId: Int {
+        switch self {
+        case .pikachu: return 25
+        case .eevee: return 133
+        case .mew: return 151
+        case .dragonite: return 149
+        }
+    }
+    
+    var spriteURL: String {
+        // Use official Pokemon sprites from PokeAPI
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonId).png"
+    }
+    
+    var animatedSpriteURL: String {
+        // Use animated sprites for better visual effect
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/\(pokemonId).gif"
+    }
+    
     var sprite: String {
-        // Unicode representations for preview
+        // Fallback emoji for loading states
         switch self {
         case .pikachu: return "⚡"
         case .eevee: return "🦊"
         case .mew: return "✨"
+        case .dragonite: return "🐉"
         }
     }
     
@@ -67,6 +88,7 @@ enum CompanionType: String, CaseIterable {
         case .pikachu: return "Energetic and loyal, loves to explore new regions and celebrate discoveries"
         case .eevee: return "Adaptive and curious, evolves emotions based on your journey together"
         case .mew: return "Playful and mysterious, provides psychic insights and hidden knowledge"
+        case .dragonite: return "Gentle and protective, helps you navigate through challenging regions"
         }
     }
     
@@ -75,6 +97,7 @@ enum CompanionType: String, CaseIterable {
         case .pikachu: return ["Energetic", "Loyal", "Explorer"]
         case .eevee: return ["Adaptive", "Curious", "Evolving"]
         case .mew: return ["Playful", "Mysterious", "Psychic"]
+        case .dragonite: return ["Gentle", "Protective", "Navigator"]
         }
     }
     
@@ -83,6 +106,7 @@ enum CompanionType: String, CaseIterable {
         case .pikachu: return Color.yellow
         case .eevee: return Color.brown
         case .mew: return Color.pink
+        case .dragonite: return Color.orange
         }
     }
 }

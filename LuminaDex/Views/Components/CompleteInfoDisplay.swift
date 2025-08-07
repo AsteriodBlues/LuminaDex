@@ -719,21 +719,7 @@ struct EggCyclesCard: View {
 }
 
 // MARK: - Stats Charts
-struct StatsRadarChart: View {
-    let pokemon: Pokemon
-    let animate: Bool
-    
-    var body: some View {
-        Text("Radar Chart Placeholder")
-            .foregroundColor(.gray)
-            .frame(height: 200)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.black.opacity(0.3))
-            )
-    }
-}
+// StatsRadarChart is now in its own file
 
 struct StatsBarChart: View {
     let pokemon: Pokemon

@@ -135,9 +135,6 @@ struct NeuralFlowMapView: View {
                 .zIndex(selectedRegion?.id == node.id ? 1000 : 1)
             }
             
-            // Dynamic Island simulation
-            DynamicIslandSimulation()
-            
             // Control panel
             VStack {
                 HStack {
@@ -231,6 +228,16 @@ struct NeuralFlowMapView: View {
         }
         .onChange(of: selectedRegion) { _ in
             updateDynamicIslandForSelectedRegion()
+        }
+        .overlay(alignment: .bottomLeading) {
+            // Companion floating view - positioned on left side
+            if companionManager.isCompanionVisible,
+               companionManager.currentCompanion != nil {
+                CompanionFloatingView(companionManager: companionManager)
+                    .padding(.leading, 20)
+                    .padding(.bottom, 100) // Keep above tab bar
+                    .allowsHitTesting(true) // Ensure it can be interacted with
+            }
         }
     }
     

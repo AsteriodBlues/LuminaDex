@@ -8,6 +8,14 @@
 import SwiftUI
 import ConfettiSwiftUI
 
+// MARK: - Scroll Preference Key
+struct ScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
 struct PokemonDetailView: View {
     let pokemon: Pokemon
     
@@ -36,16 +44,34 @@ struct PokemonDetailView: View {
             backgroundView
             
             // Main content
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    heroSection
-                    dividerSection
-                    statsSection
-                    tabNavigationSection
-                    contentSection
+            ScrollViewReader { proxy in
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        heroSection
+                            .id("hero")
+                        dividerSection
+                        statsSection
+                        tabNavigationSection
+                        contentSection
+                    }
+                    .background(
+                        GeometryReader { geometry in
+                            Color.clear
+                                .preference(
+                                    key: ScrollOffsetPreferenceKey.self,
+                                    value: geometry.frame(in: .named("scroll")).minY
+                                )
+                        }
+                    )
+                }
+                .coordinateSpace(name: "scroll")
+                .scrollDismissesKeyboard(.immediately)
+                .onPreferenceChange(ScrollOffsetPreferenceKey.self) { offset in
+                    withAnimation(.interactiveSpring(response: 0.15, dampingFraction: 0.86, blendDuration: 0.25)) {
+                        scrollProgress = max(0, min(1, -offset / 300))
+                    }
                 }
             }
-            .coordinateSpace(name: "scroll")
             
             // Floating UI
             floatingInterface
@@ -118,21 +144,13 @@ struct PokemonDetailView: View {
     // MARK: - Hero Section
     
     private var heroSection: some View {
-        GeometryReader { geometry in
-            let minY = geometry.frame(in: .named("scroll")).minY
-            let progress = max(0, min(1, -minY / 300))
-            
-            ZStack {
-                heroBackground(progress: progress)
-                heroContent(progress: progress)
-            }
-            .frame(height: 500)
-            .offset(y: minY > 0 ? -minY * 0.8 : 0)
-            .onAppear {
-                scrollProgress = progress
-            }
+        ZStack {
+            heroBackground(progress: scrollProgress)
+            heroContent(progress: scrollProgress)
         }
         .frame(height: 500)
+        .scaleEffect(1 + max(0, scrollProgress * 0.1))
+        .opacity(1 - scrollProgress * 0.2)
     }
     
     private func heroBackground(progress: CGFloat) -> some View {
@@ -899,13 +917,21 @@ struct PokemonDetailView: View {
     
     private var abilitiesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Abilities")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.white)
+            HStack {
+                Text("Abilities")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Text("\(pokemon.abilities.count) Total")
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.6))
+            }
             
-            // Use the new AbilityCloudView from Day 25
+            // Use the new AbilityCloudView with unique descriptions
             AbilityCloudView(abilities: pokemon.abilities)
-                .frame(height: 120)
+                .frame(minHeight: 60)
         }
     }
     
@@ -1297,7 +1323,10 @@ enum DetailTab: String, CaseIterable {
 extension CompanionManager {
     func reactToNewPokemon(_ pokemon: Pokemon) {
         celebrateDiscovery()
-        updateCompanionPosition(to: CGPoint(x: 80, y: 600))
+        // Position companion in center-bottom of screen
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        updateCompanionPosition(to: CGPoint(x: screenWidth / 2, y: screenHeight - 200))
     }
 }
 

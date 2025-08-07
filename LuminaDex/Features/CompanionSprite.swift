@@ -16,6 +16,8 @@ struct CompanionSprite: View {
     @State private var isAnimating = false
     @State private var particleOffset: CGFloat = 0
     @State private var breathingScale: CGFloat = 1.0
+    @State private var spriteImage: UIImage?
+    @State private var isLoadingSprite = true
     
     private let breathingTimer = Timer.publish(every: 2.0, on: .main, in: .common).autoconnect()
     private let particleTimer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
@@ -40,6 +42,7 @@ struct CompanionSprite: View {
         .position(position)
         .onAppear {
             startAnimations()
+            loadCompanionSprite()
         }
         .onReceive(breathingTimer) { _ in
             animateBreathing()
@@ -79,11 +82,23 @@ struct CompanionSprite: View {
                     )
                 
                 // Companion sprite
-                Text(getSpriteForEmotion())
-                    .font(.system(size: 28))
-                    .scaleEffect(emotionState.animationScale * breathingScale)
-                    .offset(x: emotionState.animationOffset.x, y: emotionState.animationOffset.y)
-                    .animation(.easeInOut(duration: 0.3), value: emotionState)
+                if let spriteImage = spriteImage {
+                    Image(uiImage: spriteImage)
+                        .resizable()
+                        .interpolation(.none) // Pixel perfect
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .scaleEffect(emotionState.animationScale * breathingScale)
+                        .offset(x: emotionState.animationOffset.x, y: emotionState.animationOffset.y)
+                        .animation(.easeInOut(duration: 0.3), value: emotionState)
+                } else {
+                    // Fallback to emoji while loading
+                    Text(companion.type.sprite)
+                        .font(.system(size: 28))
+                        .scaleEffect(emotionState.animationScale * breathingScale)
+                        .offset(x: emotionState.animationOffset.x, y: emotionState.animationOffset.y)
+                        .animation(.easeInOut(duration: 0.3), value: emotionState)
+                }
             }
         }
         .scaleEffect(isVisible ? 1.0 : 0.0)
@@ -133,31 +148,29 @@ struct CompanionSprite: View {
     
     // MARK: - Helper Methods
     
-    private func getSpriteForEmotion() -> String {
-        switch emotionState {
-        case .excited:
-            return companion.type.sprite + "✨"
-        case .happy:
-            return companion.type.sprite + "😊"
-        case .sad:
-            return companion.type.sprite + "😢"
-        case .scared:
-            return companion.type.sprite + "😰"
-        case .sleeping:
-            return companion.type.sprite + "💤"
-        case .curious:
-            return companion.type.sprite + "🤔"
-        case .bored:
-            return companion.type.sprite + "😴"
-        default:
-            return companion.type.sprite
+    private func loadCompanionSprite() {
+        isLoadingSprite = true
+        
+        guard let url = URL(string: companion.type.spriteURL) else {
+            isLoadingSprite = false
+            return
         }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            DispatchQueue.main.async {
+                if let data = data, error == nil,
+                   let image = UIImage(data: data) {
+                    self.spriteImage = image
+                }
+                self.isLoadingSprite = false
+            }
+        }.resume()
     }
     
     private func getEmotionText() -> String {
         switch emotionState {
         case .excited: return "Wow!"
-        case .happy: return "Yay!"
+        case .happy: return "Yaay!"
         case .sad: return "Aww..."
         case .scared: return "Eek!"
         case .sleeping: return "Zzz..."
