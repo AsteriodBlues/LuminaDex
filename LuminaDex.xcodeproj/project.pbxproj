@@ -88,6 +88,10 @@
 		C37CA9032E3EE5FA002F20DB /* DNAShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */; };
 		C37CA9052E3EE9EE002F20DB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */; };
 		C37CA9072E3EEEFE002F20DB /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */; };
+		C380FE5F2E447F6A00EEBF21 /* AbilityDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE5E2E447F6A00EEBF21 /* AbilityDatabase.swift */; };
+		C380FE622E44836C00EEBF21 /* CompanionFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE602E44836C00EEBF21 /* CompanionFloatingView.swift */; };
+		C380FE652E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE642E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift */; };
+		C380FE672E4487D300EEBF21 /* StatsRadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE662E4487D300EEBF21 /* StatsRadarChart.swift */; };
 		C392A1552E4076D700A1C052 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = C392A1542E4076D700A1C052 /* GRDB */; };
 		C3B900042E40736D0041E5E4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900032E40736D0041E5E4 /* SwiftUICharts */; };
 		C3B900062E40736D0041E5E4 /* Liquid in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900052E40736D0041E5E4 /* Liquid */; };
@@ -271,6 +275,10 @@
 		C37CA9022E3EE5FA002F20DB /* DNAShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DNAShaders.metal; path = LuminaDex/DNAShaders.metal; sourceTree = SOURCE_ROOT; };
 		C37CA9042E3EE9ED002F20DB /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		C37CA9062E3EEEFC002F20DB /* EvolutionChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainView.swift; sourceTree = "<group>"; };
+		C380FE5E2E447F6A00EEBF21 /* AbilityDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityDatabase.swift; sourceTree = "<group>"; };
+		C380FE602E44836C00EEBF21 /* CompanionFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionFloatingView.swift; sourceTree = "<group>"; };
+		C380FE642E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedCompanionSelectionView.swift; sourceTree = "<group>"; };
+		C380FE662E4487D300EEBF21 /* StatsRadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRadarChart.swift; sourceTree = "<group>"; };
 		C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEffectivenessView.swift; sourceTree = "<group>"; };
 		C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSearchView.swift; sourceTree = "<group>"; };
 		C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlakazamAssistant.swift; sourceTree = "<group>"; };
@@ -544,6 +552,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C380FE5E2E447F6A00EEBF21 /* AbilityDatabase.swift */,
 				C3253DF62E4465BB002B742E /* AchievementSystem.swift */,
 				C3253DC52E43E506002B742E /* CharacterData.swift */,
 				C3253DC62E43E506002B742E /* GymBadgeData.swift */,
@@ -637,6 +646,9 @@
 		C3F932992E42F10B0035999C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C380FE662E4487D300EEBF21 /* StatsRadarChart.swift */,
+				C380FE642E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift */,
+				C380FE602E44836C00EEBF21 /* CompanionFloatingView.swift */,
 				C3253DFF2E446CA0002B742E /* AchievementNotificationOverlay.swift */,
 				C3253DFA2E4465D8002B742E /* AchievementNotification.swift */,
 				C3253D8B2E439B12002B742E /* MoveTypeBadge.swift */,
@@ -892,6 +904,7 @@
 				C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */,
 				C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */,
 				C3F9329F2E42F10B0035999C /* FilterModal.swift in Sources */,
+				C380FE622E44836C00EEBF21 /* CompanionFloatingView.swift in Sources */,
 				C3253D782E432F35002B742E /* PokemonCatchRateCard.swift in Sources */,
 				C3F932A02E42F10B0035999C /* TypedActivityIndicator.swift in Sources */,
 				C3F932A12E42F10B0035999C /* EnhancedSearchBar.swift in Sources */,
@@ -908,6 +921,7 @@
 				C3253D6B2E430274002B742E /* WeaknessResistanceCard.swift in Sources */,
 				C3253D6C2E430274002B742E /* FormSwitcher.swift in Sources */,
 				C36019A62E3E9488000BE42C /* TypeFlow.swift in Sources */,
+				C380FE5F2E447F6A00EEBF21 /* AbilityDatabase.swift in Sources */,
 				C36019A72E3E9488000BE42C /* NeuralFlowMapView.swift in Sources */,
 				C32CB5B12E418AD6001583AF /* ComparisonViewModel.swift in Sources */,
 				C32CB5B22E418AD6001583AF /* ComparisonChart.swift in Sources */,
@@ -920,6 +934,7 @@
 				C3253D862E439515002B742E /* MoveEncyclopediaView.swift in Sources */,
 				C32CB5B92E418AD6001583AF /* SizeComparisonView.swift in Sources */,
 				C3253D762E432C21002B742E /* PokeballCollectionView.swift in Sources */,
+				C380FE672E4487D300EEBF21 /* StatsRadarChart.swift in Sources */,
 				C3B9FF962E402D500041E5E4 /* RadarChart.swift in Sources */,
 				C36019A82E3E9488000BE42C /* StarFieldView.swift in Sources */,
 				C3253DCE2E43E522002B742E /* GymBadgeListView.swift in Sources */,
@@ -956,6 +971,7 @@
 				C3253D6E2E43263E002B742E /* ShinyPokemonView.swift in Sources */,
 				C3B9FF7B2E3FD42E0041E5E4 /* PokemonSearchView.swift in Sources */,
 				C3F9328D2E42F0EF0035999C /* FilterViewModel.swift in Sources */,
+				C380FE652E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift in Sources */,
 				C3F9328E2E42F0EF0035999C /* FilterView.swift in Sources */,
 				C3B9FF9E2E4039260041E5E4 /* EvolutionTrees.swift in Sources */,
 				C3B9FF7F2E3FFBCA0041E5E4 /* CollectionView.swift in Sources */,
