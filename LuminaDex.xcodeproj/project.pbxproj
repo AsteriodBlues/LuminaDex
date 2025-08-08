@@ -106,6 +106,9 @@
 		C39A633D2E45AAED005A8EDF /* AllPokemonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A633B2E45AAED005A8EDF /* AllPokemonData.swift */; };
 		C39A633E2E45AAED005A8EDF /* PokemonDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A633C2E45AAED005A8EDF /* PokemonDataLoader.swift */; };
 		C39A633F2E45AAED005A8EDF /* AdvancedTeamAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A633A2E45AAED005A8EDF /* AdvancedTeamAnalyzer.swift */; };
+		C39A63412E46A50B005A8EDF /* RibbonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A63402E46A50B005A8EDF /* RibbonData.swift */; };
+		C39A63442E46A517005A8EDF /* RibbonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A63432E46A517005A8EDF /* RibbonListView.swift */; };
+		C39A63452E46A517005A8EDF /* RibbonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A63422E46A517005A8EDF /* RibbonDetailView.swift */; };
 		C3B900042E40736D0041E5E4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900032E40736D0041E5E4 /* SwiftUICharts */; };
 		C3B900062E40736D0041E5E4 /* Liquid in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900052E40736D0041E5E4 /* Liquid */; };
 		C3B900082E40736D0041E5E4 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900072E40736D0041E5E4 /* ActivityIndicatorView */; };
@@ -305,6 +308,9 @@
 		C39A633A2E45AAED005A8EDF /* AdvancedTeamAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedTeamAnalyzer.swift; sourceTree = "<group>"; };
 		C39A633B2E45AAED005A8EDF /* AllPokemonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPokemonData.swift; sourceTree = "<group>"; };
 		C39A633C2E45AAED005A8EDF /* PokemonDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDataLoader.swift; sourceTree = "<group>"; };
+		C39A63402E46A50B005A8EDF /* RibbonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonData.swift; sourceTree = "<group>"; };
+		C39A63422E46A517005A8EDF /* RibbonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonDetailView.swift; sourceTree = "<group>"; };
+		C39A63432E46A517005A8EDF /* RibbonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonListView.swift; sourceTree = "<group>"; };
 		C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEffectivenessView.swift; sourceTree = "<group>"; };
 		C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSearchView.swift; sourceTree = "<group>"; };
 		C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlakazamAssistant.swift; sourceTree = "<group>"; };
@@ -518,6 +524,8 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C39A63422E46A517005A8EDF /* RibbonDetailView.swift */,
+				C39A63432E46A517005A8EDF /* RibbonListView.swift */,
 				C39A632D2E459E4B005A8EDF /* TeamBuilderView.swift */,
 				C39A632E2E459E4B005A8EDF /* TeamBuilderViewModel.swift */,
 				C39A63252E4597AC005A8EDF /* SplashScreenView.swift */,
@@ -583,6 +591,7 @@
 		C37525EC2E3D61CD00505277 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C39A63402E46A50B005A8EDF /* RibbonData.swift */,
 				C39A633A2E45AAED005A8EDF /* AdvancedTeamAnalyzer.swift */,
 				C39A633B2E45AAED005A8EDF /* AllPokemonData.swift */,
 				C39A633C2E45AAED005A8EDF /* PokemonDataLoader.swift */,
@@ -1016,12 +1025,15 @@
 				C37CA8F32E3EB198002F20DB /* CompanionSprite.swift in Sources */,
 				C39A633D2E45AAED005A8EDF /* AllPokemonData.swift in Sources */,
 				C39A633E2E45AAED005A8EDF /* PokemonDataLoader.swift in Sources */,
+				C39A63442E46A517005A8EDF /* RibbonListView.swift in Sources */,
+				C39A63452E46A517005A8EDF /* RibbonDetailView.swift in Sources */,
 				C39A633F2E45AAED005A8EDF /* AdvancedTeamAnalyzer.swift in Sources */,
 				C37CA8F72E3EB21F002F20DB /* CompanionData.swift in Sources */,
 				C37CA8F42E3EB198002F20DB /* CompanionSystem.swift in Sources */,
 				C3253D8A2E4398F4002B742E /* PokemonMovesDetailSection.swift in Sources */,
 				C3B9FF812E3FFC670041E5E4 /* CollectionViewModel.swift in Sources */,
 				C3B9FF8D2E40022F0041E5E4 /* AchievementsView.swift in Sources */,
+				C39A63412E46A50B005A8EDF /* RibbonData.swift in Sources */,
 				C39A63342E459E5C005A8EDF /* PokemonPickerSheet.swift in Sources */,
 				C39A63352E459E5C005A8EDF /* TeamAnalysisViews.swift in Sources */,
 				C37CA8F52E3EB198002F20DB /* CompanionSelectionView.swift in Sources */,

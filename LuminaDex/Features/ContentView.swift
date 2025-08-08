@@ -126,13 +126,21 @@ struct ContentView: View {
                 }
                 .tag(8)
             
+            // Ribbons
+            RibbonListView()
+                .tabItem {
+                    Image(systemName: "rosette")
+                    Text("Ribbons")
+                }
+                .tag(9)
+            
             // Achievements
             EnhancedAchievementsView()
                 .tabItem {
                     Image(systemName: "trophy.fill")
                     Text("Achievements")
                 }
-                .tag(9)
+                .tag(10)
             
             // Profile & Stats
             ProfileView()
@@ -140,7 +148,7 @@ struct ContentView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(10)
+                .tag(11)
         }
         .accentColor(ThemeManager.Colors.neural)
     }
