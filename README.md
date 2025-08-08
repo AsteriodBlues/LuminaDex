@@ -34,6 +34,17 @@ Choose from legendary companions (Pikachu, Eevee, Mew, or Dragonite) that accomp
 - **Type Effectiveness** charts with visual resistance/weakness indicators
 - **Natures & EVs/IVs** complete training and breeding systems
 
+### 🎀 Ribbon Collection
+Complete collection of all 115 official Pokémon ribbons:
+- **Contest Ribbons**: All ranks for Cool, Beauty, Cute, Smart, and Tough contests
+- **Battle Ribbons**: Champion, Tower, Tree, and facility ribbons
+- **League Ribbons**: Champion ribbons from all regions
+- **Special Ribbons**: Event, commemorative, and memorial ribbons
+- **Personality Marks**: All 31 personality marks from Generation 8
+- **Custom Rosette Designs**: Beautiful animated ribbon visualizations
+- **Progress Tracking**: Category statistics and completion rates
+- **Rarity System**: 5-tier rarity with special effects
+
 ### 🏆 Achievement System
 Unlock over 50 achievements across 12 comprehensive categories:
 - **Collector**: Complete your Pokédex milestones
@@ -170,6 +181,13 @@ The project uses Swift Package Manager for dependency management:
 - Export/import team configurations
 - View detailed analysis metrics
 
+#### Ribbon Collection
+- Browse all 115 official ribbons
+- Filter by category and rarity
+- Track earned ribbons
+- View detailed requirements
+- Beautiful rosette animations
+
 #### Move Encyclopedia
 - Browse all 900+ moves
 - Filter by type and category
@@ -254,6 +272,8 @@ LuminaDex/
 **Sprite Rendering Optimization** - Integrated Nuke for efficient image loading, implemented sprite pooling for memory efficiency, added physics-based animations, and reduced loading times by 60%.
 
 **Neural Flow Network World Map** - Revolutionary interface design where regions exist as living neural nodes with energy flows, companion interactions, and real-time data streams between regions.
+
+**Ribbon Collection System** - Complete implementation of all 115 official Pokémon ribbons including contest ribbons, battle facility ribbons, league champion ribbons, and personality marks. Features custom rosette designs with category-based colors, rarity tiers with special effects, and comprehensive progress tracking.
 
 **Modern Launch Experience** - Professional animated splash screen with smooth transitions, featuring the LuminaDex logo animation and seamless integration with the main application interface.
 
