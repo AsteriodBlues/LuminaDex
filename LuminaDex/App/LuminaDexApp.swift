@@ -15,6 +15,7 @@ struct LuminaDexApp: App {
     @StateObject private var imageManager = ImageManager.shared
     @StateObject private var achievementTracker = AchievementTracker.shared
     @StateObject private var achievementManager = AchievementManager.shared
+    @State private var showSplashScreen = true
     
     init() {
         // Database initialization happens automatically in DatabaseManager
@@ -27,27 +28,36 @@ struct LuminaDexApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentView()
-                    .environmentObject(database)
-                    .environmentObject(dataFetcher)
-                    .environmentObject(imageManager)
-                    .environmentObject(achievementTracker)
-                    .environmentObject(achievementManager)
-                
-                // Achievement Notification Overlay  
-                AchievementNotificationOverlay()
-                    .environmentObject(achievementTracker)
-            }
-            .onAppear {
-                    Task {
-                        // Check if we need to fetch data
-                        let info = try? await database.getDatabaseInfo()
-                        if info?.pokemonCount == 0 {
-                            print("🚀 Starting initial data fetch...")
-                            await dataFetcher.fetchAllPokemonData()
+                if showSplashScreen {
+                    SplashScreenView(isActive: $showSplashScreen)
+                        .transition(.opacity)
+                } else {
+                    ZStack {
+                        ContentView()
+                            .environmentObject(database)
+                            .environmentObject(dataFetcher)
+                            .environmentObject(imageManager)
+                            .environmentObject(achievementTracker)
+                            .environmentObject(achievementManager)
+                        
+                        // Achievement Notification Overlay  
+                        AchievementNotificationOverlay()
+                            .environmentObject(achievementTracker)
+                    }
+                    .transition(.opacity)
+                    .onAppear {
+                        Task {
+                            // Check if we need to fetch data
+                            let info = try? await database.getDatabaseInfo()
+                            if info?.pokemonCount == 0 {
+                                print("🚀 Starting initial data fetch...")
+                                await dataFetcher.fetchAllPokemonData()
+                            }
                         }
                     }
                 }
+            }
+            .animation(.easeInOut(duration: 0.5), value: showSplashScreen)
         }
     }
 }

@@ -93,6 +93,8 @@
 		C380FE652E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE642E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift */; };
 		C380FE672E4487D300EEBF21 /* StatsRadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C380FE662E4487D300EEBF21 /* StatsRadarChart.swift */; };
 		C392A1552E4076D700A1C052 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = C392A1542E4076D700A1C052 /* GRDB */; };
+		C39A63262E4597AC005A8EDF /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A63252E4597AC005A8EDF /* SplashScreenView.swift */; };
+		C39A63282E4597BF005A8EDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39A63272E4597BF005A8EDF /* LaunchScreen.storyboard */; };
 		C3B900042E40736D0041E5E4 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900032E40736D0041E5E4 /* SwiftUICharts */; };
 		C3B900062E40736D0041E5E4 /* Liquid in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900052E40736D0041E5E4 /* Liquid */; };
 		C3B900082E40736D0041E5E4 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = C3B900072E40736D0041E5E4 /* ActivityIndicatorView */; };
@@ -279,6 +281,8 @@
 		C380FE602E44836C00EEBF21 /* CompanionFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionFloatingView.swift; sourceTree = "<group>"; };
 		C380FE642E4483C500EEBF21 /* EnhancedCompanionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedCompanionSelectionView.swift; sourceTree = "<group>"; };
 		C380FE662E4487D300EEBF21 /* StatsRadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRadarChart.swift; sourceTree = "<group>"; };
+		C39A63252E4597AC005A8EDF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		C39A63272E4597BF005A8EDF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3B9FF782E3FD07B0041E5E4 /* TypeEffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEffectivenessView.swift; sourceTree = "<group>"; };
 		C3B9FF7A2E3FD42D0041E5E4 /* PokemonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSearchView.swift; sourceTree = "<group>"; };
 		C3B9FF7C2E3FEA710041E5E4 /* AlakazamAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlakazamAssistant.swift; sourceTree = "<group>"; };
@@ -465,6 +469,7 @@
 		C37525E52E3D61A200505277 /* LuminaDex */ = {
 			isa = PBXGroup;
 			children = (
+				C39A63272E4597BF005A8EDF /* LaunchScreen.storyboard */,
 				C3253DFD2E4465F5002B742E /* Services */,
 				C3253DEC2E443813002B742E /* AdvancedDNAShaders.metal */,
 				C32CB5BD2E418AF4001583AF /* Database */,
@@ -490,6 +495,7 @@
 		C37525EA2E3D61BC00505277 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C39A63252E4597AC005A8EDF /* SplashScreenView.swift */,
 				C3253DF82E4465C8002B742E /* EnhancedAchievementsView.swift */,
 				C3253DEE2E443912002B742E /* Advanced3DDNAHelixView.swift */,
 				C3253DEF2E443912002B742E /* DNAViewModel.swift */,
@@ -844,6 +850,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37525E62E3D61A200505277 /* Assets.xcassets in Resources */,
+				C39A63282E4597BF005A8EDF /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +909,7 @@
 				C3253DFB2E4465D8002B742E /* AchievementNotification.swift in Sources */,
 				C3253DF42E443912002B742E /* DNAViewModel.swift in Sources */,
 				C3253DF52E443912002B742E /* UltraDNAHelixView.swift in Sources */,
+				C39A63262E4597AC005A8EDF /* SplashScreenView.swift in Sources */,
 				C3F9329E2E42F10B0035999C /* AbilityCloudView.swift in Sources */,
 				C3F9329F2E42F10B0035999C /* FilterModal.swift in Sources */,
 				C380FE622E44836C00EEBF21 /* CompanionFloatingView.swift in Sources */,
