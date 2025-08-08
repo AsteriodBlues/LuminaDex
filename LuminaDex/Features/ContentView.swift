@@ -78,13 +78,21 @@ struct ContentView: View {
                 }
                 .tag(2)
             
+            // Team Builder
+            TeamBuilderView()
+                .tabItem {
+                    Image(systemName: "person.3.fill")
+                    Text("Team")
+                }
+                .tag(3)
+            
             // Move Encyclopedia
             MoveEncyclopediaView()
                 .tabItem {
                     Image(systemName: "bolt.fill")
                     Text("Moves")
                 }
-                .tag(3)
+                .tag(4)
             
             // Pokeball Collection
             PokeballCollectionView()
@@ -92,7 +100,7 @@ struct ContentView: View {
                     Image(systemName: "circle.circle.fill")
                     Text("Pokéballs")
                 }
-                .tag(4)
+                .tag(5)
             
             // Berry Collection
             BerryListView()
@@ -100,7 +108,7 @@ struct ContentView: View {
                     Image(systemName: "leaf.fill")
                     Text("Berries")
                 }
-                .tag(5)
+                .tag(6)
             
             // Gym Badges
             GymBadgeListView()
@@ -108,15 +116,15 @@ struct ContentView: View {
                     Image(systemName: "shield.fill")
                     Text("Badges")
                 }
-                .tag(6)
+                .tag(7)
             
             // Characters
             CharacterListView()
                 .tabItem {
-                    Image(systemName: "person.3.fill")
+                    Image(systemName: "person.2.fill")
                     Text("Characters")
                 }
-                .tag(7)
+                .tag(8)
             
             // Achievements
             EnhancedAchievementsView()
@@ -124,7 +132,7 @@ struct ContentView: View {
                     Image(systemName: "trophy.fill")
                     Text("Achievements")
                 }
-                .tag(8)
+                .tag(9)
             
             // Profile & Stats
             ProfileView()
@@ -132,7 +140,7 @@ struct ContentView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-                .tag(9)
+                .tag(10)
         }
         .accentColor(ThemeManager.Colors.neural)
     }

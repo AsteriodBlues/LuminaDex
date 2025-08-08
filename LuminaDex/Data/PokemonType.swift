@@ -34,6 +34,31 @@ enum PokemonType: String, CaseIterable, Codable, Hashable {
         rawValue.capitalized
     }
     
+    // Symbol name for SF Symbols
+    var symbolName: String {
+        switch self {
+        case .normal: return "circle"
+        case .fire: return "flame.fill"
+        case .water: return "drop.fill"
+        case .electric: return "bolt.fill"
+        case .grass: return "leaf.fill"
+        case .ice: return "snowflake"
+        case .fighting: return "figure.boxing"
+        case .poison: return "smoke.fill"
+        case .ground: return "mountain.2.fill"
+        case .flying: return "wind"
+        case .psychic: return "eye.fill"
+        case .bug: return "ant.fill"
+        case .rock: return "cube.fill"
+        case .ghost: return "moon.fill"
+        case .dragon: return "sparkles"
+        case .dark: return "moon.stars.fill"
+        case .steel: return "shield.fill"
+        case .fairy: return "star.fill"
+        case .unknown: return "questionmark"
+        }
+    }
+    
     // Type colors for luxury UI
     var color: Color {
         switch self {
@@ -452,5 +477,17 @@ struct TypeEffectiveness {
         default:
             return "Normal Damage"
         }
+    }
+    
+    // Type effectiveness (simplified - would need full chart in production)
+    func effectiveness(against types: [PokemonTypeSlot]) -> Float {
+        // This is a simplified implementation
+        // In a real app, you'd have a complete type effectiveness chart
+        return 1.0
+    }
+    
+    func effectiveness(against type: PokemonType) -> Float {
+        // Simplified type effectiveness
+        return 1.0
     }
 }
